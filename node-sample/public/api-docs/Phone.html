@@ -1,0 +1,10303 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>JavaScript SDK for AT&T Enhanced WebRTC API Class: Phone</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">JavaScript SDK for AT&T Enhanced WebRTC API</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="ATT.rtc.html">ATT.rtc</a>
+						</li>
+						
+						<li>
+							<a href="ATT.rtc.dhs.html">ATT.rtc.dhs</a>
+						</li>
+						
+						<li>
+							<a href="ATT.rtc.Phone.html">ATT.rtc.Phone</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="Phone.html">Phone</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="Phone.html#event:call:canceled">Phone#call:canceled</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:call:connected">Phone#call:connected</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:call:connecting">Phone#call:connecting</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:call:disconnected">Phone#call:disconnected</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:call:disconnecting">Phone#call:disconnecting</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:call:held">Phone#call:held</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:call:incoming">Phone#call:incoming</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:call:muted">Phone#call:muted</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:call:rejected">Phone#call:rejected</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:call:resumed">Phone#call:resumed</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:call:ringback-provided">Phone#call:ringback-provided</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:call:unmuted">Phone#call:unmuted</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:connected">Phone#conference:connected</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:connecting">Phone#conference:connecting</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:disconnecting">Phone#conference:disconnecting</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:ended">Phone#conference:ended</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:held">Phone#conference:held</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:invitation-accepted">Phone#conference:invitation-accepted</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:invitation-received">Phone#conference:invitation-received</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:invitation-rejected">Phone#conference:invitation-rejected</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:invitation-sending">Phone#conference:invitation-sending</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:invitation-sent">Phone#conference:invitation-sent</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:joining">Phone#conference:joining</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:participant-removed">Phone#conference:participant-removed</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:conference:resumed">Phone#conference:resumed</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:address-updated">Phone#event:address-updated</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:answering">Phone#event:answering</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:dialing">Phone#event:dialing</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:error">Phone#event:error</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:notification">Phone#event:notification</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:media:established">Phone#media:established</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:session:call-switched">Phone#session:call-switched</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:session:disconnected">Phone#session:disconnected</a>
+						</li>
+						
+						<li>
+							<a href="Phone.html#event:session:ready">Phone#session:ready</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+		<div class="span8">
+			
+				<div id="main">
+					
+
+
+	<h1 class="page-title">Class: Phone</h1>
+<section>
+
+<header>
+    <h2>
+    Phone
+    </h2>
+    
+        <div class="class-description"><p>Represents a Phone.</p></div>
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+
+    
+        
+<dt>
+    <h4 class="name" id="Phone"><span class="type-signature">&lt;private> </span>new Phone<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Creates a new Phone.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This constructor is not meant to be used directly. It is used internally
+   by the <code>ATT.rtc.Phone.getPhone</code> method.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:call:incoming">Phone#call:incoming</a></li>
+    
+        <li><a href="Phone.html#event:conference:invitation-received">Phone#conference:invitation-received</a></li>
+    
+        <li><a href="Phone.html#event:session:call-switched">Phone#session:call-switched</a></li>
+    
+        <li><a href="Phone.html#event:notification">Phone#event:notification</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="addCall"><span class="type-signature"></span>addCall<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Add a second call while having an active call.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Automatically holds the active call and dials second call.</p>
+<p><strong>Error codes</strong></p>
+<ul>
+<li>27001 - Input options are not provided</li>
+<li>27002 - LocalMedia is not defined</li>
+<li>27003 - remoteMedia is not defined</li>
+<li>27004 - destination is not defined</li>
+<li>27005 - Invalid phone number</li>
+<li>27006 - Invalid SIP URI</li>
+<li>27007 - Invalid media constraints</li>
+<li>27008 - User is not logged in</li>
+<li>27009 - Can not make second call. There is no first call in progress.</li>
+<li>27010 - Cannot make a third call.</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>destination</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Phone Number or User Id of the called party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>localMedia</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLVideoElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>remoteMedia</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLVideoElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p><code>audio</code> or <code>video</code></p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:dialing">Phone#event:dialing</a></li>
+    
+        <li><a href="Phone.html#event:call:connecting">Phone#call:connecting</a></li>
+    
+        <li><a href="Phone.html#event:call:canceled">Phone#call:canceled</a></li>
+    
+        <li><a href="Phone.html#event:call:rejected">Phone#call:rejected</a></li>
+    
+        <li><a href="Phone.html#event:call:connected">Phone#call:connected</a></li>
+    
+        <li><a href="Phone.html#event:media:established">Phone#media:established</a></li>
+    
+        <li><a href="Phone.html#event:call:held">Phone#call:held</a></li>
+    
+        <li><a href="Phone.html#event:call:resumed">Phone#call:resumed</a></li>
+    
+        <li><a href="Phone.html#event:call:disconnected">Phone#call:disconnected</a></li>
+    
+        <li><a href="Phone.html#event:notification">Phone#event:notification</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     &#x2F;&#x2F; Add a video call with an Mobile Number User
+     var phone = ATT.rtc.Phone.getPhone();
+     phone.addCall({
+       destination: &#x27;1231231234&#x27;, &#x2F;&#x2F;1800CALLFEDX, 1 (123) 123-1234
+       mediaType: &#x27;video&#x27;,
+       localMedia: document.getElementById(&#x27;localVideo&#x27;),
+       remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
+     });</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="addParticipants"><span class="type-signature"></span>addParticipants<span class="signature">(participants)</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Add participants</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Add a list of participants to a conference</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>24000 - Participants parameter missing</li>
+<li>24001 - Participants is null or empty</li>
+<li>24002 - User is not logged in</li>
+<li>24003 - Conference not initiated</li>
+<li>24004 - Internal error occurred</li>
+<li>24005 - Cannot invite existing participant</li>
+<li>24006 - Invalid phone number</li>
+<li>24007 - Invalid SIP URI</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>participants</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of participant-ids</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:conference:invitation-sending">Phone#conference:invitation-sending</a></li>
+    
+        <li><a href="Phone.html#event:conference:invitation-sent">Phone#conference:invitation-sent</a></li>
+    
+        <li><a href="Phone.html#event:conference:invitation-accepted">Phone#conference:invitation-accepted</a></li>
+    
+        <li><a href="Phone.html#event:conference:invitation-rejected">Phone#conference:invitation-rejected</a></li>
+    
+        <li><a href="Phone.html#event:notification">Phone#event:notification</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.addParticipants([&#x27;4250000001&#x27;,&#x27;4250000002&#x27;]);</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="answer"><span class="type-signature"></span>answer<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Answer an incoming call</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Once a Phone#event:call:incoming event is fired, you can use this method to
+answer the incoming call. If a call is in progress, you can receive
+a second incoming call. To answer a second call, use <code>phone.isCallInProgress</code> to check
+whether there is a call in progress.</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>5000 - Answer failed: No incoming call</li>
+<li>5001 - Invalid media type</li>
+<li>5002 - Internal error occurred</li>
+<li>5003 - User is not logged in</li>
+<li>5004 - Mandatory fields can not be empty</li>
+<li>5005 - Invalid Action parameter</li>
+<li>5504 - A media modification is in progress for the callId</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>localVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>remoteVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>action</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>end|hold</code> Action to perform on the current call</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:answering">Phone#event:answering</a></li>
+    
+        <li><a href="Phone.html#event:call:connecting">Phone#call:connecting</a></li>
+    
+        <li><a href="Phone.html#event:call:rejected">Phone#call:rejected</a></li>
+    
+        <li><a href="Phone.html#event:call:connected">Phone#call:connected</a></li>
+    
+        <li><a href="Phone.html#event:media:established">Phone#media:established</a></li>
+    
+        <li><a href="Phone.html#event:call:held">Phone#call:held</a></li>
+    
+        <li><a href="Phone.html#event:call:resumed">Phone#call:resumed</a></li>
+    
+        <li><a href="Phone.html#event:call:disconnected">Phone#call:disconnected</a></li>
+    
+        <li><a href="Phone.html#event:notification">Phone#event:notification</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.answer({
+          localMedia: document.getElementById(&#x27;localVideo&#x27;),
+          remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;),
+          [action: &#x27;hold|end&#x27;]
+        });</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="associateE911Id"><span class="type-signature"></span>associateE911Id<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Update e911Id</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to update your e911Id by changing the current address.
+<strong>Error Codes</strong>
+  - 17000 - e911 parameter is missing
+  - 17001 - Internal error occurred
+  - 17002 - User is not logged in</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:address-updated">Phone#event:address-updated</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.associateE911Id({
+        e911Id: e911AddressId
+      });</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="cancel"><span class="type-signature"></span>cancel<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Cancel current call.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to cancel the call before other party answers it.</p>
+<p> <strong>Error Code</strong></p>
+<ul>
+<li>11000 -Cancel failed - Call has not been initiated</li>
+<li>11001 - Internal error occurred</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:call:canceled">Phone#call:canceled</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.cancel();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="cleanPhoneNumber"><span class="type-signature"></span>cleanPhoneNumber<span class="signature">(alphanumeric)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+    
+    <p class="summary">CleanPhoneNumber.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>A utility method used to convert alphanumeric characters to a valid phone number
+Note: Will ignore email formatted input</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>alphanumeric</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>string</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>converted number if its valid, <code>false</code> otherwise.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">string</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.cleanPhoneNumber(&#x27;1800CALFEDE&#x27;); &#x2F;&#x2F;1 (123) 123-1234</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="dial"><span class="type-signature"></span>dial<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Make a call</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p><strong>Error codes</strong></p>
+<ul>
+<li>4000 - Invalid phone number</li>
+<li>4001 - Invalid SIP URI</li>
+<li>4002 - Invalid Media Type</li>
+<li>4003 - Internal error occurred</li>
+<li>4004 - User is not logged in</li>
+<li>4005 - onUserMediaError occured</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>destination</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Phone Number or User Id of the called party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>localMedia</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLVideoElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>remoteMedia</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLVideoElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p><code>audio</code> or <code>video</code></p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:dialing">Phone#event:dialing</a></li>
+    
+        <li><a href="Phone.html#event:call:connecting">Phone#call:connecting</a></li>
+    
+        <li><a href="Phone.html#event:call:canceled">Phone#call:canceled</a></li>
+    
+        <li><a href="Phone.html#event:call:rejected">Phone#call:rejected</a></li>
+    
+        <li><a href="Phone.html#event:call:connected">Phone#call:connected</a></li>
+    
+        <li><a href="Phone.html#event:call:ringback-provided">Phone#call:ringback-provided</a></li>
+    
+        <li><a href="Phone.html#event:media:established">Phone#media:established</a></li>
+    
+        <li><a href="Phone.html#event:call:held">Phone#call:held</a></li>
+    
+        <li><a href="Phone.html#event:call:resumed">Phone#call:resumed</a></li>
+    
+        <li><a href="Phone.html#event:call:disconnected">Phone#call:disconnected</a></li>
+    
+        <li><a href="Phone.html#event:notification">Phone#event:notification</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Examples</h5>
+        
+    <pre class="sunlight-highlight-javascript">     &#x2F;&#x2F; Start video call with an Mobile Number User
+     var phone = ATT.rtc.Phone.getPhone();
+     phone.dial({
+      destination: &#x27;11231231234&#x27;, &#x2F;&#x2F;1800CALLFEDX, 1 (123) 123-1234
+      mediaType: &#x27;video&#x27;,
+      localMedia: document.getElementById(&#x27;localVideo&#x27;),
+      remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
+     });
+
+     </pre>
+
+    <pre class="sunlight-highlight-javascript">     &#x2F;&#x2F; Start audio call with a Account ID&#x2F;Virtual Number User
+     var phone = ATT.rtc.Phone.getPhone();
+     phone.dial({
+      destination: &#x27;john@domain.com&#x27;,
+       mediaType: &#x27;audio&#x27;,
+       localMedia: document.getElementById(&#x27;localVideo&#x27;),
+       remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
+     });
+
+     </pre>
+
+    <pre class="sunlight-highlight-javascript">     &#x2F;&#x2F; Start audio call with a Account ID&#x2F;Virtual Number User
+     var phone = ATT.rtc.Phone.getPhone();
+     phone.dial({
+      destination: &#x27;911&#x27;, &#x2F;&#x2F;411,611,*69,#89
+     mediaType: &#x27;audio&#x27;,
+     localMedia: document.getElementById(&#x27;localVideo&#x27;),
+     remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
+     });</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="endConference"><span class="type-signature"></span>endConference<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">End Conference</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>End an ongoing conference</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>23001 - User is not logged in</li>
+<li>23002 - Conference not initiated</li>
+<li>23000 - Internal error occurred</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:conference:disconnecting">Phone#conference:disconnecting</a></li>
+    
+        <li><a href="Phone.html#event:conference:ended">Phone#conference:ended</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.endConference();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="formatNumber"><span class="type-signature"></span>formatNumber<span class="signature">(number)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+    
+    <p class="summary">formatNumber.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>takes a valid 10 digit phone number and formats it</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>number</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>gives back a formatted number</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">string</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.formatNumber(&#x27;9234567890&#x27;); &#x2F;&#x2F; 1 (923) 456-7890</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getMediaType"><span class="type-signature"></span>getMediaType<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Get the media type of the current call.</p>
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.getMediaType();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getParticipants"><span class="type-signature"></span>getParticipants<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Get participants</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Get the list of participants of a conference</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>21000 - Conference not initiated</li>
+<li>21001 - Internal error occurred</li>
+<li>21002 - User not Logged in</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.getParticipants();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="hangup"><span class="type-signature"></span>hangup<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Hangup existing call</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to disconnect the current call.</p>
+<p><strong>Error codes</strong></p>
+<ul>
+<li>6000 - Call is not in progress</li>
+<li>6001 - Internal error occurred</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:call:disconnecting">Phone#call:disconnecting</a></li>
+    
+        <li><a href="Phone.html#event:call:disconnected">Phone#call:disconnected</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.hangup();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="hold"><span class="type-signature"></span>hold<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Put the current call or conference on hold</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to disable your media stream</p>
+<p><strong>Error codes</strong></p>
+<ul>
+<li>7000 - Hold failed - Call is not in progress</li>
+<li>7001 - Internal error occurred</li>
+<li>7508 - A media modification is in progress for the callId</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:call:held">Phone#call:held</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.hold();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="isCallInProgress"><span class="type-signature"></span>isCallInProgress<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+    
+    <p class="summary">Returns `true` if there is a call in progress.</p>
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p><code>true</code> if there's an active call, <code>false</code> otherwise.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Boolean</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.isCallInProgress();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="joinConference"><span class="type-signature"></span>joinConference<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Join a conference by accepting an incoming invite.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p><strong>Error Codes</strong></p>
+<ul>
+<li>20000 - Internal error occurred</li>
+<li>20001 - User is not logged in</li>
+<li>20002 - No conference invite</li>
+<li>20003 - <code>getUserMedia</code> failed</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>localVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>remoteVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:conference:joining">Phone#conference:joining</a></li>
+    
+        <li><a href="Phone.html#event:conference:connecting">Phone#conference:connecting</a></li>
+    
+        <li><a href="Phone.html#event:conference:connected">Phone#conference:connected</a></li>
+    
+        <li><a href="Phone.html#event:conference:held">Phone#conference:held</a></li>
+    
+        <li><a href="Phone.html#event:conference:resumed">Phone#conference:resumed</a></li>
+    
+        <li><a href="Phone.html#event:conference:ended">Phone#conference:ended</a></li>
+    
+        <li><a href="Phone.html#event:media:established">Phone#media:established</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.joinConference({
+          localMedia: document.getElementById(&#x27;localVideo&#x27;),
+          remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
+        });</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="login"><span class="type-signature"></span>login<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Creates a Enhanced WebRTC Session.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Used to establish Enhanced WebRTC session so that the user can place Enhanced WebRTC calls.
+The service parameter indicates the desired service such as audio or video call</p>
+<p> <strong>Error Code</strong></p>
+<ul>
+<li>2001 - Missing input parameter</li>
+<li>2002 - Mandatory fields can not be empty</li>
+<li>2004 - Internal error occurred</li>
+<li>2005 - User already logged in</li>
+<li>2504 - E911 not supported for non-telephone users</li>
+<li>2505 - Valid e911Id is mandatory for mobile number or virtual number</li>
+<li>2506 - Unassigned token Associate token to virtual number or account id</li>
+<li>2507 - A session was already created with the AT</li>
+<li>2512 - Number of Session exceeds the allowed limit.</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>token</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>OAuth Access Token.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>e911Id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>E911 Id. Optional parameter for Account ID users. Required for Mobile Number and Virtual Number users</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:session:ready">Phone#session:ready</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.login({
+        token: token,
+        e911Id: e911Id
+      });</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="logout"><span class="type-signature"></span>logout<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Deletes the current Enhanced WebRTC Session</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Logs out the user from Enhanced WebRTC session.
+Enhanced WebRTC session gets deleted,
+Event channel polling stopped</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>3000 - Internal error occurred</li>
+<li>3507 - Session Id is not associate with the Access Token passed in the request.</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:session:disconnected">Phone#session:disconnected</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.logout();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="move"><span class="type-signature"></span>move<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Move the current call</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to move the current call to another client.
+All clients currently logged in with the same Id will receive a call.
+This method can also be used to move a call to a handheld device.</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>28000 - Move failed - User is not logged in</li>
+<li>28001 - Call is not in progress</li>
+<li>28002 - Internal error occurred</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.move();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="mute"><span class="type-signature"></span>mute<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Mute the current call.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to mute the local media for current call.</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>9000 - Mute failed- Call is not in progress</li>
+<li>9001 - Internal error occurred</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:call:muted">Phone#call:muted</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.mute();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="on"><span class="type-signature"></span>on<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Subscribe to events on a Phone object.</p>
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">      var phone = ATT.rtc.Phone.getPhone();
+      phone.on(&#x27;session:ready&#x27;, function (data) {
+        &#x2F;&#x2F; ... do something
+      });</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="reject"><span class="type-signature"></span>reject<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Reject current incoming call.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p><strong> Error Codes </strong></p>
+<ul>
+<li>12000 - Reject failed-Call has not been initiated</li>
+<li>12001 - Internal error occurred</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:call:disconnected">Phone#call:disconnected</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.reject();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="rejectConference"><span class="type-signature"></span>rejectConference<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Reject current incoming conference invite.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p><strong> Error Codes </strong></p>
+<ul>
+<li>22000 - Internal error occurred</li>
+<li>22001 - User is not logged in</li>
+<li>22002 - No conference invite</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:conference:ended">Phone#conference:ended</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.reject();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="removeParticipant"><span class="type-signature"></span>removeParticipant<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Remove participant</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Remove a participant from an ongoing conference</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>25000 - User is not logged in</li>
+<li>25001 - Conference not initiated</li>
+<li>25002 - Participant parameter missing</li>
+<li>25003 - Internal error occurred</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.removeParticipant(&#x27;johnny&#x27;);</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="resume"><span class="type-signature"></span>resume<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Resume the current call or conference</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to enable your media stream</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>8000 - Resume failed - Call is not in progress</li>
+<li>8001 - Call is not on hold</li>
+<li>8002 - Internal error occurred</li>
+<li>8508 - A media modification is in progress for the callId</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:call:resumed">Phone#call:resumed</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.resume();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="startConference"><span class="type-signature"></span>startConference<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Start a conference.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p><strong>Error Codes</strong></p>
+<ul>
+<li>18000 - Parameters missing</li>
+<li>18001 - Invalid <code>localMedia</code> passed</li>
+<li>18002 - Invalid <code>remoteMedia</code> passed</li>
+<li>18003 - Invalid <code>mediaType</code> passed</li>
+<li>18004 - Failed to get the local user media</li>
+<li>18005 - Internal error occurred</li>
+<li>18006 - Cannot make second conference when first in progress</li>
+<li>18007 - Please login before you make a conference</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>localMedia</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLVideoElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The host's video element</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>remoteMedia</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLVideoElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The conference participant's video element</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p><code>video|audio</code></p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:conference:connecting">Phone#conference:connecting</a></li>
+    
+        <li><a href="Phone.html#event:conference:connected">Phone#conference:connected</a></li>
+    
+        <li><a href="Phone.html#event:media:established">Phone#media:established</a></li>
+    
+        <li><a href="Phone.html#event:conference:held">Phone#conference:held</a></li>
+    
+        <li><a href="Phone.html#event:conference:resumed">Phone#conference:resumed</a></li>
+    
+        <li><a href="Phone.html#event:conference:invitation-sent">Phone#conference:invitation-sent</a></li>
+    
+        <li><a href="Phone.html#event:conference:invitation-accepted">Phone#conference:invitation-accepted</a></li>
+    
+        <li><a href="Phone.html#event:conference:invitation-rejected">Phone#conference:invitation-rejected</a></li>
+    
+        <li><a href="Phone.html#event:conference:participant-removed">Phone#conference:participant-removed</a></li>
+    
+        <li><a href="Phone.html#event:conference:ended">Phone#conference:ended</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.startConference({
+       mediaType: &#x27;video&#x27;,
+       localMedia: document.getElementById(&#x27;localVideo&#x27;),
+       remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
+     });</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="switchCall"><span class="type-signature"></span>switchCall<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Switches the active call or conference with the one in the background.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this method to switch between an active call or conference and a background
+call or conference.</p>
+<p><strong> Pre-conditions </strong></p>
+<p>You must have two calls for this method to work.</p>
+<p><strong> Post-conditions </strong></p>
+<ul>
+<li>If the call that's being brought to the foreground was put on hold
+by calling <a href="Phone.html#hold">Phone#hold</a> then the call will be kept on hold,
+otherwise the call will be resumed automatically.</li>
+</ul>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>30000 - Internal error occurred</li>
+<li>30001 - User is not logged in</li>
+<li>30002 - Switch failed - Call is not in progress</li>
+<li>30003 - Switch failed - only one call is in progress</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:session:call-switched">Phone#session:call-switched</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.switchCall();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="transfer"><span class="type-signature"></span>transfer<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Transfer an established call between between two users to a third user.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to transfer an established call between a transferee and a transferer to the transfer-target.</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>29000 - Internal error occurred</li>
+<li>29001 - User is not logged in</li>
+<li>29002 - Transfer failed - Call is not in progress</li>
+<li>29003 - Cannot make a third call</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.transfer();</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="unmute"><span class="type-signature"></span>unmute<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Unmute the current call.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to unmute the local media for the current call.</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>10000 - Unmute failed- No media stream</li>
+<li>10001 - Internal error occurred</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:call:unmuted">Phone#call:unmuted</a></li>
+    
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
+     phone.unmute();</pre>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+        <h3 class="subsection-title">Events</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="event:call:canceled">call:canceled</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Successfully canceled an outgoing call.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:call:connected">call:connected</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when a call is connected</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:call:connecting">call:connecting</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when a call is connecting</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:call:disconnected">call:disconnected</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Indicates a call has been disconnected</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the caller.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The type of call.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec of the call.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A reason for the event.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:call:disconnecting">call:disconnecting</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Fired immediately after invoking the <code>hangup</code> method.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>data</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:call:held">call:held</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when a call has been put on hold</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:call:incoming">call:incoming</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when a call is incoming.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the caller.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The type of call being received.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the incoming call.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:call:muted">call:muted</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when the media is successfully muted.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the caller.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The media type.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the call.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:call:rejected">call:rejected</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Host side: This event fires when a call is rejected</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:call:resumed">call:resumed</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when a call has been resumed</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:call:ringback-provided">call:ringback-provided</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires after early media has started streaming.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:call:unmuted">call:unmuted</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when the media is successfully un-muted.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the caller.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio or video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the call.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:connected">conference:connected</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>A conference has been connected.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>data</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:connecting">conference:connecting</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when network is trying to connect to a conference.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the caller.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The media type of the conference (audio or video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the conference.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:disconnecting">conference:disconnecting</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when a conference is in the process of disconnecting.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the callee.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>participants</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The participants list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>invitations</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The invitations list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The media type of the conference (audio or video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the conference.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:ended">conference:ended</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Indicates a conference has been ended</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the conference.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The type of conference.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec of the conference</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:held">conference:held</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>A conference has been put on hold.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the caller.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The media type of the conference (audio or video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the conference.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:invitation-accepted">conference:invitation-accepted</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Host side: this event fires when an invitation has been accepted</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the callee.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>participants</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The participants list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio or video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the conference.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:invitation-received">conference:invitation-received</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Participant receives this event after a conference invitation is sent to him/her.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the caller.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The type of call being received.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the incoming call.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:invitation-rejected">conference:invitation-rejected</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Host side: this event fires when an invitation has been rejected</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the callee.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>participants</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The participants list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>invitations</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The invitations list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The media type of the conference (audio or video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the conference.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:invitation-sending">conference:invitation-sending</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Host side: this event fires when an invitation is in the process of sending.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>invitee</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The invitee.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:invitation-sent">conference:invitation-sent</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Host side: this event fires when an invitation has been successfully sent.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the callee.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>invitations</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The invitations list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>participants</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The participants list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio or video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the conference.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:joining">conference:joining</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Participant side: This event fires immediately after invoking <code>joinConference</code></p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the caller.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The type of conference being received.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the conference</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:participant-removed">conference:participant-removed</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Host side: this event fires when a host has successfully removed a participant.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>participants</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The participants list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>invitations</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The invitations list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The media type of the conference (audio or video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The codec used by the conference.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:resumed">conference:resumed</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when a conference has been resumed</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:address-updated">address-updated</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Indicates the E911 address has been updated successfully.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:answering">answering</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Fired immediately after the <code>answer</code> method is invoked.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>data</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:dialing">dialing</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Triggered immediately.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:error">error</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The <code>Phone</code> object will publish this event to indicate
+an invalid behavior which can be caused by different reasons:</p>
+<ul>
+<li><strong>API Error</strong> - is an error at the platform (RESTful API) level. This may
+be due to invalid parameters send in an HTTP request or a request being
+send while in an inconsistent state.</li>
+<li><strong>SDK Error</strong> - is an error most likely due to an inconsistent state in the
+client JavaScript library at the browswer level.</li>
+</ul>
+<p>Sometimes different errors can be caused by the same underlying problem
+in which case a common error code is used. The next is a list of the common
+API error codes:</p>
+<p><strong>Common API Error Codes</strong></p>
+<ul>
+<li>2500 - System error occurred</li>
+<li>2501 - Mandatory parameter is missing in the Request.</li>
+<li>2502 - Invalid values provided for a parameter in the Request.</li>
+<li>2508 - Access token is invalid.</li>
+<li>2509 - Access Token is incorrect or in valid.</li>
+<li>2510 - Not implemented</li>
+<li>2511 - User has not been provisioned for Enhanced WebRTC</li>
+<li>500,502,503,504 - <method name> failed - Unable to complete requested operation</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>JSObject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>JSMethod</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>ErrorCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>ErrorMessage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>PossibleCauses</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>PossibleResolution</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>APIError</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>ResourceMethod</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>HttpStatusCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>MessageId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:notification">notification</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when the SDK is unable to support a behavior that is not an error</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A message for the notification.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:media:established">media:established</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires after audio/video media has started</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>call id</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the User ID or phone number of the other party</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the media type (<code>audio|video</code>) for the current call</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the codec used by the current call</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:session:call-switched">session:call-switched</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when the calls are switched</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Peer of the call switched from.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Peer of the call switched to.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:session:disconnected">session:disconnected</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when the session was successfully disconnected.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:session:ready">session:ready</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This event fires when the SDK is initialized and ready to make, receive calls</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>sessionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the session.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+</article>
+
+</section>
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		AT&T
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
+		on 2014-09-26T14:14:39-07:00 using the <a
+			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<!--<script src="scripts/sunlight.js"></script>-->
+	<script src="scripts/docstrap.lib.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+	<script>
+		$( function () {
+			$( "[id*='$']" ).each( function () {
+				var $this = $( this );
+
+				$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+			} );
+
+			$( "#toc" ).toc( {
+				anchorName  : function ( i, heading, prefix ) {
+					return $( heading ).attr( "id" ) || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : "100px"
+			} );
+
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+			$( '.dropdown-toggle' ).dropdown();
+//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+			$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+				var $this = $( this );
+
+				var example = $this.find( "code" );
+				exampleText = example.html();
+				var lang = /{@lang (.*?)}/.exec( exampleText );
+				if ( lang && lang[1] ) {
+					exampleText = exampleText.replace( lang[0], "" );
+					example.html( exampleText );
+					lang = lang[1];
+				} else {
+					lang = "javascript";
+				}
+
+				if ( lang ) {
+
+					$this
+						.addClass( "sunlight-highlight-" + lang )
+						.addClass( "linenums" )
+						.html( example.html() );
+
+				}
+			} );
+
+			Sunlight.highlightAll( {
+				lineNumbers : true,
+				showMenu : true,
+				enableDoclinks : true
+			} );
+		} );
+	 </script>
+
+
+
+	<!--Navigation and Symbol Display-->
+	
+	<script>
+		$( function () {
+			$( '#main' ).localScroll( {
+				offset : { top : 60 } //offset by the height of your header (give or take a few px, see what works for you)
+			} );
+			$( "dt.name" ).each( function () {
+				var $this = $( this ).find("h4");
+				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
+				var dt = $(this);
+				var children = dt.next( "dd" );
+
+				dt.prepend( icon ).css( {cursor : "pointer"} );
+				dt.addClass( "member-collapsed" ).addClass( "member" );
+
+
+				children.hide();
+
+				dt.children().on( "click", function () {
+					children = dt.next( "dd" );
+					console.debug(dt, children)
+					children.slideToggle( "fast", function () {
+
+						if ( children.is( ":visible" ) ) {
+							icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
+							dt.addClass( "member-open" ).animate( "member-collapsed" );
+						} else {
+							icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
+							dt.addClass( "member-collapsed" ).removeClass( "member-open" );
+						}
+					} );
+				} );
+
+			} );
+		} );
+	</script>
+	
+
+
+	<!--Google Analytics-->
+	
+
+</body>
+</html>
