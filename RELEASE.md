@@ -9,40 +9,44 @@ The SDK provides the following components:
   to generate OAuth access tokens and E911 Ids.
   **Please refer to `node-dhs/RELEASE.md` for DHS-specific notes**
 
-# v1.0.0-beta.5
-September 26, 2014
+# v1.0.0-beta.6
+October 10 , 2014
 
-* **New Feature:** Switch from a call in foreground to one in background. This feature enables the developer to
-bring a call in the background to the foreground. Operations using the `Phone` interface
-like hold, resume, mute, un-mute, hangup, move and switch can then be performed on the foreground call.
-  * After a successful switch the foreground call:
-    * will resume automatically if, the call was put on the background via `Phone.addCall`, `Phone.answer` or
-     `Phone.switchCall`
-    * will not resume automatically if, the call was put on hold via `Phone.hold` before putting in the background.
-  * A new event `session:call-switched` has been created to enable the developer to be notified of a successful switch
-  between calls during `Phone.addCall`, `Phone.answer` and `Phone.switchCall`.
-
-* **Bug Fix:** DE74137: Unable to call ICMN to NOTN and call continues to ring (QC 25394).
-* **Bug Fix:** DE74457 : Answer second call documentation is lacking; Input parameter validation for phone.answer()
-second call needs improvement (QC 20600)
-* **Bug Fix:** DE75299 : Camera is still on and captured by application even after ending video call (QC:29483)
-* **Bug Fix:** DE75082 : SDK is not releasing mic after call is ended successfully. QC 28571
-
+* **Bug Fix:** DE76061: WebRTC Source App is forced to restart when receiving party denies media to incoming video
+call(QC29488).
+* **Bug Fix:** DE73225: Session terminated message is not returned to model shop application. (QC16941).
+* **Bug Update:** DE71395: Move Call Defect for Video Mac to Mac
+* **Bug Fix:** DE78330: WebRTC SDK: callhold initiator send out 'a=recvonly' instead of 'a=sendonly'. (SVT 5502).
+* **Bug Fix:** DE76731: BIZ_UAT_WebRTC_PROD: CORS not working in Firefox - Macbook. QC 16990
+* **Bug Fix:** DE76381: Canceled & Rejected  event for pending Call gets triggered multiple times.
+* **Bug Fix:** DE71356: Sample app throw javascript error on clicking update e911 address
 
 ## Known Issues
+
+* When calling from Mobile Number user to another Mobile Number user, the callee does not get media
+  * **Workaround:** Put the call on hold and then resume it. Both parties will get media after that.
+
+* `call:move-terminated` event not working properly when calling `phone.move`.
+  * Related Defect:
+    * **Bug Update:** DE71395: Move Call Defect for Video Mac to Mac
+
 
 * Unable to make calls to Virtual Number users using `tel:` format.
   * **Workaround:** Use the following format: `sip:1231231234@yourdomain.com`
   * Related QC Ticket:
     * QC 82965: SDK_WEBRTC_8.14 - VTN User is Unable to Create Conference in Production Environment (F4/H4) : state: "session-terminated", reason: "External server request error."
 
+
 * After successfully adding a mobile phone (PSTN) to a Conference it will be disconnected after ~24s.
   * Related QC Ticket:
     * QC 85425: Call disconnects after 24 seconds when successfully creating a conference (as any user) and adding a PSTN participant.
+
+
 * `External Server request error` when creating a Conference using Virtual Number or Account ID users.
   * Related QC Tickets:
     * QC 81357: SDK_WEBRTC_7.14 - Unable to create a conference in F4 using an Account ID user
     * QC 82965: SDK_WEBRTC_8.14 - VTN User is Unable to Create Conference in Production Environment (F4/H4) : state: "session-terminated", reason: "External server request error."
+
 
 * Getting Message: `External Server request error` or `User Not Found` when calling Account ID users.
   * Cause: This is caused by a platform issue.
@@ -51,12 +55,14 @@ second call needs improvement (QC 20600)
     * QC 17878
     * QC 82965: SDK_WEBRTC_8.14 - VTN User is Unable to Create Conference in Production Environment (F4/H4) : state: "session-terminated", reason: "External server request error."
 
+
 * `Phone.move` only works for Chrome 37+ on Windows.
 
 * Adding multiple participants at once using `Phone.addParticipants` method fails with error: `SVC8501:MediaConference ongoing update participant operation.,Variables=`. SDK is tracking this issue against the API platform with the QC Defect ID: 79678
   * **Workaround:** Use `Phone.addParticipants` with a single participant ID (mobile number, account id, virtual number)
   * Related QC Ticket:
     * QC 85105: SDK_WEBRTC_9.14 - Error: `External server request error.` when adding a participant to a conference created by a VTN user.
+
 
 * When a participant leaves a conference by using the `endConference` method, the platform does not generate
 the necessary event to inform the host. Product Team is tracking this issue with QC Defect ID: 79658
@@ -78,12 +84,29 @@ the necessary event to inform the host. Product Team is tracking this issue with
 
 ## Notes
 
-* **QC: 80472 (Rally DE67530):** Unable to login using SDK. This is not an SDK error, this is caused by an HTTP error with code 503.
-It means: "_The server is currently unavailable (because it is overloaded or down for maintenance).
-Generally, this is a temporary state._"
-  * [Wikipedia: 5xx Server Error](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error)
 
 # Older releases
+
+# v1.0.0-beta.5
+September 26, 2014
+
+* **New Feature:** Switch from a call in foreground to one in background. This feature enables the developer to
+bring a call in the background to the foreground. Operations using the `Phone` interface
+like hold, resume, mute, un-mute, hangup, move and switch can then be performed on the foreground call.
+  * After a successful switch the foreground call:
+    * will resume automatically if, the call was put on the background via `Phone.addCall`, `Phone.answer` or
+     `Phone.switchCall`
+    * will not resume automatically if, the call was put on hold via `Phone.hold` before putting in the background.
+  * A new event `session:call-switched` has been created to enable the developer to be notified of a successful switch
+  between calls during `Phone.addCall`, `Phone.answer` and `Phone.switchCall`.
+
+* **Bug Fix:** DE74137: Unable to call ICMN to NOTN and call continues to ring (QC 25394).
+* **Bug Fix:** DE74457 : Answer second call documentation is lacking; Input parameter validation for phone.answer()
+* **Bug Fix:** DE75299 : Camera is still on and captured by application even after ending video call (QC:29483)
+second call needs improvement (QC 20600)
+* **Bug Fix:** DE75299 : Camera is still on and captured by application even after ending video call (QC:29483)
+* **Bug Fix:** DE75082 : SDK is not releasing mic after call is ended successfully. QC 28571
+
 
 ## v1.0.0-beta.4
 September 20, 2014

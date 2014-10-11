@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>JavaScript SDK for AT&T Enhanced WebRTC API Namespace: rtc</title>
+	<title>JavaScript SDK for AT&T Enhanced WebRTC API Namespace: logManager</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -220,12 +220,12 @@
 					
 
 
-	<h1 class="page-title">Namespace: rtc</h1>
+	<h1 class="page-title">Namespace: logManager</h1>
 <section>
 
 <header>
     <h2>
-    rtc
+    logManager
     </h2>
     
 </header>
@@ -236,15 +236,9 @@
 
     
         
-            <div class="description"><p>This namespace provides the methods necessary to configure the JS client library.</p>
-<ul>
-<li>You can use the <code>configure</code> method to request environment options from the
-built-in DHS. Alternatively you can also configure using your own environment options.</li>
-<li>You can use the <code>associateAccessToken</code> method to associate an access token with
-a virtual number or account id user id.</li>
-<li>Use the <code>hasEnhancedWebRTC</code> method to test for browser compatibility</li>
-<li>Use <code>getEWebRTCDomain</code> to obtain the WebRTC domain setup for the library.</li>
-</ul></div>
+            <div class="description"><p>LogManager object allows users to utilize the functionality provided by the SDK with operations like
+adding a logger for a module, getting a logger by passing a module name,
+update a log level on a module and set log level on all modules.</p></div>
         
 
         
@@ -292,16 +286,6 @@ a virtual number or account id user id.</li>
     
 
     
-        <h3 class="subsection-title">Namespaces</h3>
-
-        <dl>
-            <dt><a href="namespaces.html#ATT.rtc.dhs"><a href="ATT.rtc.dhs.html">dhs</a></a></dt>
-            <dd></dd>
-        
-            <dt><a href="namespaces.html#ATT.rtc.Phone"><a href="ATT.rtc.Phone.html">Phone</a></a></dt>
-            <dd>Phone API for AT&T's Enhanced WebRTC functionality.</dd>
-        </dl>
-    
 
     
 
@@ -311,14 +295,18 @@ a virtual number or account id user id.</li>
         <dl>
             
 <dt>
-    <h4 class="name" id="associateAccessToken"><span class="type-signature">&lt;static> </span>associateAccessToken<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addLoggerForModule"><span class="type-signature">&lt;static> </span>addLoggerForModule<span class="signature">(moduleName)</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Associate an access token with a user id.</p>
+    <p class="summary">Creates a logger for a given module.</p>
     
 </dt>
 <dd>
     
+    
+    <div class="description">
+        <p>Use this function to create a logger by passing a module name.</p>
+    </div>
     
 
     
@@ -351,13 +339,13 @@ a virtual number or account id user id.</li>
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>moduleName</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">string</span>
 
 
             
@@ -367,125 +355,7 @@ a virtual number or account id user id.</li>
 
             
 
-            <td class="description last"><p>Options</p>
-                <h6>Properties</h6>
-                
-
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>userId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>userId to associate the access token with</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>token</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>token to associate with the user id</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>success</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>success callback function</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>error</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>failure callback function</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-            </td>
+            <td class="description last"></td>
         </tr>
 
 	
@@ -539,15 +409,8 @@ a virtual number or account id user id.</li>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Associate user id &#x27;john&#x27; with token &#x27;access_token&#x27;
-var success = function () {...},
-   error = function () {...};
-ATT.rtc.associateAccessToken({
-   userId: &#x27;john&#x27;,
-   token: &#x27;access_token&#x27;,
-   success: success,
-   error: error
-});</pre>
+    <pre class="sunlight-highlight-javascript">   var logManager = ATT.logManager.getInstance();
+   logManager.addLoggerForModule(moduleName);</pre>
 
 
     
@@ -556,19 +419,114 @@ ATT.rtc.associateAccessToken({
         
             
 <dt>
-    <h4 class="name" id="configure"><span class="type-signature">&lt;static> </span>configure<span class="signature">(<span class="optional">options</span>, <span class="optional">success</span>, <span class="optional">error</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="logManager.getInstance"><span class="type-signature">&lt;static> </span>logManager.getInstance<span class="signature">()</span><span class="type-signature"> &rarr; {LogManager}</span></h4>
     
     
-    <p class="summary">Setup the Enhanced WebRTC API endpoint and Enhanced WebRTC domain.</p>
+    <p class="summary">Get the current instance of Log manager.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>If <code>options</code> object is provided, configure method will use the <code>options.ewebrtc_domain</code>
- and <code>[options.api_endpoint]</code> values as the application domain and api endpoint respectively.
-If no <code>options</code> were passed, the configuration will be requested from the built-in DHS and then applied.</p>
+        <p>Use this function to create a Log manager object to use the functionality provided in the namespace.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A LogManager object.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">LogManager</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setLogLevel"><span class="type-signature">&lt;static> </span>setLogLevel<span class="signature">(level)</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Sets the passed log level for all the modules.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to set a log level for all the modules.</p>
+<p>Pass the value 0 to log Error,</p>
+<p>1 for Error and Warning,</p>
+<p>2 for all of above and Information,</p>
+<p>3 for all of above and Debug, and</p>
+<p>4 for all of above and Trace for all the modules.</p>
+<p>If none of the above value is passed, then the log level will be set to 3 by default.</p>
     </div>
     
 
@@ -590,8 +548,6 @@ If no <code>options</code> were passed, the configuration will be requested from
 		<th>Type</th>
 
 		
-		<th>Argument</th>
-		
 
 		
 
@@ -604,35 +560,112 @@ If no <code>options</code> were passed, the configuration will be requested from
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>level</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">number</span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>SDK configuration options.</p>
-                <h6>Properties</h6>
-                
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">   var logManager = ATT.logManager.getInstance();
+   logManager.setLogLevel(level);</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="updateLogLevel"><span class="type-signature">&lt;static> </span>updateLogLevel<span class="signature">(moduleName, level)</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Updates the passed log level on the given module.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to update a log level for the module passed by user.</p>
+<p>Pass a module name as a first parameter and pass the value 0 to log Error,</p>
+<p>1 for Error and Warning,</p>
+<p>2 for all of above and Information,</p>
+<p>3 for all of above and Debug, and</p>
+<p>4 for all of above and Trace for the specified module.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params table table-striped">
     <thead>
@@ -644,8 +677,6 @@ If no <code>options</code> were passed, the configuration will be requested from
 		<th>Type</th>
 
 		
-		<th>Argument</th>
-		
 
 		
 
@@ -658,99 +689,18 @@ If no <code>options</code> were passed, the configuration will be requested from
 
         <tr>
             
-                <td class="name"><code>ewebrtc_domain</code></td>
+                <td class="name"><code>moduleName</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">string</span>
 
 
             
             </td>
 
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The Enhanced WebRTC Domain for your application.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>api_endpoint</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The Enhanced WebRTC API URL.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-            </td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>success</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -762,28 +712,18 @@ If no <code>options</code> were passed, the configuration will be requested from
 
         <tr>
             
-                <td class="name"><code>error</code></td>
+                <td class="name"><code>level</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">number</span>
 
 
             
             </td>
 
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -840,203 +780,12 @@ If no <code>options</code> were passed, the configuration will be requested from
     
     
     
-        <h5>Examples</h5>
+        <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Configure using the Node DHS
-var success = function () {...};
-ATT.rtc.configure(success);</pre>
-
-    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Configure using the Node DHS
-var success = function () {...};
-var error = function () {...};
-ATT.rtc.configure(success, error);</pre>
-
-    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Configure using the provided options obtained elsewhere
-var phone = ATT.rtc.configure({
-  ewebrtc_domain: &#x27;my.domain.com&#x27;
-});</pre>
-
-    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Configure using the provided options obtained elsewhere
-var phone = ATT.rtc.configure({
-  ewebrtc_domain: &#x27;my.domain.com&#x27;,
-  api_endpoint: &#x27;https:&#x2F;&#x2F;api.att.com&#x27;
-});</pre>
+    <pre class="sunlight-highlight-javascript">   var logManager = ATT.logManager.getInstance();
+   logManager.updateLogLevel(module,level);</pre>
 
 
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="getEWebRTCDomain"><span class="type-signature">&lt;static> </span>getEWebRTCDomain<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
-    
-    
-    <p class="summary">Returns the Enhanced WebRTC Domain for the current application.</p>
-    
-</dt>
-<dd>
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>The Enhanced WebRTC Domain setup for the current application.</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">String</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="hasEnhancedWebRTC"><span class="type-signature">&lt;static> </span>hasEnhancedWebRTC<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-    
-    
-    <p class="summary">Tests the browser for WebRTC support.</p>
-    
-</dt>
-<dd>
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p><code>true</code> if the browser supports WebRTC, <code>false</code> otherwise.</p>
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">Boolean</span>
-
-
-	</dd>
-</dl>
-
-
-        
-    
     
 </dd>
 

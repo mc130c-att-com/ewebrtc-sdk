@@ -28,6 +28,10 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="ATT.logManager.html">ATT.logManager</a>
+						</li>
+						
+						<li>
 							<a href="ATT.rtc.html">ATT.rtc</a>
 						</li>
 						
@@ -224,7 +228,7 @@
     Phone
     </h2>
     
-        <div class="class-description"><p>Represents a Phone.</p></div>
+        <div class="class-description"><p>Represents the private class Phone.</p></div>
     
 </header>
 
@@ -238,15 +242,19 @@
     <h4 class="name" id="Phone"><span class="type-signature">&lt;private> </span>new Phone<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Creates a new Phone.</p>
+    <p class="summary">Creates a new instance of the private class Phone.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This constructor is not meant to be used directly. It is used internally
-   by the <code>ATT.rtc.Phone.getPhone</code> method.</p>
+        <p>The private class <code>Phone</code> cannot be accessed directly. To get an instance of the <code>Phone</code> use the
+method <code>ATT.rtc.Phone.getPhone</code>.
+The singleton <code>Phone</code> object exposes public methods (listed below) that can be used for performing
+different call and conference related operations.
+The <code>Phone</code> object fires events that can be subscribed to for taking appropriate action based
+on the fired event</p>
     </div>
     
 
@@ -338,16 +346,26 @@
     <h4 class="name" id="addCall"><span class="type-signature"></span>addCall<span class="signature">(options)</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Add a second call while having an active call.</p>
+    <p class="summary">Add a second call when an active call exists.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Automatically holds the active call and dials second call.</p>
+        <p>Use this function to dial a second call, if an active call exists. You may not use this method
+if there is no existing active call.
+This method will put the active call on hold (if not already held) and then try to
+dial out the second call.
+If the second call fails, the user is switched back to the first call.
+If the second call connects and is hung-up at a later point, the user is then returned
+to the first call.
+The first call will resume automatically, after the second call ends or fails, if it was
+not put on hold explicitly (using the hold function)
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error codes</strong></p>
 <ul>
+<li>27000 - Internal Error Occurred</li>
 <li>27001 - Input options are not provided</li>
 <li>27002 - LocalMedia is not defined</li>
 <li>27003 - remoteMedia is not defined</li>
@@ -422,6 +440,8 @@
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -447,10 +467,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The Phone Number or User Id of the called party.</p></td>
+            <td class="description last"><p>The phone number or user id of the called party (without sip or tel URI).</p></td>
         </tr>
 
 	
@@ -469,6 +497,14 @@
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -493,6 +529,14 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -516,10 +560,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p><code>audio</code> or <code>video</code></p></td>
+            <td class="description last"><p><code>audio</code> or <code>video</code>. Defaults to video.</p></td>
         </tr>
 
 	
@@ -578,15 +632,11 @@
     
         <li><a href="Phone.html#event:call:rejected">Phone#call:rejected</a></li>
     
+        <li><a href="Phone.html#event:call:ringback-provided">Phone#call:ringback-provided</a></li>
+    
         <li><a href="Phone.html#event:call:connected">Phone#call:connected</a></li>
     
         <li><a href="Phone.html#event:media:established">Phone#media:established</a></li>
-    
-        <li><a href="Phone.html#event:call:held">Phone#call:held</a></li>
-    
-        <li><a href="Phone.html#event:call:resumed">Phone#call:resumed</a></li>
-    
-        <li><a href="Phone.html#event:call:disconnected">Phone#call:disconnected</a></li>
     
         <li><a href="Phone.html#event:notification">Phone#event:notification</a></li>
     
@@ -603,16 +653,24 @@
     
     
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
-    <pre class="sunlight-highlight-javascript">     &#x2F;&#x2F; Add a video call with an Mobile Number User
-     var phone = ATT.rtc.Phone.getPhone();
-     phone.addCall({
-       destination: &#x27;1231231234&#x27;, &#x2F;&#x2F;1800CALLFEDX, 1 (123) 123-1234
-       mediaType: &#x27;video&#x27;,
-       localMedia: document.getElementById(&#x27;localVideo&#x27;),
-       remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
-     });</pre>
+    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Add a video call with an Mobile Number User
+var phone = ATT.rtc.Phone.getPhone();
+phone.addCall({
+  destination: &#x27;1231231234&#x27;, &#x2F;&#x2F;1800CALLFEDX, 1 (123) 123-1234
+  localMedia: document.getElementById(&#x27;localVideo&#x27;),
+  remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;),
+  mediaType: &#x27;video&#x27;
+});</pre>
+
+    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Add a video call with an Mobile Number User
+var phone = ATT.rtc.Phone.getPhone();
+phone.addCall({
+  destination: &#x27;john@domain.com&#x27;,
+  localMedia: document.getElementById(&#x27;localVideo&#x27;),
+  remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
+});</pre>
 
 
     
@@ -624,14 +682,17 @@
     <h4 class="name" id="addParticipants"><span class="type-signature"></span>addParticipants<span class="signature">(participants)</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Add participants</p>
+    <p class="summary">Add participants to the conference</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Add a list of participants to a conference</p>
+        <p>Use this function to add one or more participants to the current conference
+There should be an established conference before <code>addParticipant</code> can be invoked
+Only a host side can invoke addParticipants
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error Codes</strong></p>
 <ul>
 <li>24000 - Participants parameter missing</li>
@@ -759,10 +820,13 @@
     
     
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.addParticipants([&#x27;4250000001&#x27;,&#x27;4250000002&#x27;]);</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.addParticipants([&#x27;4250000001&#x27;,&#x27;4250000002&#x27;]);</pre>
+
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.addParticipants([&#x27;john@domain.com&#x27;]);</pre>
 
 
     
@@ -781,10 +845,11 @@
     
     
     <div class="description">
-        <p>Once a Phone#event:call:incoming event is fired, you can use this method to
-answer the incoming call. If a call is in progress, you can receive
-a second incoming call. To answer a second call, use <code>phone.isCallInProgress</code> to check
-whether there is a call in progress.</p>
+        <p>Once a <a href="Phone.html#event:call:incoming">Phone#call:incoming</a> event is fired, This method can be used this method to
+answer the incoming call.
+If there is an existing call in progress, this method can be used to answer the second incoming
+call by putting on hold or ending the existing call.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error Codes</strong></p>
 <ul>
 <li>5000 - Answer failed: No incoming call</li>
@@ -960,7 +1025,7 @@ whether there is a call in progress.</p>
 
             
 
-            <td class="description last"><p><code>end|hold</code> Action to perform on the current call</p></td>
+            <td class="description last"><p>Action to perform on the current call (<code>end</code> | <code>hold</code>).</p></td>
         </tr>
 
 	
@@ -1021,10 +1086,6 @@ whether there is a call in progress.</p>
     
         <li><a href="Phone.html#event:media:established">Phone#media:established</a></li>
     
-        <li><a href="Phone.html#event:call:held">Phone#call:held</a></li>
-    
-        <li><a href="Phone.html#event:call:resumed">Phone#call:resumed</a></li>
-    
         <li><a href="Phone.html#event:call:disconnected">Phone#call:disconnected</a></li>
     
         <li><a href="Phone.html#event:notification">Phone#event:notification</a></li>
@@ -1042,14 +1103,20 @@ whether there is a call in progress.</p>
     
     
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.answer({
-          localMedia: document.getElementById(&#x27;localVideo&#x27;),
-          remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;),
-          [action: &#x27;hold|end&#x27;]
-        });</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.answer({
+  localMedia: document.getElementById(&#x27;localVideo&#x27;),
+  remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
+});</pre>
+
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.answer({
+  localMedia: document.getElementById(&#x27;localVideo&#x27;),
+  remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;),
+  action: &#x27;hold&#x27; &#x2F;&#x2F; or &#x27;end&#x27;
+});</pre>
 
 
     
@@ -1061,18 +1128,22 @@ whether there is a call in progress.</p>
     <h4 class="name" id="associateE911Id"><span class="type-signature"></span>associateE911Id<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Update e911Id</p>
+    <p class="summary">Update E911 linked address id for the current user session</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Use this function to update your e911Id by changing the current address.
-<strong>Error Codes</strong>
-  - 17000 - e911 parameter is missing
-  - 17001 - Internal error occurred
-  - 17002 - User is not logged in</p>
+        <p>Use this function to update your E911 linked address id for the current user session
+The user has to be logged in before <code>associateE911Id</code> can be invoked
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
+<p><strong>Error Codes</strong></p>
+<ul>
+<li>17000 - e911 parameter is missing</li>
+<li>17001 - Internal error occurred</li>
+<li>17002 - User is not logged in</li>
+</ul>
     </div>
     
 
@@ -1134,10 +1205,10 @@ whether there is a call in progress.</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.associateE911Id({
-        e911Id: e911AddressId
-      });</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.associateE911Id({
+  e911Id: e911AddressId
+});</pre>
 
 
     
@@ -1156,7 +1227,9 @@ whether there is a call in progress.</p>
     
     
     <div class="description">
-        <p>Use this function to cancel the call before other party answers it.</p>
+        <p>Use this function to cancel the call before other party answers it.
+There should be an unestablished outgoing call before <code>cancel</code> can be called.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p> <strong>Error Code</strong></p>
 <ul>
 <li>11000 -Cancel failed - Call has not been initiated</li>
@@ -1233,17 +1306,17 @@ phone.cancel();</pre>
         
             
 <dt>
-    <h4 class="name" id="cleanPhoneNumber"><span class="type-signature"></span>cleanPhoneNumber<span class="signature">(alphanumeric)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="cleanPhoneNumber"><span class="type-signature"></span>cleanPhoneNumber<span class="signature">(Input)</span><span class="type-signature"> &rarr; {String}</span></h4>
     
     
-    <p class="summary">CleanPhoneNumber.</p>
+    <p class="summary">Cleans a phone number.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>A utility method used to convert alphanumeric characters to a valid phone number
+        <p>A utility method used to convert alphanumeric characters to a valid phone number.
 Note: Will ignore email formatted input</p>
     </div>
     
@@ -1278,13 +1351,13 @@ Note: Will ignore email formatted input</p>
 
         <tr>
             
-                <td class="name"><code>alphanumeric</code></td>
+                <td class="name"><code>Input</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
             
@@ -1294,7 +1367,7 @@ Note: Will ignore email formatted input</p>
 
             
 
-            <td class="description last"><p>string</p></td>
+            <td class="description last"><p>phone number</p></td>
         </tr>
 
 	
@@ -1336,6 +1409,11 @@ Note: Will ignore email formatted input</p>
 
     
     
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
 
     
 
@@ -1345,10 +1423,10 @@ Note: Will ignore email formatted input</p>
     
     
     <h5>Returns:</h5>
-    
-            
+    <ul>
+            <li>
 <div class="param-desc">
-    <p>converted number if its valid, <code>false</code> otherwise.</p>
+    <p>Converted number if its valid</p>
 </div>
 
 
@@ -1359,20 +1437,41 @@ Note: Will ignore email formatted input</p>
 	</dt>
 	<dd>
 		
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
 	</dd>
 </dl>
 
-
+</li>
         
+            <li>
+<div class="param-desc">
+    <p><code>false</code> otherwise.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Boolean</span>
+
+
+	</dd>
+</dl>
+
+</li>
+        </ul>
     
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.cleanPhoneNumber(&#x27;1800CALFEDE&#x27;); &#x2F;&#x2F;1 (123) 123-1234</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.cleanPhoneNumber(&#x27;1800CALFEDE&#x27;); &#x2F;&#x2F;1 (123) 123-1234</pre>
 
 
     
@@ -1384,21 +1483,24 @@ Note: Will ignore email formatted input</p>
     <h4 class="name" id="dial"><span class="type-signature"></span>dial<span class="signature">(options)</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Make a call</p>
+    <p class="summary">Dials an outgoing call</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p><strong>Error codes</strong></p>
+        <p>Use this function to dial a call to another user already logged. The call can be dialled out by
+providing the destination, call media type information and local and remote media resources.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
+<p> <strong>Error Codes</strong></p>
 <ul>
 <li>4000 - Invalid phone number</li>
 <li>4001 - Invalid SIP URI</li>
 <li>4002 - Invalid Media Type</li>
 <li>4003 - Internal error occurred</li>
 <li>4004 - User is not logged in</li>
-<li>4005 - onUserMediaError occured</li>
+<li>4005 - onUserMediaError occurred</li>
 </ul>
     </div>
     
@@ -1463,6 +1565,8 @@ Note: Will ignore email formatted input</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -1488,10 +1592,18 @@ Note: Will ignore email formatted input</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The Phone Number or User Id of the called party.</p></td>
+            <td class="description last"><p>The Phone Number or User Id of the called party (without sip or tel URI)</p></td>
         </tr>
 
 	
@@ -1511,10 +1623,18 @@ Note: Will ignore email formatted input</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>HTML media element for local stream.</p></td>
         </tr>
 
 	
@@ -1534,10 +1654,18 @@ Note: Will ignore email formatted input</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>HTML media element for remote stream.</p></td>
         </tr>
 
 	
@@ -1557,10 +1685,20 @@ Note: Will ignore email formatted input</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p><code>audio</code> or <code>video</code></p></td>
+            <td class="description last"><p><code>audio</code> or <code>video</code>. Defaults to video.</p></td>
         </tr>
 
 	
@@ -1619,17 +1757,11 @@ Note: Will ignore email formatted input</p>
     
         <li><a href="Phone.html#event:call:rejected">Phone#call:rejected</a></li>
     
-        <li><a href="Phone.html#event:call:connected">Phone#call:connected</a></li>
-    
         <li><a href="Phone.html#event:call:ringback-provided">Phone#call:ringback-provided</a></li>
     
+        <li><a href="Phone.html#event:call:connected">Phone#call:connected</a></li>
+    
         <li><a href="Phone.html#event:media:established">Phone#media:established</a></li>
-    
-        <li><a href="Phone.html#event:call:held">Phone#call:held</a></li>
-    
-        <li><a href="Phone.html#event:call:resumed">Phone#call:resumed</a></li>
-    
-        <li><a href="Phone.html#event:call:disconnected">Phone#call:disconnected</a></li>
     
         <li><a href="Phone.html#event:notification">Phone#event:notification</a></li>
     
@@ -1648,36 +1780,31 @@ Note: Will ignore email formatted input</p>
     
         <h5>Examples</h5>
         
-    <pre class="sunlight-highlight-javascript">     &#x2F;&#x2F; Start video call with an Mobile Number User
-     var phone = ATT.rtc.Phone.getPhone();
-     phone.dial({
-      destination: &#x27;11231231234&#x27;, &#x2F;&#x2F;1800CALLFEDX, 1 (123) 123-1234
-      mediaType: &#x27;video&#x27;,
-      localMedia: document.getElementById(&#x27;localVideo&#x27;),
-      remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
-     });
+    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Start video call with an Mobile Number&#x2F;Virtual Number User
+var phone = ATT.rtc.Phone.getPhone();
+phone.dial({
+  destination: &#x27;11231231234&#x27;, &#x2F;&#x2F;1800CALLFEDX, 1 (123) 123-1234
+  localMedia: document.getElementById(&#x27;localVideo&#x27;),
+  remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
+});</pre>
 
-     </pre>
+    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Start video call with an Account ID User
+var phone = ATT.rtc.Phone.getPhone();
+phone.dial({
+  destination: &#x27;john@domain.com&#x27;,
+  localMedia: document.getElementById(&#x27;localVideo&#x27;),
+  remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;),
+  mediaType: &#x27;video&#x27;
+});</pre>
 
-    <pre class="sunlight-highlight-javascript">     &#x2F;&#x2F; Start audio call with a Account ID&#x2F;Virtual Number User
-     var phone = ATT.rtc.Phone.getPhone();
-     phone.dial({
-      destination: &#x27;john@domain.com&#x27;,
-       mediaType: &#x27;audio&#x27;,
-       localMedia: document.getElementById(&#x27;localVideo&#x27;),
-       remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
-     });
-
-     </pre>
-
-    <pre class="sunlight-highlight-javascript">     &#x2F;&#x2F; Start audio call with a Account ID&#x2F;Virtual Number User
-     var phone = ATT.rtc.Phone.getPhone();
-     phone.dial({
-      destination: &#x27;911&#x27;, &#x2F;&#x2F;411,611,*69,#89
-     mediaType: &#x27;audio&#x27;,
-     localMedia: document.getElementById(&#x27;localVideo&#x27;),
-     remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
-     });</pre>
+    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Start audio call with a special number
+var phone = ATT.rtc.Phone.getPhone();
+phone.dial({
+  destination: &#x27;911&#x27;, &#x2F;&#x2F;411,611,*69,#89
+  localMedia: document.getElementById(&#x27;localVideo&#x27;),
+  remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;),
+  mediaType: &#x27;audio&#x27;
+});</pre>
 
 
     
@@ -1689,19 +1816,24 @@ Note: Will ignore email formatted input</p>
     <h4 class="name" id="endConference"><span class="type-signature"></span>endConference<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">End Conference</p>
+    <p class="summary">End the current conference conference</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>End an ongoing conference</p>
+        <p>Use this function to end an ongoing conference.
+There should be an established conference before <code>endConference</code> can be invoked.
+If a participant side invokes <code>endConference</code> he is ejected and the host is notified.
+If the host side invokes endConference all the participants are disconnected and the conference
+is closed.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error Codes</strong></p>
 <ul>
+<li>23000 - Internal error occurred</li>
 <li>23001 - User is not logged in</li>
 <li>23002 - Conference not initiated</li>
-<li>23000 - Internal error occurred</li>
 </ul>
     </div>
     
@@ -1766,8 +1898,8 @@ Note: Will ignore email formatted input</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.endConference();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.endConference();</pre>
 
 
     
@@ -1776,17 +1908,17 @@ Note: Will ignore email formatted input</p>
         
             
 <dt>
-    <h4 class="name" id="formatNumber"><span class="type-signature"></span>formatNumber<span class="signature">(number)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="formatNumber"><span class="type-signature"></span>formatNumber<span class="signature">(Input)</span><span class="type-signature"> &rarr; {String}</span></h4>
     
     
-    <p class="summary">formatNumber.</p>
+    <p class="summary">Formats a phone number.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>takes a valid 10 digit phone number and formats it</p>
+        <p>A utility method used to to format a valid 10 digit phone number.</p>
     </div>
     
 
@@ -1820,13 +1952,13 @@ Note: Will ignore email formatted input</p>
 
         <tr>
             
-                <td class="name"><code>number</code></td>
+                <td class="name"><code>Input</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
             
@@ -1836,13 +1968,216 @@ Note: Will ignore email formatted input</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>phone number</p></td>
         </tr>
 
 	
 	</tbody>
 </table>
 
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+    <h5>Fires:</h5>
+    <ul>
+        <li><a href="Phone.html#event:error">Phone#event:error</a></li>
+    </ul>
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Formatted phone number</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">String</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.formatNumber(&#x27;9234567890&#x27;); &#x2F;&#x2F; 1 (923) 456-7890</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getCalls"><span class="type-signature"></span>getCalls<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    
+    
+    <p class="summary">Gets a list of calls.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets a list of calls currently in progress (foreground or background)</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="important tag-deprecated">Deprecated:</dt>
+	
+	<dd class="yes-def tag-deprecated">
+		<ul class="dummy">
+			<li>Yes</li>
+		</ul>
+	</dd>
+	
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Array of objects representing current calls</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Array</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getMediaType"><span class="type-signature"></span>getMediaType<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+    
+    <p class="summary">Get the media type of the current call or conference.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Use this function to get the media type of the ongoing call.</p>
+    </div>
+    
+
+    
+    
+    
+    
     
     
     
@@ -1890,7 +2225,7 @@ Note: Will ignore email formatted input</p>
     
             
 <div class="param-desc">
-    <p>gives back a formatted number</p>
+    <p><code>audio</code> or <code>video</code>. Null if no current call.</p>
 </div>
 
 
@@ -1901,7 +2236,7 @@ Note: Will ignore email formatted input</p>
 	</dt>
 	<dd>
 		
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
 	</dd>
@@ -1913,79 +2248,8 @@ Note: Will ignore email formatted input</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.formatNumber(&#x27;9234567890&#x27;); &#x2F;&#x2F; 1 (923) 456-7890</pre>
-
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="getMediaType"><span class="type-signature"></span>getMediaType<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-    <p class="summary">Get the media type of the current call.</p>
-    
-</dt>
-<dd>
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.getMediaType();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.getMediaType();</pre>
 
 
     
@@ -1997,14 +2261,17 @@ Note: Will ignore email formatted input</p>
     <h4 class="name" id="getParticipants"><span class="type-signature"></span>getParticipants<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Get participants</p>
+    <p class="summary">Get a list participants of the current conference</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Get the list of participants of a conference</p>
+        <p>Use this function to get a list of participants active in the current conference.
+There should be an established conference before <code>getParticipants</code> can be invoked
+Only a host side can invoke <code>getParticipants</code>
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error Codes</strong></p>
 <ul>
 <li>21000 - Conference not initiated</li>
@@ -2065,8 +2332,8 @@ Note: Will ignore email formatted input</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.getParticipants();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.getParticipants();</pre>
 
 
     
@@ -2078,14 +2345,16 @@ Note: Will ignore email formatted input</p>
     <h4 class="name" id="hangup"><span class="type-signature"></span>hangup<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Hangup existing call</p>
+    <p class="summary">Hangup an existing call</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Use this function to disconnect the current call.</p>
+        <p>Use this function to hangup the current call. The other party will get disconnected
+There should be an existing established call before <code>hangup</code> can be called.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error codes</strong></p>
 <ul>
 <li>6000 - Call is not in progress</li>
@@ -2152,8 +2421,8 @@ Note: Will ignore email formatted input</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.hangup();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.hangup();</pre>
 
 
     
@@ -2172,7 +2441,10 @@ Note: Will ignore email formatted input</p>
     
     
     <div class="description">
-        <p>Use this function to disable your media stream</p>
+        <p>Use this function to put the other party(ies) on hold.
+The other party(ies) will no longer get the media (audio and video)
+There should be an existing established call or conference before <code>hold</code> can be called.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error codes</strong></p>
 <ul>
 <li>7000 - Hold failed - Call is not in progress</li>
@@ -2240,8 +2512,8 @@ Note: Will ignore email formatted input</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.hold();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.hold();</pre>
 
 
     
@@ -2253,11 +2525,15 @@ Note: Will ignore email formatted input</p>
     <h4 class="name" id="isCallInProgress"><span class="type-signature"></span>isCallInProgress<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
     
     
-    <p class="summary">Returns `true` if there is a call in progress.</p>
+    <p class="summary">Checks if there is a call on conference in progress</p>
     
 </dt>
 <dd>
     
+    
+    <div class="description">
+        <p>Returns <code>true</code> if there is a call or conference in progress.</p>
+    </div>
     
 
     
@@ -2276,6 +2552,15 @@ Note: Will ignore email formatted input</p>
 
 	
 
+	
+	<dt class="important tag-deprecated">Deprecated:</dt>
+	
+	<dd class="yes-def tag-deprecated">
+		<ul class="dummy">
+			<li>Yes</li>
+		</ul>
+	</dd>
+	
 	
 
 	
@@ -2311,7 +2596,7 @@ Note: Will ignore email formatted input</p>
     
             
 <div class="param-desc">
-    <p><code>true</code> if there's an active call, <code>false</code> otherwise.</p>
+    <p><code>true</code> if there is an active call, <code>false</code> otherwise.</p>
 </div>
 
 
@@ -2334,8 +2619,8 @@ Note: Will ignore email formatted input</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.isCallInProgress();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.isCallInProgress();</pre>
 
 
     
@@ -2354,7 +2639,9 @@ Note: Will ignore email formatted input</p>
     
     
     <div class="description">
-        <p><strong>Error Codes</strong></p>
+        <p>Use this method on participant side for joining an incoming conference.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
+<p><strong>Error Codes</strong></p>
 <ul>
 <li>20000 - Internal error occurred</li>
 <li>20001 - User is not logged in</li>
@@ -2532,13 +2819,15 @@ Note: Will ignore email formatted input</p>
     
         <li><a href="Phone.html#event:conference:connected">Phone#conference:connected</a></li>
     
+        <li><a href="Phone.html#event:media:established">Phone#media:established</a></li>
+    
         <li><a href="Phone.html#event:conference:held">Phone#conference:held</a></li>
     
         <li><a href="Phone.html#event:conference:resumed">Phone#conference:resumed</a></li>
     
         <li><a href="Phone.html#event:conference:ended">Phone#conference:ended</a></li>
     
-        <li><a href="Phone.html#event:media:established">Phone#media:established</a></li>
+        <li><a href="Phone.html#event:notification">Phone#event:notification</a></li>
     
         <li><a href="Phone.html#event:error">Phone#event:error</a></li>
     </ul>
@@ -2555,11 +2844,11 @@ Note: Will ignore email formatted input</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.joinConference({
-          localMedia: document.getElementById(&#x27;localVideo&#x27;),
-          remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
-        });</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.joinConference({
+  localMedia: document.getElementById(&#x27;localVideo&#x27;),
+  remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
+});</pre>
 
 
     
@@ -2578,9 +2867,10 @@ Note: Will ignore email formatted input</p>
     
     
     <div class="description">
-        <p>Used to establish Enhanced WebRTC session so that the user can place Enhanced WebRTC calls.
-The service parameter indicates the desired service such as audio or video call</p>
-<p> <strong>Error Code</strong></p>
+        <p>Use this function to establish Enhanced WebRTC session so that the user can place Enhanced WebRTC calls.
+The service parameter indicates the desired service such as audio or video call
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
+<p> <strong>Error Codes</strong></p>
 <ul>
 <li>2001 - Missing input parameter</li>
 <li>2002 - Mandatory fields can not be empty</li>
@@ -2655,6 +2945,8 @@ The service parameter indicates the desired service such as audio or video call<
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -2680,6 +2972,14 @@ The service parameter indicates the desired service such as audio or video call<
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -2703,10 +3003,21 @@ The service parameter indicates the desired service such as audio or video call<
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>E911 Id. Optional parameter for Account ID users. Required for Mobile Number and Virtual Number users</p></td>
+            <td class="description last"><p>E911 Id. Optional parameter for Account ID users.
+Required for Mobile Number and Virtual Number users</p></td>
         </tr>
 
 	
@@ -2774,11 +3085,11 @@ The service parameter indicates the desired service such as audio or video call<
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.login({
-        token: token,
-        e911Id: e911Id
-      });</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.login({
+  token: token,
+  e911Id: e911Id
+});</pre>
 
 
     
@@ -2797,13 +3108,13 @@ The service parameter indicates the desired service such as audio or video call<
     
     
     <div class="description">
-        <p>Logs out the user from Enhanced WebRTC session.
-Enhanced WebRTC session gets deleted,
-Event channel polling stopped</p>
-<p><strong>Error Codes</strong></p>
+        <p>Use this function to log out from Enhanced WebRTC session. As a result,
+enhanced WebRTC session will get deleted and event channel polling will be stopped.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
+<p> <strong>Error Codes</strong></p>
 <ul>
 <li>3000 - Internal error occurred</li>
-<li>3507 - Session Id is not associate with the Access Token passed in the request.</li>
+<li>3507 - Session Id is not associated with the Access Token passed in the request.</li>
 </ul>
     </div>
     
@@ -2879,7 +3190,7 @@ phone.logout();</pre>
     <h4 class="name" id="move"><span class="type-signature"></span>move<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Move the current call</p>
+    <p class="summary">Move the current call to a different endpoint/device</p>
     
 </dt>
 <dd>
@@ -2887,8 +3198,12 @@ phone.logout();</pre>
     
     <div class="description">
         <p>Use this function to move the current call to another client.
-All clients currently logged in with the same Id will receive a call.
-This method can also be used to move a call to a handheld device.</p>
+The current user should be logged in to at least two different sessions before a call
+can be moved.
+There has to be an established call before <code>move</code> can be invoked.
+All endpoints(devices) with sessions for the current user will start to ring.
+The user can choose to answer on any of the other endpoints(devices)
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error Codes</strong></p>
 <ul>
 <li>28000 - Move failed - User is not logged in</li>
@@ -2949,8 +3264,8 @@ This method can also be used to move a call to a handheld device.</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.move();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.move();</pre>
 
 
     
@@ -2962,14 +3277,16 @@ This method can also be used to move a call to a handheld device.</p>
     <h4 class="name" id="mute"><span class="type-signature"></span>mute<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Mute the current call.</p>
+    <p class="summary">Mute the current call or conference.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Use this function to mute the local media for current call.</p>
+        <p>Use this function to mute the local media for current call or conference.
+The other party(ies) will no longer receive any audio, video (if available) will continue to be received
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error Codes</strong></p>
 <ul>
 <li>9000 - Mute failed- Call is not in progress</li>
@@ -3036,8 +3353,8 @@ This method can also be used to move a call to a handheld device.</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.mute();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.mute();</pre>
 
 
     
@@ -3046,20 +3363,96 @@ This method can also be used to move a call to a handheld device.</p>
         
             
 <dt>
-    <h4 class="name" id="on"><span class="type-signature"></span>on<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="on"><span class="type-signature"></span>on<span class="signature">(event, handler)</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Subscribe to events on a Phone object.</p>
+    <p class="summary">Subscribe to event on Phone.</p>
     
 </dt>
 <dd>
     
+    
+    <div class="description">
+        <p>Method to subscribe to events fired by <code>Phone</code> object.</p>
+    </div>
     
 
     
     
     
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>event</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event name</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>handler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event handler</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
     
     
     
@@ -3101,16 +3494,43 @@ This method can also be used to move a call to a handheld device.</p>
     
     
     
+    <h5>Throws:</h5>
+    
+            
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        Event 'event_name' not defined
+        </div>
+    </dt>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">String</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+</dl>
+
+
+        
     
     
     
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">      var phone = ATT.rtc.Phone.getPhone();
-      phone.on(&#x27;session:ready&#x27;, function (data) {
-        &#x2F;&#x2F; ... do something
-      });</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.on(&#x27;session:ready&#x27;, function (data) {
+   &#x2F;&#x2F; ... do something
+});</pre>
 
 
     
@@ -3129,7 +3549,9 @@ This method can also be used to move a call to a handheld device.</p>
     
     
     <div class="description">
-        <p><strong> Error Codes </strong></p>
+        <p>Use this method to reject and incoming call
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
+<p> <strong>Error Codes</strong></p>
 <ul>
 <li>12000 - Reject failed-Call has not been initiated</li>
 <li>12001 - Internal error occurred</li>
@@ -3195,8 +3617,8 @@ This method can also be used to move a call to a handheld device.</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.reject();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.reject();</pre>
 
 
     
@@ -3208,14 +3630,18 @@ This method can also be used to move a call to a handheld device.</p>
     <h4 class="name" id="rejectConference"><span class="type-signature"></span>rejectConference<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Reject current incoming conference invite.</p>
+    <p class="summary">Reject an incoming conference invite</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p><strong> Error Codes </strong></p>
+        <p>Use this method to reject an incoming conference invite
+There should be an existing un-accepted conference before <code>rejectConference</code> can be called.
+Only the participant side can invoke <code>rejectConference</code>
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
+<p> <strong> Error Codes </strong></p>
 <ul>
 <li>22000 - Internal error occurred</li>
 <li>22001 - User is not logged in</li>
@@ -3282,8 +3708,8 @@ This method can also be used to move a call to a handheld device.</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.reject();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.rejectConference();</pre>
 
 
     
@@ -3295,14 +3721,17 @@ This method can also be used to move a call to a handheld device.</p>
     <h4 class="name" id="removeParticipant"><span class="type-signature"></span>removeParticipant<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Remove participant</p>
+    <p class="summary">Remove a participant from the current conference</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Remove a participant from an ongoing conference</p>
+        <p>Use this function to remove a participant from the current conference.
+There should be an established conference before <code>removeParticipant</code> can be invoked
+Only a host side can invoke <code>removeParticipant</code>
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error Codes</strong></p>
 <ul>
 <li>25000 - User is not logged in</li>
@@ -3369,8 +3798,8 @@ This method can also be used to move a call to a handheld device.</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.removeParticipant(&#x27;johnny&#x27;);</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.removeParticipant(&#x27;johnny&#x27;);</pre>
 
 
     
@@ -3389,7 +3818,10 @@ This method can also be used to move a call to a handheld device.</p>
     
     
     <div class="description">
-        <p>Use this function to enable your media stream</p>
+        <p>Use this function to resume the other party(ies) that was(were) put on hold previously.
+The other party(ies) will start receiving the media (audio and video).
+There should be an existing established call or conference on hold before <code>resume</code> can be invoked.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error Codes</strong></p>
 <ul>
 <li>8000 - Resume failed - Call is not in progress</li>
@@ -3458,8 +3890,8 @@ This method can also be used to move a call to a handheld device.</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.resume();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.resume();</pre>
 
 
     
@@ -3471,14 +3903,18 @@ This method can also be used to move a call to a handheld device.</p>
     <h4 class="name" id="startConference"><span class="type-signature"></span>startConference<span class="signature">(options)</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Start a conference.</p>
+    <p class="summary">Starts a conference with host and no participants.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p><strong>Error Codes</strong></p>
+        <p>Use this method to start a conference. The host can invite other users to the conference
+by adding the participant(s). Participant(s) can accept or reject an invite.
+Only a host can remove a participant from the conference and end the conference.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
+<p><strong>Error Codes</strong></p>
 <ul>
 <li>18000 - Parameters missing</li>
 <li>18001 - Invalid <code>localMedia</code> passed</li>
@@ -3552,6 +3988,8 @@ This method can also be used to move a call to a handheld device.</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -3577,6 +4015,14 @@ This method can also be used to move a call to a handheld device.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -3599,6 +4045,14 @@ This method can also be used to move a call to a handheld device.</p>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -3623,10 +4077,20 @@ This method can also be used to move a call to a handheld device.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p><code>video|audio</code></p></td>
+            <td class="description last"><p><code>video</code> or <code>audio</code>. Defaults to video.</p></td>
         </tr>
 
 	
@@ -3687,14 +4151,6 @@ This method can also be used to move a call to a handheld device.</p>
     
         <li><a href="Phone.html#event:conference:resumed">Phone#conference:resumed</a></li>
     
-        <li><a href="Phone.html#event:conference:invitation-sent">Phone#conference:invitation-sent</a></li>
-    
-        <li><a href="Phone.html#event:conference:invitation-accepted">Phone#conference:invitation-accepted</a></li>
-    
-        <li><a href="Phone.html#event:conference:invitation-rejected">Phone#conference:invitation-rejected</a></li>
-    
-        <li><a href="Phone.html#event:conference:participant-removed">Phone#conference:participant-removed</a></li>
-    
         <li><a href="Phone.html#event:conference:ended">Phone#conference:ended</a></li>
     
         <li><a href="Phone.html#event:error">Phone#event:error</a></li>
@@ -3710,14 +4166,20 @@ This method can also be used to move a call to a handheld device.</p>
     
     
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.startConference({
-       mediaType: &#x27;video&#x27;,
-       localMedia: document.getElementById(&#x27;localVideo&#x27;),
-       remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
-     });</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.startConference({
+  localMedia: document.getElementById(&#x27;localVideo&#x27;),
+  remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;),
+  mediaType: &#x27;audio&#x27;
+});</pre>
+
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.startConference({
+  localMedia: document.getElementById(&#x27;localVideo&#x27;),
+  remoteMedia: document.getElementById(&#x27;remoteVideo&#x27;)
+});</pre>
 
 
     
@@ -3736,16 +4198,15 @@ This method can also be used to move a call to a handheld device.</p>
     
     
     <div class="description">
-        <p>Use this method to switch between an active call or conference and a background
+        <p>Use this function to switch between an active call or conference and a background.
 call or conference.</p>
-<p><strong> Pre-conditions </strong></p>
-<p>You must have two calls for this method to work.</p>
-<p><strong> Post-conditions </strong></p>
-<ul>
-<li>If the call that's being brought to the foreground was put on hold
+<p><strong>Pre-conditions</strong>
+There should be at least two established calls before <code>switchCall</code> can be invoked.</p>
+<p><strong>Post-conditions</strong>
+If the call that's being brought to the foreground was put on hold
 by calling <a href="Phone.html#hold">Phone#hold</a> then the call will be kept on hold,
-otherwise the call will be resumed automatically.</li>
-</ul>
+otherwise the call will be resumed automatically.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error Codes</strong></p>
 <ul>
 <li>30000 - Internal error occurred</li>
@@ -3825,14 +4286,20 @@ phone.switchCall();</pre>
     <h4 class="name" id="transfer"><span class="type-signature"></span>transfer<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Transfer an established call between between two users to a third user.</p>
+    <p class="summary">Transfer an established call to a third party</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Use this function to transfer an established call between a transferee and a transferer to the transfer-target.</p>
+        <p>Use this function to transfer an established call between a transferee and a transferer
+to the transfer-target.
+There should be an established call that is on hold.
+There should be a second established call with transfer target
+<code>transfer</code> will transfer the other party of the first call to the other party of the second call
+and drop the current user from the call.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error Codes</strong></p>
 <ul>
 <li>29000 - Internal error occurred</li>
@@ -3894,8 +4361,8 @@ phone.switchCall();</pre>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.transfer();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.transfer();</pre>
 
 
     
@@ -3907,14 +4374,16 @@ phone.switchCall();</pre>
     <h4 class="name" id="unmute"><span class="type-signature"></span>unmute<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Unmute the current call.</p>
+    <p class="summary">Unmute the current call or conference</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Use this function to unmute the local media for the current call.</p>
+        <p>Use this function to unmute the local media for current call or conference.
+The other party(ies) will start receiving audio.
+This method can fire <a href="Phone.html#event:error">Phone#event:error</a> event with errors that can have these error codes:</p>
 <p><strong>Error Codes</strong></p>
 <ul>
 <li>10000 - Unmute failed- No media stream</li>
@@ -3981,8 +4450,8 @@ phone.switchCall();</pre>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">     var phone = ATT.rtc.Phone.getPhone();
-     phone.unmute();</pre>
+    <pre class="sunlight-highlight-javascript">var phone = ATT.rtc.Phone.getPhone();
+phone.unmute();</pre>
 
 
     
@@ -4002,12 +4471,18 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:canceled">call:canceled</h4>
     
     
+    <p class="summary">Call canceled event fires when an outgoing call is canceled successfully or
+when an incoming call is canceled by the calling party</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Successfully canceled an outgoing call.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an unestablished incoming or outgoing call in order to be able
+to receive this event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -4016,7 +4491,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -4045,6 +4520,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -4053,6 +4530,128 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio/video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The CODECs associated with the call.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -4069,6 +4668,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -4130,12 +4735,19 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:connected">call:connected</h4>
     
     
+    <p class="summary">Call connected event fires when an outgoing or incoming call is connected to
+the other party.</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when a call is connected</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an unestablished outgoing or incoming call in order to be able
+to receive this event.
+This event is fired after <a href="Phone.html#event:call:connecting">Phone#call:connecting</a> has been fired.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -4144,7 +4756,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -4173,6 +4785,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -4181,6 +4795,128 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio/video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The CODECs associated with the call.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -4197,6 +4933,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -4258,12 +5000,18 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:connecting">call:connecting</h4>
     
     
+    <p class="summary">Call connecting event fires when an outgoing or incoming call is trying to connect to
+the other party.</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when a call is connecting</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an unestablished outgoing or incoming call in order to be able
+to receive this event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -4272,7 +5020,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -4301,6 +5049,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -4309,6 +5059,128 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio/video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The CODECs associated with the call.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -4325,6 +5197,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -4386,12 +5264,17 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:disconnected">call:disconnected</h4>
     
     
+    <p class="summary">Call disconnected event fires when a call has been disconnected by the other party
+or by the API</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Indicates a call has been disconnected</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an existing call in progress in order to be able to receive this event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -4400,7 +5283,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -4429,6 +5312,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -4454,10 +5339,49 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The ID of the caller.</p></td>
+            <td class="description last"><p>The phone number/id of the calling party for incoming calls.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party for outgoing calls.</p></td>
         </tr>
 
 	
@@ -4477,10 +5401,16 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The type of call.</p></td>
+            <td class="description last"><p>The media type of the call (audio/video).</p></td>
         </tr>
 
 	
@@ -4493,40 +5423,23 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
             </td>
 
             
-
-            
-
-            <td class="description last"><p>The codec of the call.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">String</span>
 
-
-            
-            </td>
-
+                
+                </td>
             
 
             
 
-            <td class="description last"><p>A reason for the event.</p></td>
+            <td class="description last"><p>The CODECs associated with the call.</p></td>
         </tr>
 
 	
@@ -4545,6 +5458,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -4606,12 +5525,17 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:disconnecting">call:disconnecting</h4>
     
     
+    <p class="summary">Call disconnecting event fires immediately after user tries to hangup a call</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Fired immediately after invoking the <code>hangup</code> method.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established call in order to be able to receive this event.
+This event is fired in response to a successful call to <code>hangup</code> method
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -4649,6 +5573,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -4657,6 +5583,126 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The media type of the call or conference (audio/video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The CODECs associated with the call or conference.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -4674,33 +5720,16 @@ phone.switchCall();</pre>
             </td>
 
             
-
-            
-
-            <td class="description last"><p>Event fire time</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">Object</span>
 
-
-            
-            </td>
-
+                
+                </td>
             
 
             
 
-            <td class="description last"><p>data</p></td>
+            <td class="description last"><p>Event fire time.</p></td>
         </tr>
 
 	
@@ -4757,12 +5786,18 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:held">call:held</h4>
     
     
+    <p class="summary">Call held event fires when the user puts an active call on hold</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when a call has been put on hold</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established outgoing or incoming call in order to be able
+to receive this event.
+This event is fired in response to a successful call to <code>hold</code> method.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -4771,7 +5806,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -4800,6 +5835,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -4808,6 +5845,126 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio/video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The CODECs associated with the call.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -4824,6 +5981,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -4885,12 +6048,15 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:incoming">call:incoming</h4>
     
     
+    <p class="summary">Call incoming event fires when a there is an incoming call</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when a call is incoming.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -4899,7 +6065,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -4956,7 +6122,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The ID of the caller.</p></td>
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
         </tr>
 
 	
@@ -4979,7 +6145,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The type of call being received.</p></td>
+            <td class="description last"><p>The media type of the incoming call (audio/video).</p></td>
         </tr>
 
 	
@@ -4992,7 +6158,7 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
@@ -5002,7 +6168,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The codec used by the incoming call.</p></td>
+            <td class="description last"><p>The CODECs associated with the incoming call.</p></td>
         </tr>
 
 	
@@ -5082,12 +6248,17 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:muted">call:muted</h4>
     
     
+    <p class="summary">Call muted event fires when the media is successfully muted.</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when the media is successfully muted.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established call or conference in order to be able to receive this event.
+This event is fired in response to a successful call to <code>mute</code> method
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -5125,6 +6296,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -5133,6 +6306,37 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party (for an outgoing call).</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -5150,10 +6354,18 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The ID of the caller.</p></td>
+            <td class="description last"><p>The phone number/id of the calling party or conference initiator.</p></td>
         </tr>
 
 	
@@ -5173,10 +6385,16 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The media type.</p></td>
+            <td class="description last"><p>The media type of the call or conference (audio/video).</p></td>
         </tr>
 
 	
@@ -5189,17 +6407,23 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The codec used by the call.</p></td>
+            <td class="description last"><p>The CODECs associated with the call or conference.</p></td>
         </tr>
 
 	
@@ -5218,6 +6442,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -5279,12 +6509,18 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:rejected">call:rejected</h4>
     
     
+    <p class="summary">Call rejected event fires when an outgoing call is rejected by the called party or
+when an incoming call is rejected by the user successfully</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Host side: This event fires when a call is rejected</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an unestablished incoming or outgoing call in order to be able
+to receive this event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -5293,7 +6529,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -5322,6 +6558,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -5330,6 +6568,128 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio/video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The CODECs associated with the call.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -5346,6 +6706,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -5407,12 +6773,18 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:resumed">call:resumed</h4>
     
     
+    <p class="summary">Call resumed event fires when the user resumes a call which was previously put on hold</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when a call has been resumed</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established outgoing or incoming call in order to be able
+to receive this event.
+This event is fired in response to a successful call to <code>resume</code> method.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -5421,7 +6793,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -5450,6 +6822,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -5458,6 +6832,126 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio/video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The CODECs associated with the call.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -5474,6 +6968,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -5535,12 +7035,19 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:ringback-provided">call:ringback-provided</h4>
     
     
+    <p class="summary">Call ringback provided event fires when early media starts streaming for an outgoing call.</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires after early media has started streaming.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an unestablished outgoing call in order to be able
+to receive this event.
+The called party should be able to provide early media or ringback.
+The early media or ringback starts playing automatically when this event is fired.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -5549,7 +7056,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -5606,7 +7113,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>Event fire time</p></td>
+            <td class="description last"><p>Event fire time.</p></td>
         </tr>
 
 	
@@ -5663,12 +7170,17 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:call:unmuted">call:unmuted</h4>
     
     
+    <p class="summary">Call unmuted event fires when the media is successfully unmuted.</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when the media is successfully un-muted.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established call or conference in order to be able to receive this event.
+This event is fired in response to a successful call to <code>unmute</code> method
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -5678,6 +7190,267 @@ phone.switchCall();</pre>
             <li>
                 
 <span class="param-type">object</span>
+
+
+            </li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	<h5 class="subsection-title">Properties:</h5>
+
+	<dl>
+
+<table class="props table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party (for an outgoing call).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the calling party or conference initiator.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The media type of the call or conference (audio/video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The CODECs associated with the call or conference.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+</dl>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:conference:connected">conference:connected</h4>
+    
+    
+    <p class="summary">Conference connected fires when a conference started by a host has connected</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an unestablished conference started by the user in order
+to be able to receive this event.
+The event is fired with an attached event data of the following format:</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
 
 
             </li>
@@ -5718,29 +7491,6 @@ phone.switchCall();</pre>
 
         <tr>
             
-                <td class="name"><code>from</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The ID of the caller.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
                 <td class="name"><code>mediaType</code></td>
             
 
@@ -5757,7 +7507,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The media type of the call (audio or video).</p></td>
+            <td class="description last"><p>The media type of the conference (audio/video).</p></td>
         </tr>
 
 	
@@ -5770,7 +7520,7 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
@@ -5780,7 +7530,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The codec used by the call.</p></td>
+            <td class="description last"><p>The CODECs associated with the conference.</p></td>
         </tr>
 
 	
@@ -5857,166 +7607,20 @@ phone.switchCall();</pre>
         
             
 <dt>
-    <h4 class="name" id="event:conference:connected">conference:connected</h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>A conference has been connected.</p>
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">object</span>
-
-
-            </li>
-        </ul>
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-	
-
-	<h5 class="subsection-title">Properties:</h5>
-
-	<dl>
-
-<table class="props table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>timestamp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Event fire time</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>data</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-</dl>
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
     <h4 class="name" id="event:conference:connecting">conference:connecting</h4>
     
     
+    <p class="summary">Conference connecting fires when a participant tries to connect to a conference</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when network is trying to connect to a conference.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an unestablished conference in order to be able to receive this event.
+This event is fired participant-side in response to a successful call to <code>joinConference</code> method
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -6025,7 +7629,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -6072,7 +7676,7 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
@@ -6082,7 +7686,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The ID of the caller.</p></td>
+            <td class="description last"><p>The conference initiator</p></td>
         </tr>
 
 	
@@ -6105,7 +7709,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The media type of the conference (audio or video).</p></td>
+            <td class="description last"><p>The media type of the conference (audio/video).</p></td>
         </tr>
 
 	
@@ -6118,7 +7722,7 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
@@ -6128,7 +7732,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The codec used by the conference.</p></td>
+            <td class="description last"><p>The CODECs associated with the conference.</p></td>
         </tr>
 
 	
@@ -6208,12 +7812,16 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:conference:disconnecting">conference:disconnecting</h4>
     
     
+    <p class="summary">Conference disconnecting event fires when a conference is in the process of disconnecting.</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when a conference is in the process of disconnecting.</p>
+        <p>This event fires immediately when the user invokes <code>endConference</code>
+There should be an existing conference in order to be able to receive this event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -6251,6 +7859,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -6263,7 +7873,7 @@ phone.switchCall();</pre>
 
         <tr>
             
-                <td class="name"><code>to</code></td>
+                <td class="name"><code>from</code></td>
             
 
             <td class="type">
@@ -6276,10 +7886,18 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The ID of the callee.</p></td>
+            <td class="description last"><p>The phone number/user id of the conference initiator for participant side</p></td>
         </tr>
 
 	
@@ -6299,10 +7917,18 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The participants list.</p></td>
+            <td class="description last"><p>The participants list for host side</p></td>
         </tr>
 
 	
@@ -6322,10 +7948,18 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The invitations list.</p></td>
+            <td class="description last"><p>The invitations list for host side.</p></td>
         </tr>
 
 	
@@ -6344,6 +7978,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -6368,6 +8008,12 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
@@ -6390,6 +8036,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -6451,12 +8103,19 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:conference:ended">conference:ended</h4>
     
     
+    <p class="summary">Conference ended fires when a conference has ended</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Indicates a conference has been ended</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established in conference in order to be able to receive this event.
+This event is mainly fired host-side or participant side in response to a successful call
+to <code>endConference</code> method.
+This event can also be fired if the conference ends due to some unexpected reason.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -6465,7 +8124,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -6494,6 +8153,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -6519,10 +8180,80 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The ID of the conference.</p></td>
+            <td class="description last"><p>The phone number/user id of the conference initiator for participant side</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>participants</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The participants list for host side</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>invitations</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The invitations list for host side.</p></td>
         </tr>
 
 	
@@ -6542,10 +8273,16 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The type of conference.</p></td>
+            <td class="description last"><p>The media type of the conference (audio/video).</p></td>
         </tr>
 
 	
@@ -6558,17 +8295,23 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The codec of the conference</p></td>
+            <td class="description last"><p>The CODECs associated with the conference.</p></td>
         </tr>
 
 	
@@ -6587,6 +8330,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -6648,12 +8397,17 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:conference:held">conference:held</h4>
     
     
+    <p class="summary">Conference held fires when a conference has been put on hold</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>A conference has been put on hold.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established conference in order to be able to receive this event.
+This event is fired in response to a successful call to <code>hold</code> method.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -6662,7 +8416,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -6691,6 +8445,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -6703,46 +8459,62 @@ phone.switchCall();</pre>
 
         <tr>
             
-                <td class="name"><code>timestamp</code></td>
+                <td class="name"><code>invitations</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Date</span>
+<span class="param-type">Object</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>Event fire time</p></td>
+            <td class="description last"><p>The invitations list.</p></td>
         </tr>
 
 	
 
         <tr>
             
-                <td class="name"><code>from</code></td>
+                <td class="name"><code>participants</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The ID of the caller.</p></td>
+            <td class="description last"><p>The current participants list.</p></td>
         </tr>
 
 	
@@ -6762,10 +8534,16 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The media type of the conference (audio or video).</p></td>
+            <td class="description last"><p>The media type of the conference (audio/video).</p></td>
         </tr>
 
 	
@@ -6778,17 +8556,23 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The codec used by the conference.</p></td>
+            <td class="description last"><p>The CODECs associated with the conference.</p></td>
         </tr>
 
 	
@@ -6807,6 +8591,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -6868,12 +8658,17 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:conference:invitation-accepted">conference:invitation-accepted</h4>
     
     
+    <p class="summary">Conference invitation-accepted fires when an invitation has been accepted</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Host side: this event fires when an invitation has been accepted</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established conference in order to be able to receive this event.
+This event is fired host-side  when an invitation has been accepted by the participant.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -6882,7 +8677,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -6911,6 +8706,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -6923,23 +8720,31 @@ phone.switchCall();</pre>
 
         <tr>
             
-                <td class="name"><code>to</code></td>
+                <td class="name"><code>invitations</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The ID of the callee.</p></td>
+            <td class="description last"><p>The invitations list.</p></td>
         </tr>
 
 	
@@ -6959,10 +8764,18 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The participants list.</p></td>
+            <td class="description last"><p>The current participants list.</p></td>
         </tr>
 
 	
@@ -6982,10 +8795,16 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The media type of the call (audio or video).</p></td>
+            <td class="description last"><p>The media type of the conference (audio/video).</p></td>
         </tr>
 
 	
@@ -6998,17 +8817,23 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The codec used by the conference.</p></td>
+            <td class="description last"><p>The CODECs associated with the conference.</p></td>
         </tr>
 
 	
@@ -7027,6 +8852,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -7088,12 +8919,15 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:conference:invitation-received">conference:invitation-received</h4>
     
     
+    <p class="summary">Conference invitation received event fires when a there is an incoming conference invite</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Participant receives this event after a conference invitation is sent to him/her.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -7102,7 +8936,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -7159,7 +8993,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The ID of the caller.</p></td>
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
         </tr>
 
 	
@@ -7182,7 +9016,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The type of call being received.</p></td>
+            <td class="description last"><p>The media type of the incoming call (audio/video).</p></td>
         </tr>
 
 	
@@ -7195,7 +9029,7 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
@@ -7205,7 +9039,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The codec used by the incoming call.</p></td>
+            <td class="description last"><p>The CODECs associated with the incoming call.</p></td>
         </tr>
 
 	
@@ -7285,12 +9119,17 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:conference:invitation-rejected">conference:invitation-rejected</h4>
     
     
+    <p class="summary">Conference invitation-rejected fires when an invitation has been rejected</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Host side: this event fires when an invitation has been rejected</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established conference in order to be able to receive this event.
+This event is fired host-side  when an invitation has been rejected by the participant.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -7299,7 +9138,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -7328,6 +9167,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -7340,23 +9181,31 @@ phone.switchCall();</pre>
 
         <tr>
             
-                <td class="name"><code>to</code></td>
+                <td class="name"><code>invitations</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The ID of the callee.</p></td>
+            <td class="description last"><p>The invitations list.</p></td>
         </tr>
 
 	
@@ -7376,33 +9225,18 @@ phone.switchCall();</pre>
             </td>
 
             
-
-            
-
-            <td class="description last"><p>The participants list.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>invitations</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">Object</span>
+                    &lt;optional><br>
+                
 
-
-            
-            </td>
-
-            
-
+                
+                </td>
             
 
-            <td class="description last"><p>The invitations list.</p></td>
+            
+
+            <td class="description last"><p>The current participants list.</p></td>
         </tr>
 
 	
@@ -7422,10 +9256,16 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The media type of the conference (audio or video).</p></td>
+            <td class="description last"><p>The media type of the conference (audio/video).</p></td>
         </tr>
 
 	
@@ -7438,17 +9278,23 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The codec used by the conference.</p></td>
+            <td class="description last"><p>The CODECs associated with the conference.</p></td>
         </tr>
 
 	
@@ -7467,6 +9313,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -7528,12 +9380,18 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:conference:invitation-sending">conference:invitation-sending</h4>
     
     
+    <p class="summary">Conference invitation-sending fires when an invitation is being sent</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Host side: this event fires when an invitation is in the process of sending.</p>
+        <p>This event fires immediately when the host invokes <code>addParticipant(s)</code>
+There should be an existing conference before in order to be able to receive this event
+This event is fired host-side in response to a successful call to <code>addParticipant(s)</code> method
+This event is followed by <a href="Phone.html#event:conference:invitation-sent">Phone#conference:invitation-sent</a>
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -7679,12 +9537,17 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:conference:invitation-sent">conference:invitation-sent</h4>
     
     
+    <p class="summary">Conference invitation-sent fires when an invitation has been successfully sent by the host</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Host side: this event fires when an invitation has been successfully sent.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established conference in order to be able to receive this event.
+This event is fired host-side in response to a successful call to <code>addParticipant(s)</code> method.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -7693,7 +9556,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -7722,6 +9585,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -7730,29 +9595,6 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>to</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The ID of the callee.</p></td>
-        </tr>
-
 	
 
         <tr>
@@ -7769,6 +9611,14 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
             
 
             
@@ -7793,10 +9643,18 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The participants list.</p></td>
+            <td class="description last"><p>The current participants list.</p></td>
         </tr>
 
 	
@@ -7816,10 +9674,16 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The media type of the call (audio or video).</p></td>
+            <td class="description last"><p>The media type of the conference (audio/video).</p></td>
         </tr>
 
 	
@@ -7832,17 +9696,23 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The codec used by the conference.</p></td>
+            <td class="description last"><p>The CODECs associated with the conference.</p></td>
         </tr>
 
 	
@@ -7861,6 +9731,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -7922,12 +9798,18 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:conference:joining">conference:joining</h4>
     
     
+    <p class="summary">Conference joining fires immediately after a participant joins a conference</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Participant side: This event fires immediately after invoking <code>joinConference</code></p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an incoming conference invitation in order to be able to receive this event.
+This event is fired participant-side in response to a successful call to <code>joinConference</code> method
+This event is followed by <a href="Phone.html#event:conference:connecting">Phone#conference:connecting</a>
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -7936,7 +9818,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -7983,7 +9865,7 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
@@ -7993,7 +9875,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The ID of the caller.</p></td>
+            <td class="description last"><p>The conference initiator</p></td>
         </tr>
 
 	
@@ -8016,7 +9898,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The type of conference being received.</p></td>
+            <td class="description last"><p>The media type of the conference (audio/video).</p></td>
         </tr>
 
 	
@@ -8029,7 +9911,7 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
@@ -8039,7 +9921,7 @@ phone.switchCall();</pre>
 
             
 
-            <td class="description last"><p>The codec used by the conference</p></td>
+            <td class="description last"><p>The CODECs associated with the conference.</p></td>
         </tr>
 
 	
@@ -8119,12 +10001,17 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:conference:participant-removed">conference:participant-removed</h4>
     
     
+    <p class="summary">Conference participant-removed fires when a host successfully removes a participant</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Host side: this event fires when a host has successfully removed a participant.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established conference in order to be able to receive this event.
+This event is fired host-side in response to a successful call to <code>removeParticipant</code> method
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -8133,7 +10020,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -8162,6 +10049,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -8170,29 +10059,6 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>participants</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The participants list.</p></td>
-        </tr>
-
 	
 
         <tr>
@@ -8210,10 +10076,49 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"><p>The invitations list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>participants</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The current participants list.</p></td>
         </tr>
 
 	
@@ -8233,10 +10138,16 @@ phone.switchCall();</pre>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The media type of the conference (audio or video).</p></td>
+            <td class="description last"><p>The media type of the conference (audio/video).</p></td>
         </tr>
 
 	
@@ -8249,17 +10160,23 @@ phone.switchCall();</pre>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The codec used by the conference.</p></td>
+            <td class="description last"><p>The CODECs associated with the conference.</p></td>
         </tr>
 
 	
@@ -8278,6 +10195,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -8339,12 +10262,18 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:conference:resumed">conference:resumed</h4>
     
     
+    <p class="summary">Conference resumed fires when a conference has been resumed</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when a conference has been resumed</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an established conference which was previously put on hold by
+the user in order to be able to receive this event.
+This event is fired in response to a successful call to <code>resume</code> method.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -8353,7 +10282,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -8382,6 +10311,8 @@ phone.switchCall();</pre>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -8390,6 +10321,126 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>invitations</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The invitations list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>participants</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The current participants list.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The media type of the conference (audio/video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The CODECs associated with the conference.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -8406,6 +10457,12 @@ phone.switchCall();</pre>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -8467,12 +10524,86 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:address-updated">address-updated</h4>
     
     
+    <p class="summary">Address updated event fires after successfully updating the e911 linked address id</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Indicates the E911 address has been updated successfully.</p>
+        <p>The user has to be logged in order to be able to receive this event.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="event:answering">answering</h4>
+    
+    
+    <p class="summary">Answering event fires immediately after `answer` for an incoming call.</p>
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an unestablished incoming call in order to be able
+to receive this event.
+This event is followed by <a href="Phone.html#event:call:connecting">Phone#call:connecting</a> event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -8481,7 +10612,7 @@ phone.switchCall();</pre>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -8518,6 +10649,75 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio/video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The CODECs associated with the call.</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -8592,15 +10792,21 @@ phone.switchCall();</pre>
         
             
 <dt>
-    <h4 class="name" id="event:answering">answering</h4>
+    <h4 class="name" id="event:dialing">dialing</h4>
     
+    
+    <p class="summary">Dialing event fires immediately after `dial` for an outgoing call.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Fired immediately after the <code>answer</code> method is invoked.</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an unestablished outgoing call in order to be able
+to receive this event.
+This event is followed by <a href="Phone.html#event:call:connecting">Phone#call:connecting</a> event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -8608,161 +10814,10 @@ phone.switchCall();</pre>
         <h5>Type:</h5>
         <ul>
             <li>
-                
-<span class="param-type">object</span>
-
-
-            </li>
-        </ul>
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-	
-
-	<h5 class="subsection-title">Properties:</h5>
-
-	<dl>
-
-<table class="props table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>timestamp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Event fire time</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
                 
 <span class="param-type">Object</span>
 
 
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>data</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-</dl>
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="event:dialing">dialing</h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Triggered immediately.</p>
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">object</span>
-
-
             </li>
         </ul>
     
@@ -8797,6 +10852,52 @@ phone.switchCall();</pre>
 	</thead>
 
 	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio/video).</p></td>
+        </tr>
+
 	
 
         <tr>
@@ -8874,19 +10975,20 @@ phone.switchCall();</pre>
     <h4 class="name" id="event:error">error</h4>
     
     
+    <p class="summary">Error event fires there is an invalid behavior reported by the `Phone` object</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>The <code>Phone</code> object will publish this event to indicate
-an invalid behavior which can be caused by different reasons:</p>
+        <p>The error event can be fired by the <code>Phone</code> for different reasons:</p>
 <ul>
 <li><strong>API Error</strong> - is an error at the platform (RESTful API) level. This may
 be due to invalid parameters send in an HTTP request or a request being
 send while in an inconsistent state.</li>
 <li><strong>SDK Error</strong> - is an error most likely due to an inconsistent state in the
-client JavaScript library at the browswer level.</li>
+client JavaScript library at the browser level.</li>
 </ul>
 <p>Sometimes different errors can be caused by the same underlying problem
 in which case a common error code is used. The next is a list of the common
@@ -8902,9 +11004,21 @@ API error codes:</p>
 <li>2511 - User has not been provisioned for Enhanced WebRTC</li>
 <li>500,502,503,504 - <method name> failed - Unable to complete requested operation</li>
 </ul>
+<p>The user has to be logged in order to be able to receive this event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+            </li>
+        </ul>
     
     
     
@@ -8929,46 +11043,7 @@ API error codes:</p>
 		<th>Type</th>
 
 		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <h6>Properties</h6>
-
-<table class="props table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
+		<th>Argument</th>
 		
 
 		
@@ -8978,36 +11053,6 @@ API error codes:</p>
 	</thead>
 
 	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>timestamp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Event fire time.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-
-            </td>
-        </tr>
-
 	
 
         <tr>
@@ -9025,10 +11070,16 @@ API error codes:</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last">
+            <td class="description last"><p>Error object</p>
                 <h6>Properties</h6>
 
 <table class="props table table-striped">
@@ -9069,7 +11120,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Javascipt object associated with the error</p></td>
         </tr>
 
 	
@@ -9092,7 +11143,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Javascript method associated with the error</p></td>
         </tr>
 
 	
@@ -9115,7 +11166,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Error code associated with the error</p></td>
         </tr>
 
 	
@@ -9138,7 +11189,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Message associated with the error</p></td>
         </tr>
 
 	
@@ -9161,7 +11212,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Possible causes</p></td>
         </tr>
 
 	
@@ -9184,7 +11235,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Possible resolution</p></td>
         </tr>
 
 	
@@ -9207,7 +11258,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>API error associated with the error</p></td>
         </tr>
 
 	
@@ -9230,7 +11281,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Resouce method associated with the error</p></td>
         </tr>
 
 	
@@ -9253,7 +11304,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>HTTP status code associated with the error</p></td>
         </tr>
 
 	
@@ -9276,7 +11327,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>API message id associated with the error</p></td>
         </tr>
 
 	
@@ -9284,6 +11335,37 @@ API error codes:</p>
 </table>
 
             </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Additional information associated with the error</p></td>
         </tr>
 
 	
@@ -9340,12 +11422,15 @@ API error codes:</p>
     <h4 class="name" id="event:notification">notification</h4>
     
     
+    <p class="summary">Notification event fires when the SDK is unable to support a behavior that is not an error</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when the SDK is unable to support a behavior that is not an error</p>
+        <p>The user has to be logged in order to be able to receive this event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -9354,7 +11439,7 @@ API error codes:</p>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -9383,6 +11468,8 @@ API error codes:</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -9408,10 +11495,140 @@ API error codes:</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"><p>A message for the notification.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The phone number/id of the called party.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>mediaType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The media type of the call (audio/video).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>codec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The CODECs associated with the call.</p></td>
         </tr>
 
 	
@@ -9430,6 +11647,12 @@ API error codes:</p>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+                </td>
             
 
             
@@ -9491,12 +11714,18 @@ API error codes:</p>
     <h4 class="name" id="event:media:established">media:established</h4>
     
     
+    <p class="summary">Media established event fires when audio/video media has started for a call.</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires after audio/video media has started</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There should be an <code>connected</code> incoming or outgoing call in order to be able
+to receive this event.
+This event is fired after <a href="Phone.html#event:call:connected">Phone#call:connected</a> has been fired.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -9505,7 +11734,7 @@ API error codes:</p>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -9534,6 +11763,8 @@ API error codes:</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -9546,7 +11777,7 @@ API error codes:</p>
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>to</code></td>
             
 
             <td class="type">
@@ -9559,10 +11790,18 @@ API error codes:</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>call id</p></td>
+            <td class="description last"><p>The phone number/id of the called party.</p></td>
         </tr>
 
 	
@@ -9582,33 +11821,18 @@ API error codes:</p>
             </td>
 
             
-
-            
-
-            <td class="description last"><p>the User ID or phone number of the other party</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>timestamp</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">Date</span>
+                    &lt;optional><br>
+                
 
-
-            
-            </td>
-
-            
-
+                
+                </td>
             
 
-            <td class="description last"><p>Event fire time</p></td>
+            
+
+            <td class="description last"><p>The phone number/id of the calling party.</p></td>
         </tr>
 
 	
@@ -9628,10 +11852,16 @@ API error codes:</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>the media type (<code>audio|video</code>) for the current call</p></td>
+            <td class="description last"><p>The media type of the call (audio/video).</p></td>
         </tr>
 
 	
@@ -9644,17 +11874,52 @@ API error codes:</p>
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>the codec used by the current call</p></td>
+            <td class="description last"><p>The CODECs associated with the call.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Event fire time.</p></td>
         </tr>
 
 	
@@ -9711,12 +11976,16 @@ API error codes:</p>
     <h4 class="name" id="event:session:call-switched">session:call-switched</h4>
     
     
+    <p class="summary">Call switched event fires when the calls are switched</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when the calls are switched</p>
+        <p>The user has to be logged in order to be able to receive this event.
+There needs to be two calls in context in order to be able to receive this event.
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -9725,7 +11994,7 @@ API error codes:</p>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -9782,7 +12051,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"><p>Peer of the call switched from.</p></td>
+            <td class="description last"><p>The phone number/id of the peer of the call switched from.</p></td>
         </tr>
 
 	
@@ -9805,7 +12074,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"><p>Peer of the call switched to.</p></td>
+            <td class="description last"><p>The phone number/id of the peer of the call switched to.</p></td>
         </tr>
 
 	
@@ -9885,25 +12154,18 @@ API error codes:</p>
     <h4 class="name" id="event:session:disconnected">session:disconnected</h4>
     
     
+    <p class="summary">Session disconnected event fires when the session was successfully disconnected.</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when the session was successfully disconnected.</p>
+        <p>The event is fired if the user logs out successfully and the enhanced webrtc session
+is deleted successfully. User can no longer make or recieve calls.</p>
     </div>
     
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">object</span>
-
-
-            </li>
-        </ul>
     
     
     
@@ -9912,58 +12174,6 @@ API error codes:</p>
     
     
 <dl class="details">
-	
-
-	<h5 class="subsection-title">Properties:</h5>
-
-	<dl>
-
-<table class="props table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-
-		<th>Type</th>
-
-		
-
-		
-
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
-
-        <tr>
-            
-                <td class="name"><code>timestamp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Event fire time.</p></td>
-        </tr>
-
-	
-	</tbody>
-</table>
-</dl>
-
 	
 
 	
@@ -10013,12 +12223,17 @@ API error codes:</p>
     <h4 class="name" id="event:session:ready">session:ready</h4>
     
     
+    <p class="summary">Session ready event fires when the user is successfully logged in and the SDK is
+initialized and ready to make, receive calls</p>
+    
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>This event fires when the SDK is initialized and ready to make, receive calls</p>
+        <p>The event is fired if the user logs in successfully and an enhanced webrtc session
+is created successfully
+The event is fired with an attached event data of the following format:</p>
     </div>
     
 
@@ -10027,7 +12242,7 @@ API error codes:</p>
         <ul>
             <li>
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             </li>
@@ -10084,30 +12299,7 @@ API error codes:</p>
 
             
 
-            <td class="description last"><p>The ID of the session.</p></td>
-        </tr>
-
-	
-
-        <tr>
-            
-                <td class="name"><code>timestamp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Date</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Event fire time.</p></td>
+            <td class="description last"><p>The id associated with the enhanced webrtc session.</p></td>
         </tr>
 
 	
@@ -10180,7 +12372,7 @@ API error codes:</p>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on 2014-09-26T14:14:39-07:00 using the <a
+		on 2014-10-10T19:03:05-07:00 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

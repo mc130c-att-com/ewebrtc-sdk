@@ -28,6 +28,10 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="ATT.logManager.html">ATT.logManager</a>
+						</li>
+						
+						<li>
 							<a href="ATT.rtc.html">ATT.rtc</a>
 						</li>
 						
@@ -234,12 +238,12 @@
 
     
         
-            <div class="description"><p><strong>Note: This API is only usable if you use the NodeJS DHS provided with the SDK.</strong></p>
+            <div class="description"><p><strong>Note: This API is only usable if you use the built-in DHS provided with the SDK.</strong></p>
 <p>The <code>dhs</code> namespace provides a client API for using our optional DHS RESTful API.
 The DHS RESTful API allows you to perform the following actions:</p>
 <ul>
-<li>Generate AT&amp;T's OAuth Access Tokens</li>
-<li>Generate E911 IDs</li>
+<li>Create access tokens using AT&amp;T's OAuth</li>
+<li>Create E911 Ids using AT&amp;T's OAuth and API</li>
 </ul></div>
         
 
@@ -300,17 +304,27 @@ The DHS RESTful API allows you to perform the following actions:</p>
     <h4 class="name" id="createAccessToken"><span class="type-signature">&lt;static> </span>createAccessToken<span class="signature">(options)</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Retrive an Access Token</p>
+    <p class="summary">Create an Access Token using AT&T's OAuth for mobile number, virtual number and account id users.</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Uses the authcode obtained from consent flow.
-For MOBILE_NUMBER user we obtain new access token every time the user goes through
-consent flow and authenticated calls dhs to get access token on successful
-return it will call address page</p>
+        <p>This methods accepts a <code>app_scope</code> and creates the <code>access token</code> for that particular <code>app_scope</code>.
+Accepted values for <code>app_scope</code> are:</p>
+<ul>
+<li><p>MOBILE_NUMBER</p>
+</li>
+<li><p>VIRTUAL_NUMBER</p>
+</li>
+<li><p>ACCOUNT_ID</p>
+</li>
+<li><p>E911</p>
+</li>
+</ul>
+<p>For mobile number user, the method requires an additional param <code>auth_code</code> for the authorization code
+obtained during the consent flow.</p>
     </div>
     
 
@@ -374,6 +388,8 @@ return it will call address page</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -386,23 +402,31 @@ return it will call address page</p>
 
         <tr>
             
-                <td class="name"><code>scope</code></td>
+                <td class="name"><code>app_scope</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">String</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Application scope for getting access token</p></td>
         </tr>
 
 	
@@ -415,17 +439,27 @@ return it will call address page</p>
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">String</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>Authorization Code from Consent flow.</p></td>
+            <td class="description last"><p>Authorization Code from user consent for mobile number user.</p></td>
         </tr>
 
 	
@@ -444,6 +478,14 @@ return it will call address page</p>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -467,6 +509,14 @@ return it will call address page</p>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -530,6 +580,29 @@ return it will call address page</p>
     
     
     
+        <h5>Examples</h5>
+        
+    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Create access token using DHS
+var success = function () {...};
+var error = function () {...};
+ATT.rtc.dhs.createAccessToken({
+  app_scope: &#x27;E911&#x27;,
+  success: success,
+  error: error
+});</pre>
+
+    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Create access token using DHS
+var success = function () {...};
+var error = function () {...};
+ATT.rtc.dhs.createAccessToken({
+  app_scope: &#x27;MOBILE_NUMBER&#x27;,
+  auth_code: &#x27;auth_code_from_consent_flow&#x27;
+  success: success,
+  error: error
+});</pre>
+
+
+    
 </dd>
 
         
@@ -538,17 +611,37 @@ return it will call address page</p>
     <h4 class="name" id="createE911Id"><span class="type-signature">&lt;static> </span>createE911Id<span class="signature">(options)</span><span class="type-signature"></span></h4>
     
     
-    <p class="summary">Creates a new E911 ID for the address provided</p>
+    <p class="summary">Creates a new E911 Id using an `e911` scope access token and an address</p>
     
 </dt>
 <dd>
     
     
     <div class="description">
-        <p>Created every time the MOBILE_NUMBER user goes through the consent flow and authenticated</p>
-<p><strong>Error Codes</strong></p>
+        <p>E911 Id is required for mobile number and virtual number user for creating enhanced webrtc session.
+Use this function to create an E911 Id that can be used for creating the enhanced webrtc session
+for mobile number and virtual number users.
+This method requires an access token obtained using <code>E911</code> auth_scope and a physical address with
+these <code>string</code> fields:</p>
 <ul>
-<li>Code - Desc</li>
+<li><p>first_name</p>
+</li>
+<li><p>last_name</p>
+</li>
+<li><p>house_number</p>
+</li>
+<li><p>street</p>
+</li>
+<li><p>unit (optional)</p>
+</li>
+<li><p>city</p>
+</li>
+<li><p>state</p>
+</li>
+<li><p>zip</p>
+</li>
+<li><p>is_confirmed (true or false)</p>
+</li>
 </ul>
     </div>
     
@@ -613,6 +706,8 @@ return it will call address page</p>
 		<th>Type</th>
 
 		
+		<th>Argument</th>
+		
 
 		
 
@@ -625,7 +720,7 @@ return it will call address page</p>
 
         <tr>
             
-                <td class="name"><code>data</code></td>
+                <td class="name"><code>token</code></td>
             
 
             <td class="type">
@@ -638,10 +733,330 @@ return it will call address page</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The address fields</p></td>
+            <td class="description last"><p>Access token</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>address</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Address object</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>first_name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>First name</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>last_name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Last name</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>house_number</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>House number</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>street</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Street name</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>unit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Unit/Apt./Suite number</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>city</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>City</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>state</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>State</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>zip</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Zip code</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>is_confirmed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Confirm that the address exists (even if not found in the database)</p></td>
         </tr>
 
 	
@@ -661,10 +1076,18 @@ return it will call address page</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Success callback</p></td>
         </tr>
 
 	
@@ -684,10 +1107,18 @@ return it will call address page</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Failure callback</p></td>
         </tr>
 
 	
@@ -746,6 +1177,29 @@ return it will call address page</p>
     
     
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Create E911 id using DHS
+var success = function () {...};
+var error = function () {...};
+ATT.rtc.dhs.createAccessToken({
+  token: &#x27;e911_id_scoped_access_token&#x27;,
+  address: {
+   first_name: &#x27;John&#x27;,
+   last_name: &#x27;Doe&#x27;,
+   house_number: &#x27;1111&#x27;,
+   street: &#x27;ABC Street&#x27;,
+   city: &#x27;Seattle&#x27;,
+   state: &#x27;WA&#x27;,
+   zip: &#x27;98001&#x27;
+   is_confirmed: &#x27;false&#x27;
+  },
+  success: success,
+  error: error
+});</pre>
+
+
+    
 </dd>
 
         </dl>
@@ -774,7 +1228,7 @@ return it will call address page</p>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on 2014-09-26T14:14:39-07:00 using the <a
+		on 2014-10-10T19:03:05-07:00 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

@@ -28,6 +28,10 @@
 					<ul class="dropdown-menu ">
 						
 						<li>
+							<a href="ATT.logManager.html">ATT.logManager</a>
+						</li>
+						
+						<li>
 							<a href="ATT.rtc.html">ATT.rtc</a>
 						</li>
 						
@@ -234,9 +238,11 @@
         
             <div class="description"><p>This namespace provides the methods necessary to configure the JS client library.</p>
 <ul>
-<li>You can use the <code>configure</code> method to request environment options from our
-built-in DHS. Alternatively you can also provide your own environemnt options.</li>
-<li>Use the <code>hasEnhancedWebRTC</code> method to test for browswer compatibility</li>
+<li>You can use the <code>configure</code> method to request environment options from the
+built-in DHS. Alternatively you can also configure using your own environment options.</li>
+<li>You can use the <code>associateAccessToken</code> method to associate an access token with
+a virtual number or account id user id.</li>
+<li>Use the <code>hasEnhancedWebRTC</code> method to test for browser compatibility</li>
 <li>Use <code>getEWebRTCDomain</code> to obtain the WebRTC domain setup for the library.</li>
 </ul></div>
         
@@ -293,7 +299,7 @@ built-in DHS. Alternatively you can also provide your own environemnt options.</
             <dd></dd>
         
             <dt><a href="namespaces.html#ATT.rtc.Phone"><a href="ATT.rtc.Phone.html">Phone</a></a></dt>
-            <dd></dd>
+            <dd>Phone API for AT&T's Enhanced WebRTC functionality.</dd>
         </dl>
     
 
@@ -303,6 +309,251 @@ built-in DHS. Alternatively you can also provide your own environemnt options.</
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
+            
+<dt>
+    <h4 class="name" id="associateAccessToken"><span class="type-signature">&lt;static> </span>associateAccessToken<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+    
+    <p class="summary">Associate an access token with a user id.</p>
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Options</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>userId to associate the access token with</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>token</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>token to associate with the user id</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>success</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>success callback function</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>failure callback function</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">&#x2F;&#x2F; Associate user id &#x27;john&#x27; with token &#x27;access_token&#x27;
+var success = function () {...},
+   error = function () {...};
+ATT.rtc.associateAccessToken({
+   userId: &#x27;john&#x27;,
+   token: &#x27;access_token&#x27;,
+   success: success,
+   error: error
+});</pre>
+
+
+    
+</dd>
+
+        
             
 <dt>
     <h4 class="name" id="configure"><span class="type-signature">&lt;static> </span>configure<span class="signature">(<span class="optional">options</span>, <span class="optional">success</span>, <span class="optional">error</span>)</span><span class="type-signature"></span></h4>
@@ -315,9 +566,9 @@ built-in DHS. Alternatively you can also provide your own environemnt options.</
     
     
     <div class="description">
-        <p>If <code>options</code> object is provided, configure method will use the <code>options.wewbrtc_domain</code>
+        <p>If <code>options</code> object is provided, configure method will use the <code>options.ewebrtc_domain</code>
  and <code>[options.api_endpoint]</code> values as the application domain and api endpoint respectively.
-If no <code>options</code> were passed, the configuration will be requested from the Node DHS.</p>
+If no <code>options</code> were passed, the configuration will be requested from the built-in DHS and then applied.</p>
     </div>
     
 
@@ -815,7 +1066,7 @@ var phone = ATT.rtc.configure({
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on 2014-09-26T14:14:39-07:00 using the <a
+		on 2014-10-10T19:03:05-07:00 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
