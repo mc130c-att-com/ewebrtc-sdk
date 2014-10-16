@@ -9,61 +9,25 @@ The SDK provides the following components:
   to generate OAuth access tokens and E911 Ids.
   **Please refer to `node-dhs/RELEASE.md` for DHS-specific notes**
 
-# v1.0.0-beta.6
-October 10 , 2014
+# v1.0.0-beta.7
+October 16 , 2014
 
-* **Bug Fix:** DE76061: WebRTC Source App is forced to restart when receiving party denies media to incoming video
-call(QC29488).
-* **Bug Fix:** DE73225: Session terminated message is not returned to model shop application. (QC16941).
-* **Bug Update:** DE71395: Move Call Defect for Video Mac to Mac
-* **Bug Fix:** DE78330: WebRTC SDK: callhold initiator send out 'a=recvonly' instead of 'a=sendonly'. (SVT 5502).
-* **Bug Fix:** DE76731: BIZ_UAT_WebRTC_PROD: CORS not working in Firefox - Macbook. QC 16990
-* **Bug Fix:** DE76381: Canceled & Rejected  event for pending Call gets triggered multiple times.
-* **Bug Fix:** DE71356: Sample app throw javascript error on clicking update e911 address
+* **Bug Fix:** DE79543: BIZ_UAT_WebRTC_PROD: Conference is failing 3rd participant joins call **(QC 31333)**
+* **Bug Fix:** DE78665: BIZ_UAT_WebRTC_PROD: No incoming call to WebRTC client when user already in a call **(QC 33014)**
+* **Bug Fix:** DE78750: UAT 28565- Source: The system failed to send call ending notification to application **(SVT 5505)**
+* **Bug Fix:** DE79551: Chrome version 38 update Issue (ICMN to ICMN) not working
 
 ## Known Issues
-
-* When calling from Mobile Number user to another Mobile Number user, the callee does not get media
-  * **Workaround:** Put the call on hold and then resume it. Both parties will get media after that.
-
-* `call:move-terminated` event not working properly when calling `phone.move`.
-  * Related Defect:
-    * **Bug Update:** DE71395: Move Call Defect for Video Mac to Mac
-
-
-* Unable to make calls to Virtual Number users using `tel:` format.
-  * **Workaround:** Use the following format: `sip:1231231234@yourdomain.com`
-  * Related QC Ticket:
-    * QC 82965: SDK_WEBRTC_8.14 - VTN User is Unable to Create Conference in Production Environment (F4/H4) : state: "session-terminated", reason: "External server request error."
-
-
+* When we make two calls and hang up the second call. The first call gets resumed  but has one way video .
+* One way audio when we add a mobile number (PSTN) for a video conference.
+* `call:move-terminated` event is not fired when successfully completing `phone.move`.
 * After successfully adding a mobile phone (PSTN) to a Conference it will be disconnected after ~24s.
   * Related QC Ticket:
     * QC 85425: Call disconnects after 24 seconds when successfully creating a conference (as any user) and adding a PSTN participant.
-
-
-* `External Server request error` when creating a Conference using Virtual Number or Account ID users.
-  * Related QC Tickets:
-    * QC 81357: SDK_WEBRTC_7.14 - Unable to create a conference in F4 using an Account ID user
-    * QC 82965: SDK_WEBRTC_8.14 - VTN User is Unable to Create Conference in Production Environment (F4/H4) : state: "session-terminated", reason: "External server request error."
-
-
-* Getting Message: `External Server request error` or `User Not Found` when calling Account ID users.
-  * Cause: This is caused by a platform issue.
-  * **Workaround:** N/A
-  * Related QC Tickets:
-    * QC 17878
-    * QC 82965: SDK_WEBRTC_8.14 - VTN User is Unable to Create Conference in Production Environment (F4/H4) : state: "session-terminated", reason: "External server request error."
-
-
-* `Phone.move` only works for Chrome 37+ on Windows.
-
 * Adding multiple participants at once using `Phone.addParticipants` method fails with error: `SVC8501:MediaConference ongoing update participant operation.,Variables=`. SDK is tracking this issue against the API platform with the QC Defect ID: 79678
   * **Workaround:** Use `Phone.addParticipants` with a single participant ID (mobile number, account id, virtual number)
   * Related QC Ticket:
     * QC 85105: SDK_WEBRTC_9.14 - Error: `External server request error.` when adding a participant to a conference created by a VTN user.
-
-
 * When a participant leaves a conference by using the `endConference` method, the platform does not generate
 the necessary event to inform the host. Product Team is tracking this issue with QC Defect ID: 79658
 * When an Mobile Number user rejects an invitation for a conference, sometimes the event `conference:ended` will not
@@ -77,15 +41,25 @@ the necessary event to inform the host. Product Team is tracking this issue with
 ## Tested Environments
 
    * RESTful API Environment: The SDK was tested against Production.
-   * Chrome Version 37.0.2062.94 for OSX v10.8.5
+   * Chrome Version 38 for OSX v10.8.5
 
-**_The SDK may also work for other Operating Systems,
-  other Browsers but is not tested or supported_**
-
-## Notes
+**_The SDK may also work for other Operating Systems, other Browsers but is not tested or supported._**
 
 
 # Older releases
+
+# v1.0.0-beta.6
+October 10 , 2014
+
+* **Bug Fix:** DE76061: WebRTC Source App is forced to restart when receiving party denies media to incoming video
+call(QC29488).
+* **Bug Fix:** DE73225: Session terminated message is not returned to model shop application. (QC16941).
+* **Bug Update:** DE71395: Move Call Defect for Video Mac to Mac
+* **Bug Fix:** DE78330: WebRTC SDK: callhold initiator send out 'a=recvonly' instead of 'a=sendonly'. (SVT 5502).
+* **Bug Fix:** DE76731: BIZ_UAT_WebRTC_PROD: CORS not working in Firefox - Macbook. QC 16990
+* **Bug Fix:** DE76381: Canceled & Rejected  event for pending Call gets triggered multiple times.
+* **Bug Fix:** DE71356: Sample app throw javascript error on clicking update e911 address
+
 
 # v1.0.0-beta.5
 September 26, 2014

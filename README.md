@@ -1,9 +1,5 @@
 # JavaScript SDK for AT&T Enhanced WebRTC API
 
-**WARNING: THIS DOCUMENT IS FOR INTERNAL DISTRIBUTION ONLY**
-
-This package contains software and documentation for **Beta** release of JavaScript SDK for AT&T Enhanced WebRTC API (_JS SDK_)
-
 **Optional Setup: Markdown Viewer (Chrome Extension)**
 
 For a **much better reading experience** open this file with a Markdown Viewer.
