@@ -9,19 +9,24 @@ The SDK provides the following components:
   to generate OAuth access tokens and E911 Ids.
   **Please refer to `node-dhs/RELEASE.md` for DHS-specific notes**
 
-# v1.0.0-beta.7
-October 16 , 2014
+# v1.0.0-beta.8
+October 31 , 2014
 
-* **Bug Fix:** DE79543: BIZ_UAT_WebRTC_PROD: Conference is failing 3rd participant joins call **(QC 31333)**
-* **Bug Fix:** DE78665: BIZ_UAT_WebRTC_PROD: No incoming call to WebRTC client when user already in a call **(QC 33014)**
-* **Bug Fix:** DE78750: UAT 28565- Source: The system failed to send call ending notification to application **(SVT 5505)**
-* **Bug Fix:** DE79551: Chrome version 38 update Issue (ICMN to ICMN) not working
+* **New Feature:** Transfer an established call to a third party. Use this function to transfer an established call between a transferee and a transferer to the transfer-target. There should be an established call that is on hold. There should be a second established call with transfer target transfer will transfer the other party of the first call to the other party of the second call and drop the current user from the call.
+* **Bug Fix:** DE84141 : BIZ_UAT_WebRTC_PROD: Callee did not hear caller after hold and resume. QC 41731
+* **Bug Fix:** DE82942 : CONFERENCE -WebRTC SDK: 'Conf Hold' behavior is different depending on Host or Particpant to
+perform. SVT 5579.
+* **Bug Fix:** DE74800 : Logout should attempt to cleanup local resources and attempt to terminate existing calls
+gracefully.
+* **Bug Fix:** DE80666: session-ready and session-disconnected event triggered multiple times
 
 ## Known Issues
-* When we make two calls and hang up the second call. The first call gets resumed  but has one way video .
-* One way audio when we add a mobile number (PSTN) for a video conference.
+
+* In a mobile number to mobile number call, transferring or moving the call to a mobile device results in one-way audio
+* When we make two calls and hang up the second call. The first call gets resumed  but has one way video.
+* One way audio when we add a mobile device for a video conference.
 * `call:move-terminated` event is not fired when successfully completing `phone.move`.
-* After successfully adding a mobile phone (PSTN) to a Conference it will be disconnected after ~24s.
+* After successfully adding a mobile device to a Conference it will be disconnected after ~24s.
   * Related QC Ticket:
     * QC 85425: Call disconnects after 24 seconds when successfully creating a conference (as any user) and adding a PSTN participant.
 * Adding multiple participants at once using `Phone.addParticipants` method fails with error: `SVC8501:MediaConference ongoing update participant operation.,Variables=`. SDK is tracking this issue against the API platform with the QC Defect ID: 79678
@@ -45,8 +50,16 @@ the necessary event to inform the host. Product Team is tracking this issue with
 
 **_The SDK may also work for other Operating Systems, other Browsers but is not tested or supported._**
 
-
 # Older releases
+
+
+# v1.0.0-beta.7
+October 16 , 2014
+
+* **Bug Fix:** DE79543: BIZ_UAT_WebRTC_PROD: Conference is failing 3rd participant joins call **(QC 31333)**
+* **Bug Fix:** DE78665: BIZ_UAT_WebRTC_PROD: No incoming call to WebRTC client when user already in a call **(QC 33014)**
+* **Bug Fix:** DE78750: UAT 28565- Source: The system failed to send call ending notification to application **(SVT 5505)**
+* **Bug Fix:** DE79551: Chrome version 38 update Issue (ICMN to ICMN) not working
 
 # v1.0.0-beta.6
 October 10 , 2014

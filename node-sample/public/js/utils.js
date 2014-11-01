@@ -579,6 +579,7 @@ function onCallSwitched(data) {
   setMessage('<h6>Switched call: from ' + data.from + ' to ' + data.to +
     '. Time: ' + data.timestamp + '<h6>');
   document.getElementById('btn-switch').disabled = false;
+  document.getElementById('btn-transfer').disabled = false;
 }
 
 function onConferenceConnected(data) {
@@ -678,6 +679,14 @@ function onCallDisconnecting(data) {
 
 function onConferenceDisconnecting(data) {
   setMessage('Disconnecting conference. Time: ' + data.timestamp);
+}
+
+function onTransferring(data) {
+  setMessage('Call Transfer Initiated Successfully' + '.' + ' Time: ' + data.timestamp);
+}
+
+function onTransferred(data) {
+  setMessage('Call Transfer Successfully' + '.' + ' Time: ' + data.timestamp);
 }
 
 function onCallDisconnected(data) {
