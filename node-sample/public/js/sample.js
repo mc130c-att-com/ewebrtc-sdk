@@ -423,7 +423,8 @@ function call(event) {
     audioOnly = document.getElementById('callAudioOnly').checked;
     callee = document.getElementById('callee').value;
     //util method to clean phone number
-    callee = appendDomainToAccountIDCallee(callee);
+//    callee = appendDomainToAccountIDCallee(callee);
+    callee = cleanPhoneNumber(callee);
 
     if (phone.isCallInProgress()) {
       //showCallAlert('HOLDING...');
@@ -519,11 +520,11 @@ function participant() {
   partcpnts = document.getElementById('participant').value;
   listOfInvitees = getListOfInvitees(partcpnts);
 
-  for (counter = 0; counter < listOfInvitees.length; counter += 1) {
-    partcpnt = appendDomainToAccountIDCallee(listOfInvitees[counter]);
-
-    listOfInvitees[counter] = partcpnt;
-  }
+//  for (counter = 0; counter < listOfInvitees.length; counter += 1) {
+//    partcpnt = appendDomainToAccountIDCallee(listOfInvitees[counter]);
+//
+//    listOfInvitees[counter] = partcpnt;
+//  }
 
   addParticipants(listOfInvitees);
 }

@@ -12,7 +12,7 @@
   onDialing, onIncomingCall, onConnecting, onCallConnected, onMediaEstablished, onEarlyMedia,
   onAnswering, onCallMuted, onCallUnmuted, onCallHold, onCallResume,
   onCallDisconnecting, onCallDisconnected, onCallCanceled, onCallRejected,
-  onConferenceConnected, onConferenceDisconnected, onConferenceInvite, onConferenceEnded,
+  onConferenceConnected, onConferenceDisconnected, onConferenceInvite, onConferenceCanceled, onConferenceEnded,
   onJoiningConference, onInvitationSent, onInviteAccepted, onInviteRejected, onParticipantRemoved,
   onConferenceDisconnecting, onConferenceHold, onConferenceResumed,
   onNotification, onCallSwitched, onCallRingbackProvided, onTransferring, onTransferred*/
@@ -21,14 +21,14 @@
 
 var phone,
   eWebRTCDomain,
-  bEnhancedWebRTCSupportExists;
+  bWebRTCSupportExists;
 
-// ### Check if the current browser has Enhanced WebRTC capability
+// ### Check if the current browser has WebRTC capability
 // ---------------------------------
-//Check to see whether browser [**has Enhanced WebRTC**](../../lib/webrtc-sdk/doc/ATT.rtc.html#hasEnhancedWebRTC) support using Media Service API
-bEnhancedWebRTCSupportExists = ATT.rtc.hasEnhancedWebRTC();
+//Check to see whether browser [**has WebRTC**](../../lib/webrtc-sdk/doc/ATT.browser.html#hasWebRTC) support using Media Service API
+bWebRTCSupportExists = ('Not Supported' !== ATT.browser.hasWebRTC());
 
-if (!bEnhancedWebRTCSupportExists) {
+if (!bWebRTCSupportExists) {
   throw unsupportedBrowserError();
 }
 
@@ -64,7 +64,7 @@ if (!bEnhancedWebRTCSupportExists) {
 
 ATT.rtc.configure(function () {
 
-  // On successfully obtaining the configuration we will get the [**Enhanced WebRTC Domain**](../../lib/webrtc-sdk/doc/ATT.rtc.html#hasEnhancedWebRTC)
+  // On successfully obtaining the configuration we will get the [**Enhanced WebRTC Domain**](../../lib/webrtc-sdk/doc/ATT.rtc.html#getEWebRTCDomain)
   eWebRTCDomain = ATT.rtc.getEWebRTCDomain();
 
   // and load the default view into the browser
@@ -630,9 +630,24 @@ phone.on('conference:connecting', onConnecting);
 // </pre>
 phone.on('conference:connected', onConferenceConnected);
 
-// ### Register for _conference:disconnected_ event
+// ### Register for _conference:canceled_ event
 // ---------------------------------
-// The [**conference:ended**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:ended) event is published after successfully ending the conference.
+// The [**conference:canceled**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:canceled) event is published after
+// the conference is canceled.
+//
+// **Callback function example:**
+//
+// <pre>
+// function onConferenceCanceled(data) {
+//   timestamp = data.timestamp;
+// }
+// </pre>
+phone.on('conference:canceled', onConferenceCanceled);
+
+// ### Register for _conference:ended_ event
+// ---------------------------------
+// The [**conference:ended**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:ended) event is published after
+// successfully ending the conference.
 //
 // **Callback function example:**
 //
@@ -810,6 +825,7 @@ function cleanPhoneNumber(phoneNum) {
 
   // In order to get the phone number in a format that the library can use to
   // dial, use the [**phone.cleanPhoneNumber**](../../lib/webrtc-sdk/doc/Phone.html#cleanPhoneNumber) method, it will convert numbers like
-  // `+1 (123) 123 1234` to `11231231234`.
+  // `+1 (123) 123 1234` to `11231231234`
+  // `1800CALFEDX` to `18002253339`.
   return phone.cleanPhoneNumber(phoneNum);
 }

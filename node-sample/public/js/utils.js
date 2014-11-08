@@ -200,6 +200,7 @@ function createView(view, data, response) {
     if (profile && data.user_name) {
       profile.style.display = 'block';
       profile.innerHTML = data.user_name;
+      document.getElementById('callee').value =  '@' + eWebRTCDomain;
     }
 
     if (updateAddress) {
@@ -713,6 +714,11 @@ function onCallDisconnected(data) {
     buttons.resume.disabled = false;
     buttons.switch.disabled = true;
   }
+}
+
+function onConferenceCanceled(data) {
+  setMessage('Conference canceled. Time: ' + data.timestamp);
+  resetUI();
 }
 
 function onConferenceEnded(data) {

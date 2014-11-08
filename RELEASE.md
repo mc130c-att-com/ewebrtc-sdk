@@ -9,16 +9,16 @@ The SDK provides the following components:
   to generate OAuth access tokens and E911 Ids.
   **Please refer to `node-dhs/RELEASE.md` for DHS-specific notes**
 
-# v1.0.0-beta.8
-October 31 , 2014
+# v1.0.0-beta.9
+November 7, 2014
 
-* **New Feature:** Transfer an established call to a third party. Use this function to transfer an established call between a transferee and a transferer to the transfer-target. There should be an established call that is on hold. There should be a second established call with transfer target transfer will transfer the other party of the first call to the other party of the second call and drop the current user from the call.
-* **Bug Fix:** DE84141 : BIZ_UAT_WebRTC_PROD: Callee did not hear caller after hold and resume. QC 41731
-* **Bug Fix:** DE82942 : CONFERENCE -WebRTC SDK: 'Conf Hold' behavior is different depending on Host or Particpant to
-perform. SVT 5579.
-* **Bug Fix:** DE74800 : Logout should attempt to cleanup local resources and attempt to terminate existing calls
-gracefully.
-* **Bug Fix:** DE80666: session-ready and session-disconnected event triggered multiple times
+* **New Feature:** Validate Browser Support & Extend hasWebRTC
+* **New Feature:** Allowing to Dial International Phone numbers
+* **Bug Fix:** DE74450 BIZ_UAT_WebRTC_PROD: SDK is converting international number to local 10 digit number and 
+making calls .QC25279
+instead of throwing error message. QC 25279
+* **Bug Fix:** DE85623 : WebRTC SDK: VoLTE video conf, adding a 3g as participant. 3g handset ring and answers. But 
+web client does not stop ringing. SVT 5571
 
 ## Known Issues
 
@@ -52,6 +52,16 @@ the necessary event to inform the host. Product Team is tracking this issue with
 
 # Older releases
 
+# v1.0.0-beta.8
+October 31 , 2014
+
+* **New Feature:** Transfer an established call to a third party. Use this function to transfer an established call between a transferee and a transferer to the transfer-target. There should be an established call that is on hold. There should be a second established call with transfer target transfer will transfer the other party of the first call to the other party of the second call and drop the current user from the call.
+* **Bug Fix:** DE84141 : BIZ_UAT_WebRTC_PROD: Callee did not hear caller after hold and resume. QC 41731
+* **Bug Fix:** DE82942 : CONFERENCE -WebRTC SDK: 'Conf Hold' behavior is different depending on Host or Particpant to
+perform. SVT 5579.
+* **Bug Fix:** DE74800 : Logout should attempt to cleanup local resources and attempt to terminate existing calls
+gracefully.
+* **Bug Fix:** DE80666: session-ready and session-disconnected event triggered multiple times
 
 # v1.0.0-beta.7
 October 16 , 2014

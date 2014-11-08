@@ -85,7 +85,7 @@
   onDialing, onIncomingCall, onConnecting, onCallConnected, onMediaEstablished, onEarlyMedia,
   onAnswering, onCallMuted, onCallUnmuted, onCallHold, onCallResume,
   onCallDisconnecting, onCallDisconnected, onCallCanceled, onCallRejected,
-  onConferenceConnected, onConferenceDisconnected, onConferenceInvite, onConferenceEnded,
+  onConferenceConnected, onConferenceDisconnected, onConferenceInvite, onConferenceCanceled, onConferenceEnded,
   onJoiningConference, onInvitationSent, onInviteAccepted, onInviteRejected, onParticipantRemoved,
   onConferenceDisconnecting, onConferenceHold, onConferenceResumed,
   onNotification, onCallSwitched, onCallRingbackProvided, onTransferring, onTransferred*/</span>
@@ -94,7 +94,7 @@
 
 <span class="hljs-keyword">var</span> phone,
   eWebRTCDomain,
-  bEnhancedWebRTCSupportExists;</pre></div></div>
+  bWebRTCSupportExists;</pre></div></div>
             
         </li>
         
@@ -105,7 +105,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <h3 id="check-if-the-current-browser-has-enhanced-webrtc-capability">Check if the current browser has Enhanced WebRTC capability</h3>
+              <h3 id="check-if-the-current-browser-has-webrtc-capability">Check if the current browser has WebRTC capability</h3>
 <hr>
 
             </div>
@@ -119,13 +119,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Check to see whether browser <a href="../api-docs/ATT.rtc.html#hasEnhancedWebRTC"><strong>has Enhanced WebRTC</strong></a> support using Media Service API</p>
+              <p>Check to see whether browser <a href="../api-docs/ATT.browser.html#hasWebRTC"><strong>has WebRTC</strong></a> support using Media Service API</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>bEnhancedWebRTCSupportExists = ATT.rtc.hasEnhancedWebRTC();
+            <div class="content"><div class='highlight'><pre>bWebRTCSupportExists = (<span class="hljs-string">'Not Supported'</span> !== ATT.browser.hasWebRTC());
 
-<span class="hljs-keyword">if</span> (!bEnhancedWebRTCSupportExists) {
+<span class="hljs-keyword">if</span> (!bWebRTCSupportExists) {
   <span class="hljs-keyword">throw</span> unsupportedBrowserError();
 }</pre></div></div>
             
@@ -228,7 +228,7 @@ ATT.rtc.configure(<span class="hljs-function"><span class="hljs-keyword">functio
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>On successfully obtaining the configuration we will get the <a href="../api-docs/ATT.rtc.html#hasEnhancedWebRTC"><strong>Enhanced WebRTC Domain</strong></a></p>
+              <p>On successfully obtaining the configuration we will get the <a href="../api-docs/ATT.rtc.html#getEWebRTCDomain"><strong>Enhanced WebRTC Domain</strong></a></p>
 
             </div>
             
@@ -2382,7 +2382,7 @@ function onConferenceConnected(data) {
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-144">&#182;</a>
               </div>
-              <h3 id="register-for-_conference-disconnected_-event">Register for <em>conference:disconnected</em> event</h3>
+              <h3 id="register-for-_conference-canceled_-event">Register for <em>conference:canceled</em> event</h3>
 <hr>
 
             </div>
@@ -2396,7 +2396,44 @@ function onConferenceConnected(data) {
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-145">&#182;</a>
               </div>
-              <p>The <a href="../api-docs/Phone.html#event:conference:ended"><strong>conference:ended</strong></a> event is published after successfully ending the conference.</p>
+              <p>The <a href="../api-docs/Phone.html#event:conference:canceled"><strong>conference:canceled</strong></a> event is published after
+the conference is canceled.</p>
+<p><strong>Callback function example:</strong></p>
+<pre>
+function onConferenceCanceled(data) {
+  timestamp = data.timestamp;
+}
+</pre>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>phone.on(<span class="hljs-string">'conference:canceled'</span>, onConferenceCanceled);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-146">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-146">&#182;</a>
+              </div>
+              <h3 id="register-for-_conference-ended_-event">Register for <em>conference:ended</em> event</h3>
+<hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-147">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-147">&#182;</a>
+              </div>
+              <p>The <a href="../api-docs/Phone.html#event:conference:ended"><strong>conference:ended</strong></a> event is published after
+successfully ending the conference.</p>
 <p><strong>Callback function example:</strong></p>
 <pre>
 function onConferenceEnded(data) {
@@ -2411,11 +2448,11 @@ function onConferenceEnded(data) {
         </li>
         
         
-        <li id="section-146">
+        <li id="section-148">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-146">&#182;</a>
+                <a class="pilcrow" href="#section-148">&#182;</a>
               </div>
               <h3 id="register-for-_conference-held_-event">Register for <em>conference:held</em> event</h3>
 <hr>
@@ -2425,11 +2462,11 @@ function onConferenceEnded(data) {
         </li>
         
         
-        <li id="section-147">
+        <li id="section-149">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-147">&#182;</a>
+                <a class="pilcrow" href="#section-149">&#182;</a>
               </div>
               <p>The <a href="../api-docs/Phone.html#event:conference:held"><strong>conference:held</strong></a> event is published after a
 conference is successfully put on hold.</p>
@@ -2448,11 +2485,11 @@ function onConferenceHold(data) {
         </li>
         
         
-        <li id="section-148">
+        <li id="section-150">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-148">&#182;</a>
+                <a class="pilcrow" href="#section-150">&#182;</a>
               </div>
               <h3 id="register-for-_conference-resumed_-event">Register for <em>conference:resumed</em> event</h3>
 <hr>
@@ -2462,11 +2499,11 @@ function onConferenceHold(data) {
         </li>
         
         
-        <li id="section-149">
+        <li id="section-151">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-149">&#182;</a>
+                <a class="pilcrow" href="#section-151">&#182;</a>
               </div>
               <p>The <a href="../api-docs/Phone.html#event:conference:resumed"><strong>conference:resumed</strong></a> event is published when
 a conference is successfully resumed.</p>
@@ -2485,11 +2522,11 @@ function onConferenceResumed(data) {
         </li>
         
         
-        <li id="section-150">
+        <li id="section-152">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-150">&#182;</a>
+                <a class="pilcrow" href="#section-152">&#182;</a>
               </div>
               <h2 id="starting-the-conference">Starting the conference</h2>
 <hr>
@@ -2499,11 +2536,11 @@ function onConferenceResumed(data) {
         </li>
         
         
-        <li id="section-151">
+        <li id="section-153">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-151">&#182;</a>
+                <a class="pilcrow" href="#section-153">&#182;</a>
               </div>
               
             </div>
@@ -2514,11 +2551,11 @@ function onConferenceResumed(data) {
         </li>
         
         
-        <li id="section-152">
+        <li id="section-154">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-152">&#182;</a>
+                <a class="pilcrow" href="#section-154">&#182;</a>
               </div>
               <p>Once you have registered handlers for all appropriate
 events you can use the <a href="../api-docs/Phone.html#startConference"><strong>phone.startConference</strong></a> method to create
@@ -2532,11 +2569,11 @@ a conference. You must pass:</p>
         </li>
         
         
-        <li id="section-153">
+        <li id="section-155">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-153">&#182;</a>
+                <a class="pilcrow" href="#section-155">&#182;</a>
               </div>
               <p>a valid media type for this conference:</p>
 <ul>
@@ -2551,11 +2588,11 @@ a conference. You must pass:</p>
         </li>
         
         
-        <li id="section-154">
+        <li id="section-156">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-154">&#182;</a>
+                <a class="pilcrow" href="#section-156">&#182;</a>
               </div>
               <p>the <code>HTMLVideoElement</code> to use for the local stream,</p>
 
@@ -2566,11 +2603,11 @@ a conference. You must pass:</p>
         </li>
         
         
-        <li id="section-155">
+        <li id="section-157">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-155">&#182;</a>
+                <a class="pilcrow" href="#section-157">&#182;</a>
               </div>
               <p>and the <code>HTMLVideoElement</code> to use for the remote stream.</p>
 
@@ -2583,11 +2620,11 @@ a conference. You must pass:</p>
         </li>
         
         
-        <li id="section-156">
+        <li id="section-158">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-156">&#182;</a>
+                <a class="pilcrow" href="#section-158">&#182;</a>
               </div>
               <h2 id="receiving-conference-invites">Receiving Conference Invites</h2>
 <p>In order to handle conference invites, you must register for the
@@ -2598,43 +2635,13 @@ following events on the Phone object:</p>
         </li>
         
         
-        <li id="section-157">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-157">&#182;</a>
-              </div>
-              <h3 id="register-for-_conference-invitation-received_-event">Register for <em>conference:invitation-received</em> event</h3>
-<hr>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-158">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-158">&#182;</a>
-              </div>
-              <p>The <a href="../api-docs/Phone.html#event:conference:invitation-received"><strong>conference:invitation-received</strong></a>
-event is published when the other party receives invitation</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>phone.on(<span class="hljs-string">'conference:invitation-received'</span>, onConferenceInvite);</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-159">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-159">&#182;</a>
               </div>
-              <h3 id="register-for-_conference-joining_-event">Register for <em>conference:joining</em> event</h3>
+              <h3 id="register-for-_conference-invitation-received_-event">Register for <em>conference:invitation-received</em> event</h3>
 <hr>
 
             </div>
@@ -2648,6 +2655,36 @@ event is published when the other party receives invitation</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-160">&#182;</a>
               </div>
+              <p>The <a href="../api-docs/Phone.html#event:conference:invitation-received"><strong>conference:invitation-received</strong></a>
+event is published when the other party receives invitation</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>phone.on(<span class="hljs-string">'conference:invitation-received'</span>, onConferenceInvite);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-161">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-161">&#182;</a>
+              </div>
+              <h3 id="register-for-_conference-joining_-event">Register for <em>conference:joining</em> event</h3>
+<hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-162">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-162">&#182;</a>
+              </div>
               <p>The <a href="../api-docs/Phone.html#event:conference:joining"><strong>conference:joining</strong></a> event is published
 immediately when the other party accepts to join the conference</p>
 
@@ -2658,11 +2695,11 @@ immediately when the other party accepts to join the conference</p>
         </li>
         
         
-        <li id="section-161">
+        <li id="section-163">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-161">&#182;</a>
+                <a class="pilcrow" href="#section-163">&#182;</a>
               </div>
               <h3 id="joining-the-conference">Joining the conference</h3>
 
@@ -2674,11 +2711,11 @@ immediately when the other party accepts to join the conference</p>
         </li>
         
         
-        <li id="section-162">
+        <li id="section-164">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-162">&#182;</a>
+                <a class="pilcrow" href="#section-164">&#182;</a>
               </div>
               <p>Use the <a href="../api-docs/Phone.html#joinConference"><strong>phone.joinConference</strong></a> method to join a conference by accepting the invite.
 You must pass in:</p>
@@ -2690,11 +2727,11 @@ You must pass in:</p>
         </li>
         
         
-        <li id="section-163">
+        <li id="section-165">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-163">&#182;</a>
+                <a class="pilcrow" href="#section-165">&#182;</a>
               </div>
               <p>a valid <code>HTMLVideoElement</code> for the local media stream and</p>
 
@@ -2705,11 +2742,11 @@ You must pass in:</p>
         </li>
         
         
-        <li id="section-164">
+        <li id="section-166">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-164">&#182;</a>
+                <a class="pilcrow" href="#section-166">&#182;</a>
               </div>
               <p>a valid <code>HTMLVideoElement</code> for the remote media stream.</p>
 
@@ -2722,11 +2759,11 @@ You must pass in:</p>
         </li>
         
         
-        <li id="section-165">
+        <li id="section-167">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-165">&#182;</a>
+                <a class="pilcrow" href="#section-167">&#182;</a>
               </div>
               <h2 id="operations-during-an-ongoing-conference">Operations during an ongoing Conference</h2>
 <p>As the host of a Conference you can perform basic operations with
@@ -2744,40 +2781,14 @@ them like:</p>
         </li>
         
         
-        <li id="section-166">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-166">&#182;</a>
-              </div>
-              <h3 id="adding-participants-to-a-conference">Adding participants to a conference</h3>
-<hr>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-167">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-167">&#182;</a>
-              </div>
-              
-            </div>
-            
-        </li>
-        
-        
         <li id="section-168">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-168">&#182;</a>
               </div>
-              <p>First you must register handlers for the events published
-during the process of adding a participant:</p>
+              <h3 id="adding-participants-to-a-conference">Adding participants to a conference</h3>
+<hr>
 
             </div>
             
@@ -2790,6 +2801,32 @@ during the process of adding a participant:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-169">&#182;</a>
               </div>
+              
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-170">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-170">&#182;</a>
+              </div>
+              <p>First you must register handlers for the events published
+during the process of adding a participant:</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-171">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-171">&#182;</a>
+              </div>
               <p>Use the <a href="../api-docs/Phone.html#event:conference:invitation-sent"><strong>confernce:invitation-sent</strong></a> event
 to handle when the invitation was sent successfully</p>
 
@@ -2800,11 +2837,11 @@ to handle when the invitation was sent successfully</p>
         </li>
         
         
-        <li id="section-170">
+        <li id="section-172">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-170">&#182;</a>
+                <a class="pilcrow" href="#section-172">&#182;</a>
               </div>
               <p>Use the <a href="../api-docs/Phone.html#event:conference:invitation-accepted"><strong>confernce:invitation-accepted</strong></a>
 event to handle when the invitation is accepted</p>
@@ -2816,11 +2853,11 @@ event to handle when the invitation is accepted</p>
         </li>
         
         
-        <li id="section-171">
+        <li id="section-173">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-171">&#182;</a>
+                <a class="pilcrow" href="#section-173">&#182;</a>
               </div>
               <p>Use the <a href="../api-docs/Phone.html#event:conference:invitation-rejected"><strong>confernce:invitation-rejected</strong></a>
 event to handle when the invitation is rejected</p>
@@ -2832,11 +2869,11 @@ event to handle when the invitation is rejected</p>
         </li>
         
         
-        <li id="section-172">
+        <li id="section-174">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-172">&#182;</a>
+                <a class="pilcrow" href="#section-174">&#182;</a>
               </div>
               <p>Then use the <a href="../api-docs/Phone.html#addParticipants"><strong>phone.addParticipants</strong></a> method to adds a list of participants, e.g.,</p>
 
@@ -2847,11 +2884,11 @@ event to handle when the invitation is rejected</p>
         </li>
         
         
-        <li id="section-173">
+        <li id="section-175">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-173">&#182;</a>
+                <a class="pilcrow" href="#section-175">&#182;</a>
               </div>
               <pre><code>  phone.addParticipants([<span class="hljs-string">'11231231234'</span>, <span class="hljs-string">'john@domain.com'</span>]);
 </code></pre>
@@ -2863,11 +2900,11 @@ event to handle when the invitation is rejected</p>
         </li>
         
         
-        <li id="section-174">
+        <li id="section-176">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-174">&#182;</a>
+                <a class="pilcrow" href="#section-176">&#182;</a>
               </div>
               <h3 id="removing-participants">Removing Participants</h3>
 <hr>
@@ -2877,11 +2914,11 @@ event to handle when the invitation is rejected</p>
         </li>
         
         
-        <li id="section-175">
+        <li id="section-177">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-175">&#182;</a>
+                <a class="pilcrow" href="#section-177">&#182;</a>
               </div>
               
             </div>
@@ -2889,11 +2926,11 @@ event to handle when the invitation is rejected</p>
         </li>
         
         
-        <li id="section-176">
+        <li id="section-178">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-176">&#182;</a>
+                <a class="pilcrow" href="#section-178">&#182;</a>
               </div>
               <p>First register for <a href="../api-docs/Phone.html#event:conference:participant-removed"><strong>conference:participant-removed</strong></a> event, it
 is published when the participant is successfully removed from the current
@@ -2908,11 +2945,11 @@ conference.</p>
         </li>
         
         
-        <li id="section-177">
+        <li id="section-179">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-177">&#182;</a>
+                <a class="pilcrow" href="#section-179">&#182;</a>
               </div>
               <p>Use the <a href="../api-docs/Phone.html#removeParticipant"><strong>phone.removeParticipant</strong></a> method with the participant’s ID
 to remove a participant from the current conference, e.g.,</p>
@@ -2924,11 +2961,11 @@ to remove a participant from the current conference, e.g.,</p>
         </li>
         
         
-        <li id="section-178">
+        <li id="section-180">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-178">&#182;</a>
+                <a class="pilcrow" href="#section-180">&#182;</a>
               </div>
               <pre><code>phone.removeParticipant(<span class="hljs-string">'john@domain.com'</span>);
 </code></pre>
@@ -2939,11 +2976,11 @@ to remove a participant from the current conference, e.g.,</p>
         </li>
         
         
-        <li id="section-179">
+        <li id="section-181">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-179">&#182;</a>
+                <a class="pilcrow" href="#section-181">&#182;</a>
               </div>
               <h3 id="get-the-list-of-active-participants">Get the list of active participants</h3>
 <hr>
@@ -2953,11 +2990,11 @@ to remove a participant from the current conference, e.g.,</p>
         </li>
         
         
-        <li id="section-180">
+        <li id="section-182">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-180">&#182;</a>
+                <a class="pilcrow" href="#section-182">&#182;</a>
               </div>
               
             </div>
@@ -2967,11 +3004,11 @@ to remove a participant from the current conference, e.g.,</p>
         </li>
         
         
-        <li id="section-181">
+        <li id="section-183">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-181">&#182;</a>
+                <a class="pilcrow" href="#section-183">&#182;</a>
               </div>
               <p>Use the <a href="../api-docs/Phone.html#getParticipants"><strong>phone.getParticipants</strong></a> method to get the list of active participants.</p>
 
@@ -2983,11 +3020,11 @@ to remove a participant from the current conference, e.g.,</p>
         </li>
         
         
-        <li id="section-182">
+        <li id="section-184">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-182">&#182;</a>
+                <a class="pilcrow" href="#section-184">&#182;</a>
               </div>
               <h3 id="rejecting-conference-invites">Rejecting conference invites</h3>
 <hr>
@@ -2997,11 +3034,11 @@ to remove a participant from the current conference, e.g.,</p>
         </li>
         
         
-        <li id="section-183">
+        <li id="section-185">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-183">&#182;</a>
+                <a class="pilcrow" href="#section-185">&#182;</a>
               </div>
               
             </div>
@@ -3011,11 +3048,11 @@ to remove a participant from the current conference, e.g.,</p>
         </li>
         
         
-        <li id="section-184">
+        <li id="section-186">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-184">&#182;</a>
+                <a class="pilcrow" href="#section-186">&#182;</a>
               </div>
               <p>Use the <a href="../api-docs/Phone.html#rejectConference"><strong>phone.rejectConference</strong></a> method to rejects the incoming conference invite</p>
 
@@ -3027,11 +3064,11 @@ to remove a participant from the current conference, e.g.,</p>
         </li>
         
         
-        <li id="section-185">
+        <li id="section-187">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-185">&#182;</a>
+                <a class="pilcrow" href="#section-187">&#182;</a>
               </div>
               <h3 id="ending-a-conference">Ending a conference</h3>
 <hr>
@@ -3041,11 +3078,11 @@ to remove a participant from the current conference, e.g.,</p>
         </li>
         
         
-        <li id="section-186">
+        <li id="section-188">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-186">&#182;</a>
+                <a class="pilcrow" href="#section-188">&#182;</a>
               </div>
               
             </div>
@@ -3053,11 +3090,11 @@ to remove a participant from the current conference, e.g.,</p>
         </li>
         
         
-        <li id="section-187">
+        <li id="section-189">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-187">&#182;</a>
+                <a class="pilcrow" href="#section-189">&#182;</a>
               </div>
               <p>Register for <a href="../api-docs/Phone.html#event:conference:disconnecting"><strong>conference:disconnecting</strong></a> event, it is published
 immediately after invoking <a href="../api-docs/Phone.html#endConference"><strong>phone.endConference</strong></a>.</p>
@@ -3071,11 +3108,11 @@ immediately after invoking <a href="../api-docs/Phone.html#endConference"><stron
         </li>
         
         
-        <li id="section-188">
+        <li id="section-190">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-188">&#182;</a>
+                <a class="pilcrow" href="#section-190">&#182;</a>
               </div>
               <p>Use the <a href="../api-docs/Phone.html#endConference"><strong>phone.endConference</strong></a> method to end the current conference.</p>
 
@@ -3087,41 +3124,13 @@ immediately after invoking <a href="../api-docs/Phone.html#endConference"><stron
         </li>
         
         
-        <li id="section-189">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-189">&#182;</a>
-              </div>
-              <h1 id="phone-utilities">Phone utilities</h1>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-190">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-190">&#182;</a>
-              </div>
-              <p>The phone object provides utility methods for common tasks related phone number
-parsing and formatting.</p>
-
-            </div>
-            
-        </li>
-        
-        
         <li id="section-191">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-191">&#182;</a>
               </div>
-              <h2 id="parsing-phone-numbers">Parsing phone numbers</h2>
-<hr>
+              <h1 id="phone-utilities">Phone utilities</h1>
 
             </div>
             
@@ -3134,10 +3143,10 @@ parsing and formatting.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-192">&#182;</a>
               </div>
-              
+              <p>The phone object provides utility methods for common tasks related phone number
+parsing and formatting.</p>
+
             </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cleanPhoneNumber</span><span class="hljs-params">(phoneNum)</span> </span>{</pre></div></div>
             
         </li>
         
@@ -3148,9 +3157,38 @@ parsing and formatting.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-193">&#182;</a>
               </div>
+              <h2 id="parsing-phone-numbers">Parsing phone numbers</h2>
+<hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-194">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-194">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cleanPhoneNumber</span><span class="hljs-params">(phoneNum)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-195">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-195">&#182;</a>
+              </div>
               <p>In order to get the phone number in a format that the library can use to
 dial, use the <a href="../api-docs/Phone.html#cleanPhoneNumber"><strong>phone.cleanPhoneNumber</strong></a> method, it will convert numbers like
-<code>+1 (123) 123 1234</code> to <code>11231231234</code>.</p>
+<code>+1 (123) 123 1234</code> to <code>11231231234</code>
+<code>1800CALFEDX</code> to <code>18002253339</code>.</p>
 
             </div>
             
