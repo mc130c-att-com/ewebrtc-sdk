@@ -1,0 +1,11 @@
+{
+  "name": "att-enhanced-webrtc-uat",
+  "description": "att-enhanced-webrtc-uat",
+  "version": "0.0.0",
+  "homepage": "https://github.com/attdevsupport/webrtc-dhs",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+
+  }
+}

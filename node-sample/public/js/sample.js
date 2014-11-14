@@ -1,8 +1,8 @@
 /*jslint browser: true, devel: true, node: true, debug: true, todo: true, indent: 2, maxlen: 150*/
-/*global ATT, console, log, phone, ajaxRequest, setMessage, clearMessage, clearError, switchView,
+/*global ATT, console, log, phone, ajaxRequest, setMessage, clearMessage, clearError, switchView, resetUI,
   updateAddress, loginEnhancedWebRTC, loginSuccessCallback, onError, clearSessionData, phoneLogout,
   appendDomainToAccountIDCallee, dialCall, answer, answer2ndCall, hold, resume, startConference,
-  joinConference, addParticipants, getParticipants, removeParticipant, move, switchCall*/
+  joinConference, addParticipants, getParticipants, removeParticipant, move, switchCall, cleanPhoneNumber*/
 
 'use strict';
 
@@ -339,6 +339,7 @@ function deleteSession(callback) {
 function logout() {
   if (sessionData.sessionId) {
     phoneLogout(function () {
+      resetUI();
       if (sessionData.user_id) {
         deleteSession(function (response) {
           switchView('logout', response);
@@ -351,6 +352,7 @@ function logout() {
     });
   } else if (sessionData.user_id) { // if there is a http session delete that first
     deleteSession(function (response) {
+      resetUI();
       switchView('logout', response);
     });
   }
@@ -513,9 +515,9 @@ function getListOfInvitees(partcpnts) {
 
 function participant() {
   var partcpnts,
-    listOfInvitees,
-    partcpnt,
-    counter;
+    listOfInvitees;
+//    partcpnt,
+//    counter;
 
   partcpnts = document.getElementById('participant').value;
   listOfInvitees = getListOfInvitees(partcpnts);

@@ -98,6 +98,21 @@ function setMessage(msg, cls) {
   messageDiv.innerHTML = '<div class="clearfix msg ' + cls + '">' + msg + '</div><hr>' + oldMsgs + closeMessage;
 }
 
+function setupHomeView() {
+  var videoWrap = document.getElementById('video-wrap'),
+    callActions = document.getElementById('call-actions');
+
+  videoWrap.addEventListener('mouseenter', function () {
+    callActions.style.opacity = '1';
+  });
+
+  videoWrap.addEventListener('mouseleave', function () {
+    callActions.style.opacity = '0';
+  });
+
+  document.getElementById('callee').value =  '@' + eWebRTCDomain;
+}
+
 function formatError(errObj) {
   var formattedError;
 
@@ -197,10 +212,11 @@ function createView(view, data, response) {
 
   switch (view) {
   case 'home':
+    setupHomeView();
+
     if (profile && data.user_name) {
       profile.style.display = 'block';
       profile.innerHTML = data.user_name;
-      document.getElementById('callee').value =  '@' + eWebRTCDomain;
     }
 
     if (updateAddress) {
@@ -349,17 +365,20 @@ function loadDefaultView() {
 function resetUI() {
   document.getElementById('ringtone').pause();
   document.getElementById('calling-tone').pause();
-  document.getElementById('btn-hold').disabled = true;
-  document.getElementById('btn-resume').disabled = true;
-  document.getElementById('btn-move').disabled = true;
-  document.getElementById('btn-switch').disabled = true;
-  document.getElementById('btn-mute').disabled = true;
-  document.getElementById('btn-unmute').disabled = true;
-  document.getElementById('btn-hangup').disabled = true;
-  document.getElementById('participant').disabled = true;
-  document.getElementById('btn-add-participant').disabled = true;
-  document.getElementById('btn-end-conference').disabled = true;
-  document.getElementById('btn-participants-list').disabled = true;
+
+  if (0 === phone.getCalls().length) {
+    document.getElementById('btn-hold').disabled = true;
+    document.getElementById('btn-resume').disabled = true;
+    document.getElementById('btn-move').disabled = true;
+    document.getElementById('btn-switch').disabled = true;
+    document.getElementById('btn-mute').disabled = true;
+    document.getElementById('btn-unmute').disabled = true;
+    document.getElementById('btn-hangup').disabled = true;
+    document.getElementById('participant').disabled = true;
+    document.getElementById('btn-add-participant').disabled = true;
+    document.getElementById('btn-end-conference').disabled = true;
+    document.getElementById('btn-participants-list').disabled = true;
+  }
 }
 
 function enableUI() {
@@ -383,6 +402,13 @@ function onError(err) {
   var errObj = err;
 
   if ('object' === typeof errObj) {
+    if (errObj.error &&
+        (errObj.error.HttpStatusCode === 403 ||
+        errObj.error.HttpStatusCode === 404)) {
+      switchView('logout');
+      setMessage('Enhanced WebRTC session expired');
+      return;
+    }
     errObj = formatError(errObj);
   }
   errObj = errObj.toString();
@@ -509,6 +535,7 @@ function onInviteAccepted() {
 
 function onInviteRejected() {
   setMessage('Invite rejected.');
+  resetUI();
 }
 
 function onParticipantRemoved() {
@@ -561,6 +588,7 @@ function onCallConnected(data) {
 
   setMessage('<h6>Connected to call ' + (data.from ? 'from ' : 'to ') + peer +
     (data.mediaType ? ". Media type: " + data.mediaType : '') +
+    (data.downgrade ? '. (Downgraded from video)' : '') +
     '. Time: ' + data.timestamp + '<h6>');
 
   document.getElementById('calling-tone').pause();

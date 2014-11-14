@@ -9,21 +9,20 @@ The SDK provides the following components:
   to generate OAuth access tokens and E911 Ids.
   **Please refer to `node-dhs/RELEASE.md` for DHS-specific notes**
 
-# v1.0.0-beta.9
-November 7, 2014
+# v1.0.0-beta.10
+November 14, 2014
 
-* **New Feature:** Validate Browser Support & Extend hasWebRTC
-* **New Feature:** Allowing to Dial International Phone numbers
-* **Bug Fix:** DE74450 BIZ_UAT_WebRTC_PROD: SDK is converting international number to local 10 digit number and 
-making calls .QC25279
-instead of throwing error message. QC 25279
-* **Bug Fix:** DE85623 : WebRTC SDK: VoLTE video conf, adding a 3g as participant. 3g handset ring and answers. But 
-web client does not stop ringing. SVT 5571
+* **New Feature:** Updated the API JS Doc to include API error codes supported the the SDK
+* **Bug Fix:** DE84147 - One way media after switch calls 
+* **Bug Fix:** DE83708 - BIZ_UAT_WebRTC_PROD: Conference invitee does not receive additional invites after rejecting first invitation. QC 53881
+* **Bug Fix:** DE81768 - BIZ_UAT_WebRTC_PROD: Hold and Resume functionality is broken when both users place on hold. QC 29484
+* **Bug Fix:** DE81769 - BIZ_UAT_WebRTC_PROD: Hold and Resume functionality is broken when both users place on hold. (Follow sequence carefully) - for audio call. QC 29485
+* **Bug Fix:** DE86692 - SDK_WEBRTC_10.14 - Documentation update for hasWebRTC(). QC 60728
+* **Bug Fix:** DE86691 - BIZ_UAT_WebRTC_PROD: SDK should notify on video downgrade. QC 54085
 
 ## Known Issues
 
 * In a mobile number to mobile number call, transferring or moving the call to a mobile device results in one-way audio
-* When we make two calls and hang up the second call. The first call gets resumed  but has one way video.
 * One way audio when we add a mobile device for a video conference.
 * `call:move-terminated` event is not fired when successfully completing `phone.move`.
 * After successfully adding a mobile device to a Conference it will be disconnected after ~24s.
@@ -51,6 +50,18 @@ the necessary event to inform the host. Product Team is tracking this issue with
 **_The SDK may also work for other Operating Systems, other Browsers but is not tested or supported._**
 
 # Older releases
+
+# v1.0.0-beta.9
+November 7, 2014
+
+* **New Feature:** Validate Browser Support & Extend hasWebRTC.
+    * ATT.rtc.hasEnhancedWebRTC is renamed as ATT.browser.hasWebRTC
+* **New Feature:** Allowing to Dial International Phone numbers
+* **Bug Fix:** DE74450 BIZ_UAT_WebRTC_PROD: SDK is converting international number to local 10 digit number and 
+making calls .QC25279
+instead of throwing error message. QC 25279
+* **Bug Fix:** DE85623 : WebRTC SDK: VoLTE video conf, adding a 3g as participant. 3g handset ring and answers. But 
+web client does not stop ringing. SVT 5571
 
 # v1.0.0-beta.8
 October 31 , 2014

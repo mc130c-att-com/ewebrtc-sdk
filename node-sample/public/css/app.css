@@ -38,7 +38,6 @@ body {
 }
 
 .video-box {
-  border: 1px solid #ccc;
   padding: 0;
 }
 
@@ -58,8 +57,10 @@ body {
 }
 
 .call-actions {
-  padding-right: 0;
-  text-align: left;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  opacity: 0;
 }
 
 .call-actions button {
@@ -219,4 +220,9 @@ button.btn {
   pointer-events: none;
   font-style: italic;
   opacity: 0.5;
+}
+
+.flip-horizontal {
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
 }
