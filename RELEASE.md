@@ -9,11 +9,49 @@ The SDK provides the following components:
   to generate OAuth access tokens and E911 Ids.
   **Please refer to `node-dhs/RELEASE.md` for DHS-specific notes**
 
+# v1.0.0-beta.11
+November 26, 2014
+
+* **New Feature:** Firefox Browser Support for Basic Call and Conference Managment .
+* **Changed :** Developer should prepend '1' when dialing a 10 digit domestic Number (US).
+
+## Known Issues
+* Transferring or Moving the call functionality is not supported for Firefox.
+* In a mobile number to mobile number call, transferring or moving the call to a mobile device results in one-way 
+audio (DE90397)
+* One way audio when we add a mobile device for a video conference (DE90396).
+* `call:move-terminated` event is not fired when successfully completing `phone.move` (DE90395).
+* After successfully adding a mobile device to a Conference it will be disconnected after ~24s.
+  * Related QC Ticket:
+    * QC 85425: Call disconnects after 24 seconds when successfully creating a conference (as any user) and adding a PSTN participant.
+* Adding multiple participants at once using `Phone.addParticipants` method fails with error: `SVC8501:MediaConference ongoing update participant operation.,Variables=`. SDK is tracking this issue against the API platform with the QC Defect ID: 79678
+  * **Workaround:** Use `Phone.addParticipants` with a single participant ID (mobile number, account id, virtual number)
+  * Related QC Ticket:
+    * QC 85105: SDK_WEBRTC_9.14 - Error: `External server request error.` when adding a participant to a conference created by a VTN user.
+* When a participant leaves a conference by using the `endConference` method, the platform does not generate
+the necessary event to inform the host. Product Team is tracking this issue with QC Defect ID: 79658
+* When an Mobile Number user rejects an invitation for a conference, sometimes the event `conference:ended` will not
+  be published due to a bug at the Platform Level (DE90393).
+* When adding a participant to a conference, sometimes the error: `The requested conference ID <id> was not found.`
+  is shown. SDK is tracking this issue against the API platform with the QC Defect ID: 65423
+* Video switching between participants seems to be unstable. Product Team is tracking this issue with QC Defect ID: 79673
+  * **Workaround:** Turn off your microphone while the other participant speaks, that will switch the video to the
+  speaking participant.
+
+## Tested Environments
+
+   * RESTful API Environment: The SDK was tested against Production.
+   * Chrome Version 38 for OSX v10.8.5 and Windows 8
+   * Firefox Version 33 for OSX v10.10.1 and Windows 8
+
+**_The SDK may also work for other Operating Systems, other Browsers but is not tested or supported._**
+
+
 # v1.0.0-beta.10
 November 14, 2014
 
 * **New Feature:** Updated the API JS Doc to include API error codes supported the the SDK
-* **Bug Fix:** DE84147 - One way media after switch calls 
+* **Bug Fix:** DE84147 - One way media after switch calls
 * **Bug Fix:** DE83708 - BIZ_UAT_WebRTC_PROD: Conference invitee does not receive additional invites after rejecting first invitation. QC 53881
 * **Bug Fix:** DE81768 - BIZ_UAT_WebRTC_PROD: Hold and Resume functionality is broken when both users place on hold. QC 29484
 * **Bug Fix:** DE81769 - BIZ_UAT_WebRTC_PROD: Hold and Resume functionality is broken when both users place on hold. (Follow sequence carefully) - for audio call. QC 29485
@@ -57,10 +95,10 @@ November 7, 2014
 * **New Feature:** Validate Browser Support & Extend hasWebRTC.
     * ATT.rtc.hasEnhancedWebRTC is renamed as ATT.browser.hasWebRTC
 * **New Feature:** Allowing to Dial International Phone numbers
-* **Bug Fix:** DE74450 BIZ_UAT_WebRTC_PROD: SDK is converting international number to local 10 digit number and 
+* **Bug Fix:** DE74450 BIZ_UAT_WebRTC_PROD: SDK is converting international number to local 10 digit number and
 making calls .QC25279
 instead of throwing error message. QC 25279
-* **Bug Fix:** DE85623 : WebRTC SDK: VoLTE video conf, adding a 3g as participant. 3g handset ring and answers. But 
+* **Bug Fix:** DE85623 : WebRTC SDK: VoLTE video conf, adding a 3g as participant. 3g handset ring and answers. But
 web client does not stop ringing. SVT 5571
 
 # v1.0.0-beta.8

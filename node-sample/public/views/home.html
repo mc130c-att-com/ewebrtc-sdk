@@ -23,8 +23,7 @@
                     <input type="text" required class="form-control" name="zip" placeholder="Zip Code" value="98052">
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" name="isAddressConfirmed">
-                    <label>Address Confirmed</label>
+                    <label>Address Confirmed<input type="checkbox" name="isAddressConfirmed"></label>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg" id="address">
                     Add Address
@@ -55,9 +54,9 @@
 
         <div class="input-group row col-xs-12 hidden" id="callForm">
             <div class="input-group">
-                <span class="input-group-btn">
+                <div class="input-group-btn">
                     <div class="col-sm-8 col-md-9">
-                        <input type="tel" id="callee" class="form-control" required="" name="callee" autocomplete="on">
+                        <label><input type="tel" id="callee" class="form-control" required="" name="callee" autocomplete="on"></label>
                     </div>
                     <div class="col-sm-2 col-md-1">
                         <button id="btn-dial" class="btn btn-default btn-xs">
@@ -69,11 +68,10 @@
                             <span class="glyphicon glyphicon-phone-alt"></span>
                         </button>
                     </div>
-                </span>
+                </div>
             </div>
             <div class="input-group audio-only">
-                <input type="checkbox" id="callAudioOnly">
-                <label name="audio-only"> &nbsp; Audio Only? </label>
+                <label>&nbsp; Audio Only?<input name="audio-only" type="checkbox" id="callAudioOnly"></label>
             </div>
         </div>
 
@@ -86,7 +84,7 @@
                         </button>
                     </div>
                     <div class="col-sm-5 col-md-7">
-                        <input type="tel" id="participant" class="form-control" required="" name="participant" autocomplete="on" disabled="">
+                        <label><input type="tel" id="participant" class="form-control" required="" name="participant" autocomplete="on" disabled=""></label>
                     </div>
                     <div class="col-sm-2 col-md-1">
                         <button id="btn-add-participant" type="button" class="btn btn-default btn-xs" onclick="participant()" disabled="">
@@ -118,8 +116,7 @@
                 </div>
             </div>
              <div class="input-group audio-only">
-                <input type="checkbox" id="confAudioOnly">
-                <label name="audio-only"> &nbsp; Audio Only? </label>
+                <label>&nbsp; Audio Only?<input name="audio-only" type="checkbox" id="confAudioOnly"></label>
             </div>
         </div>
     </div>

@@ -1,6 +1,5 @@
 /*jslint browser: true, devel: true, node: true, debug: true, todo: true, indent: 2, maxlen: 150 */
-/*global require, it, before, after, describe*/
-/*global browser, By*/
+/*global require, it, before, after, describe, browser, By, exports*/
 'use strict';
 
 (function () {
@@ -197,6 +196,18 @@
     return browser.wait(until.elementLocated(by.id('btn-make-call')), 120000);
   }
 
+  function clickTheCallButton(browser) {
+    browser.wait(until.elementLocated(by.id('btn-make-call')), config.waitMilliseconds)
+      .then(function (button) {
+        // sometimes the call button is technically on the page, but selenium
+        // won't click it because it is underneath the header bar. scroll the page
+        // up just in case.
+        button.sendKeys(selenium.Key.PAGE_UP);
+        button.click();
+      });
+
+  }
+
   function call(opts) {
     assert(opts.browser, 'webdriver not given');
     assert(opts.type, 'callee type not specified');
@@ -213,15 +224,7 @@
       }
     });
 
-    // click the call button
-    browser.wait(until.elementLocated(by.id('btn-make-call')), config.waitMilliseconds)
-      .then(function (button) {
-        // sometimes the call button is technically on the page, but selenium
-        // won't click it because it is underneath the header bar. scroll the page
-        // up just in case.
-        button.sendKeys(selenium.Key.PAGE_UP);
-        button.click();
-      });
+    clickTheCallButton(browser);
 
     // tell it who to call and click the dial button
     browser.wait(until.elementLocated(by.id('callee')), config.waitMilliseconds)
@@ -245,7 +248,10 @@
 
     var browser = opts.browser;
 
-    // click the answer button when it appears
+    // click the call button so that the answer button becomes available
+    clickTheCallButton(browser);
+
+    // click the answer button
     browser.wait(until.elementLocated(by.id('answer-button')), config.waitMilliseconds);
     browser.findElement(by.id('answer-button'))
       .then(function (answerButton) {

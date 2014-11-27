@@ -79,8 +79,8 @@ ATT.rtc.configure(function () {
 
 // ### Getting the phone object
 // ---------------------------------
-// Phone object is the main interface for making a call
-// This will be our instance of the Phone object
+// Phone object is the main interface for making a call.
+// This will be our instance of the Phone object.
 phone = ATT.rtc.Phone.getPhone();
 
 // ## Error Handling
@@ -104,11 +104,11 @@ phone.on('error', onError);
 // ## Warning Handling
 // -----------------
 // All warnings during the usage of the Phone object are published
-// via the `warning` event.
+// via the [**warning**](../../lib/webrtc-sdk/doc/Phone.html#event:warning) event.
 
 // ### Registering for _warning_ event
 // ---------------------------------
-// Here the `warning` event is published after receiving a warning
+// Here the [**warning**](../../lib/webrtc-sdk/doc/Phone.html#event:warning) event is published after receiving a warning
 //
 // **Callback function example:**
 //
@@ -124,7 +124,7 @@ phone.on('warning', onWarning);
 // ## Login to Enhanced WebRTC
 // ### Register for _address updated_ event
 // ---------------------------------
-// The [**address-updated**](../../lib/webrtc-sdk/doc/Phone.html#event:address-updated) event is published after successfully updating your E911 ID
+// The [**address-updated**](../../lib/webrtc-sdk/doc/Phone.html#event:address-updated) event is published after successfully updating your E911 ID.
 //
 // **Callback function example:**
 //
@@ -139,7 +139,7 @@ phone.on('address-updated', onAddressUpdated);
 // ---------------------------------
 // The [**session:ready**](../../lib/webrtc-sdk/doc/Phone.html#event:session:ready) event is published after
 // successfully logged in to the Enhanced WebRTC.
-// This event indicates that the SDK is ready to make or receive calls
+// This event indicates that the SDK is ready to make or receive calls.
 //
 // **Callback function example:**
 //
@@ -171,8 +171,8 @@ phone.on('notification', onNotification);
 // ### Create Enhanced WebRTC Session
 // ---------------------------------
 function loginEnhancedWebRTC(token, e911Id) {
-//[**phone.login**](../../lib/webrtc-sdk/doc/Phone.html#login) Establishes Enhanced WebRTC session so that the user can
-// start making Enhanced WebRTC calls
+//[**phone.login**](../../lib/webrtc-sdk/doc/Phone.html#login) establishes Enhanced WebRTC session so that the user can
+// start making Enhanced WebRTC calls.
 //
 // - `token` is the oAuth token you get from the consent
 //
@@ -200,7 +200,7 @@ function updateAddress(e911Id) {
 // ---------------------------------
 // The [**session:disconnected**](../../lib/webrtc-sdk/doc/Phone.html#event:session:disconnected) event is published
 // after logging out from Enhanced WebRTC session.
-// This indicates that the session was successfully deleted
+// This event is published to indicate that the session was successfully deleted.
 phone.on('session:disconnected', onSessionDisconnected);
 
 // ### Clear the current Enhanced WebRTC session
@@ -215,7 +215,7 @@ function phoneLogout(callback) {
     phone.on('session:disconnected', function () {
       callback();
     });
-//[**phone.logout**](../../lib/webrtc-sdk/doc/Phone.html#logout) Logs out the user from RTC session
+//[**phone.logout**](../../lib/webrtc-sdk/doc/Phone.html#logout) logs out the user from Enhanced WebRTC session.
     phone.logout();
   }
 }
@@ -226,12 +226,12 @@ function phoneLogout(callback) {
 // ---------------------------------
 
 // A call object will publish various events as it progresses
-// its lifecycle. In order to handle those events you must
+// through its lifecycle. In order to handle those events you must
 // register handlers as follows:
 
 // ### Register for _call:connecting_ event
 // ---------------------------------
-// Here the [**call:connecting**](../../lib/webrtc-sdk/doc/Phone.html#event:call:connecting) event is published after successfully dialing
+// Here the [**call:connecting**](../../lib/webrtc-sdk/doc/Phone.html#event:call:connecting) event is published after successfully dialing out.
 //
 // **Callback function example:**
 //
@@ -247,7 +247,7 @@ phone.on('call:connecting', onConnecting);
 // ### Register for _call:ringback-provided_ event
 // ---------------------------------
 // Here the [**call:ringback-provided**](../../lib/webrtc-sdk/doc/Phone.html#event:call:ringback-provided) event is
-// published if early media (such as a ring-tone) becomes available during the initial call setup
+// published if early media (such as a ring-tone) becomes available during the initial call setup.
 //
 // **Callback function example:**
 //
@@ -260,7 +260,8 @@ phone.on('call:ringback-provided', onCallRingbackProvided);
 
 // ### Register for _call:connected_ event
 // ---------------------------------
-// The [**call:connected**](../../lib/webrtc-sdk/doc/Phone.html#event:call:connected) event is published.
+// The [**call:connected**](../../lib/webrtc-sdk/doc/Phone.html#event:call:connected) event is published when a connection is established
+// between two parties.
 //
 // **Callback function example:**
 //
@@ -274,7 +275,7 @@ phone.on('call:connected', onCallConnected);
 
 // ### Register for _media:established_ event
 // ---------------------------------
-// The [**media:established**](../../lib/webrtc-sdk/doc/Phone.html#event:media:established) event is published when media begins to play
+// The [**media:established**](../../lib/webrtc-sdk/doc/Phone.html#event:media:established) event is published when media begins to play.
 //
 // **Callback function example:**
 //
@@ -291,14 +292,14 @@ phone.on('media:established', onMediaEstablished);
 // ### Register for _call:disconnected_ event
 // ---------------------------------
 // The [**call:disconnected**](../../lib/webrtc-sdk/doc/Phone.html#event:call:disconnected) event is published after
-// successfully disconnecting the call
+// successfully disconnecting the call.
 phone.on('call:disconnected', onCallDisconnected);
 
 
 // ### Register for _call:canceled_ event
 // ---------------------------------
 // The [**call:canceled**](../../lib/webrtc-sdƒk/doc/Phone.html#event:call:canceled) event is published after
-// successfully canceling a call
+// successfully canceling a call.
 //
 // **Callback function example:**
 //
@@ -314,9 +315,7 @@ phone.on('call:canceled', onCallCanceled);
 
 // ### Register for _dialing_ event
 // ---------------------------------
-// In order to handle event during call establishment, you can
-// register for the [**dialing**](../../lib/webrtc-sdk/doc/Phone.html#event:dialing) event on the phone object.
-// The [**dialing**](../../lib/webrtc-sdk/doc/Phone.html#event:dialing) event is published when dial is invoked
+// The [**dialing**](../../lib/webrtc-sdk/doc/Phone.html#event:dialing) event is published immediately after dial method is invoked.
 phone.on('dialing', onDialing);
 
 // ### Dialing
@@ -753,14 +752,14 @@ function joinConference(localMedia, remoteMedia) {
 // First you must register handlers for the events published
 // during the process of adding a participant:
 
-// Use the [**confernce:invitation-sent**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:invitation-sent) event
-// to handle when the invitation was sent successfully
+// The [**conference:invitation-sent**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:invitation-sent) event
+// is published when the invitation was sent successfully.
 phone.on('conference:invitation-sent', onInvitationSent);
-// Use the [**confernce:invitation-accepted**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:invitation-accepted)
-// event to handle when the invitation is accepted
+// The [**conference:invitation-accepted**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:invitation-accepted)
+// event is published when the invitation is accepted by the other party.
 phone.on('conference:invitation-accepted', onInviteAccepted);
-// Use the [**confernce:invitation-rejected**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:invitation-rejected)
-// event to handle when the invitation is rejected
+// The [**conference:invitation-rejected**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:invitation-rejected)
+// event is published when the invitation is rejected by the other party.
 phone.on('conference:invitation-rejected', onInviteRejected);
 
 // Then use the [**phone.addParticipants**](../../lib/webrtc-sdk/doc/Phone.html#addParticipants) method to adds a list of participants, e.g.,
@@ -774,9 +773,8 @@ function addParticipants(participants) {
 // ### Removing Participants
 // ---------------------------------
 
-// First register for [**conference:participant-removed**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:participant-removed) event, it
-// is published when the participant is successfully removed from the current
-// conference.
+// First register for [**conference:participant-removed**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:participant-removed) event, which
+// is published when the participant is successfully removed from the current conference.
 phone.on('conference:participant-removed', onParticipantRemoved);
 
 function removeParticipant(participant) {
@@ -798,14 +796,14 @@ function getParticipants() {
 // ### Rejecting conference invites
 // ---------------------------------
 function rejectConference() {
-  // Use the [**phone.rejectConference**](../../lib/webrtc-sdk/doc/Phone.html#rejectConference) method to rejects the incoming conference invite
+  // Use the [**phone.rejectConference**](../../lib/webrtc-sdk/doc/Phone.html#rejectConference) method to reject the incoming conference invite.
   phone.rejectConference();
 }
 
 // ### Ending a conference
 // ---------------------------------
 
-// Register for [**conference:disconnecting**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:disconnecting) event, it is published
+// Register for [**conference:disconnecting**](../../lib/webrtc-sdk/doc/Phone.html#event:conference:disconnecting) event; it is published
 // immediately after invoking [**phone.endConference**](../../lib/webrtc-sdk/doc/Phone.html#endConference).
 phone.on('conference:disconnecting', onConferenceDisconnecting);
 
@@ -825,7 +823,7 @@ function cleanPhoneNumber(phoneNum) {
 
   // In order to get the phone number in a format that the library can use to
   // dial, use the [**phone.cleanPhoneNumber**](../../lib/webrtc-sdk/doc/Phone.html#cleanPhoneNumber) method, it will convert numbers like
-  // `+1 (123) 123 1234` to `11231231234`
-  // `1800CALFEDX` to `18002253339`.
+  // `+1 (123) 123 1234` to `11231231234`,
+  // and `1800CALFEDX` to `18002253339`.
   return phone.cleanPhoneNumber(phoneNum);
 }

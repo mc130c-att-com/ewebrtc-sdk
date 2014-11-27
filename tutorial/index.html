@@ -302,8 +302,8 @@ via the Phone’s interface.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
-              <p>Phone object is the main interface for making a call
-This will be our instance of the Phone object</p>
+              <p>Phone object is the main interface for making a call.
+This will be our instance of the Phone object.</p>
 
             </div>
             
@@ -396,7 +396,7 @@ function onError(data) {
                 <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p>All warnings during the usage of the Phone object are published
-via the <code>warning</code> event.</p>
+via the <a href="../api-docs/Phone.html#event:warning"><strong>warning</strong></a> event.</p>
 
             </div>
             
@@ -423,7 +423,7 @@ via the <code>warning</code> event.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
-              <p>Here the <code>warning</code> event is published after receiving a warning</p>
+              <p>Here the <a href="../api-docs/Phone.html#event:warning"><strong>warning</strong></a> event is published after receiving a warning</p>
 <p><strong>Callback function example:</strong></p>
 <pre>
 function onWarning(data) {
@@ -472,7 +472,7 @@ function onWarning(data) {
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
-              <p>The <a href="../api-docs/Phone.html#event:address-updated"><strong>address-updated</strong></a> event is published after successfully updating your E911 ID</p>
+              <p>The <a href="../api-docs/Phone.html#event:address-updated"><strong>address-updated</strong></a> event is published after successfully updating your E911 ID.</p>
 <p><strong>Callback function example:</strong></p>
 <pre>
 function onAddressUpdated(data) {
@@ -509,7 +509,7 @@ function onAddressUpdated(data) {
               </div>
               <p>The <a href="../api-docs/Phone.html#event:session:ready"><strong>session:ready</strong></a> event is published after
 successfully logged in to the Enhanced WebRTC.
-This event indicates that the SDK is ready to make or receive calls</p>
+This event indicates that the SDK is ready to make or receive calls.</p>
 <p><strong>Callback function example:</strong></p>
 <pre>
 function onSessionReady(data) {
@@ -598,8 +598,8 @@ function onNotification(data) {
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
-              <p><a href="../api-docs/Phone.html#login"><strong>phone.login</strong></a> Establishes Enhanced WebRTC session so that the user can
-start making Enhanced WebRTC calls</p>
+              <p><a href="../api-docs/Phone.html#login"><strong>phone.login</strong></a> establishes Enhanced WebRTC session so that the user can
+start making Enhanced WebRTC calls.</p>
 <ul>
 <li><p><code>token</code> is the oAuth token you get from the consent</p>
 </li>
@@ -703,7 +703,7 @@ method to update the user’s e911 linked address like:</p>
               </div>
               <p>The <a href="../api-docs/Phone.html#event:session:disconnected"><strong>session:disconnected</strong></a> event is published
 after logging out from Enhanced WebRTC session.
-This indicates that the session was successfully deleted</p>
+This event is published to indicate that the session was successfully deleted.</p>
 
             </div>
             
@@ -755,7 +755,7 @@ This indicates that the session was successfully deleted</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
-              <p><a href="../api-docs/Phone.html#logout"><strong>phone.logout</strong></a> Logs out the user from RTC session</p>
+              <p><a href="../api-docs/Phone.html#logout"><strong>phone.logout</strong></a> logs out the user from Enhanced WebRTC session.</p>
 
             </div>
             
@@ -800,7 +800,7 @@ This indicates that the session was successfully deleted</p>
                 <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
               <p>A call object will publish various events as it progresses
-its lifecycle. In order to handle those events you must
+through its lifecycle. In order to handle those events you must
 register handlers as follows:</p>
 
             </div>
@@ -828,7 +828,7 @@ register handlers as follows:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
-              <p>Here the <a href="../api-docs/Phone.html#event:call:connecting"><strong>call:connecting</strong></a> event is published after successfully dialing</p>
+              <p>Here the <a href="../api-docs/Phone.html#event:call:connecting"><strong>call:connecting</strong></a> event is published after successfully dialing out.</p>
 <p><strong>Callback function example:</strong></p>
 <pre>
 function onConnecting(data) {
@@ -866,7 +866,7 @@ function onConnecting(data) {
                 <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
               <p>Here the <a href="../api-docs/Phone.html#event:call:ringback-provided"><strong>call:ringback-provided</strong></a> event is
-published if early media (such as a ring-tone) becomes available during the initial call setup</p>
+published if early media (such as a ring-tone) becomes available during the initial call setup.</p>
 <p><strong>Callback function example:</strong></p>
 <pre>
 function onCallRingbackProvided(data) {
@@ -901,7 +901,8 @@ function onCallRingbackProvided(data) {
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
-              <p>The <a href="../api-docs/Phone.html#event:call:connected"><strong>call:connected</strong></a> event is published.</p>
+              <p>The <a href="../api-docs/Phone.html#event:call:connected"><strong>call:connected</strong></a> event is published when a connection is established
+between two parties.</p>
 <p><strong>Callback function example:</strong></p>
 <pre>
 function onCallConnected(data) {
@@ -937,7 +938,7 @@ function onCallConnected(data) {
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
-              <p>The <a href="../api-docs/Phone.html#event:media:established"><strong>media:established</strong></a> event is published when media begins to play</p>
+              <p>The <a href="../api-docs/Phone.html#event:media:established"><strong>media:established</strong></a> event is published when media begins to play.</p>
 <p><strong>Callback function example:</strong></p>
 <pre>
 function onMediaEstablished(data) {
@@ -976,7 +977,7 @@ function onMediaEstablished(data) {
                 <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
               <p>The <a href="../api-docs/Phone.html#event:call:disconnected"><strong>call:disconnected</strong></a> event is published after
-successfully disconnecting the call</p>
+successfully disconnecting the call.</p>
 
             </div>
             
@@ -1006,7 +1007,7 @@ successfully disconnecting the call</p>
                 <a class="pilcrow" href="#section-60">&#182;</a>
               </div>
               <p>The <a href="../../lib/webrtc-sdƒk/doc/Phone.html#event:call:canceled"><strong>call:canceled</strong></a> event is published after
-successfully canceling a call</p>
+successfully canceling a call.</p>
 <p><strong>Callback function example:</strong></p>
 <pre>
 function onCallCanceled(data) {
@@ -1043,9 +1044,7 @@ function onCallCanceled(data) {
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
-              <p>In order to handle event during call establishment, you can
-register for the <a href="../api-docs/Phone.html#event:dialing"><strong>dialing</strong></a> event on the phone object.
-The <a href="../api-docs/Phone.html#event:dialing"><strong>dialing</strong></a> event is published when dial is invoked</p>
+              <p>The <a href="../api-docs/Phone.html#event:dialing"><strong>dialing</strong></a> event is published immediately after dial method is invoked.</p>
 
             </div>
             
@@ -2827,8 +2826,8 @@ during the process of adding a participant:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-171">&#182;</a>
               </div>
-              <p>Use the <a href="../api-docs/Phone.html#event:conference:invitation-sent"><strong>confernce:invitation-sent</strong></a> event
-to handle when the invitation was sent successfully</p>
+              <p>The <a href="../api-docs/Phone.html#event:conference:invitation-sent"><strong>conference:invitation-sent</strong></a> event
+is published when the invitation was sent successfully.</p>
 
             </div>
             
@@ -2843,8 +2842,8 @@ to handle when the invitation was sent successfully</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-172">&#182;</a>
               </div>
-              <p>Use the <a href="../api-docs/Phone.html#event:conference:invitation-accepted"><strong>confernce:invitation-accepted</strong></a>
-event to handle when the invitation is accepted</p>
+              <p>The <a href="../api-docs/Phone.html#event:conference:invitation-accepted"><strong>conference:invitation-accepted</strong></a>
+event is published when the invitation is accepted by the other party.</p>
 
             </div>
             
@@ -2859,8 +2858,8 @@ event to handle when the invitation is accepted</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-173">&#182;</a>
               </div>
-              <p>Use the <a href="../api-docs/Phone.html#event:conference:invitation-rejected"><strong>confernce:invitation-rejected</strong></a>
-event to handle when the invitation is rejected</p>
+              <p>The <a href="../api-docs/Phone.html#event:conference:invitation-rejected"><strong>conference:invitation-rejected</strong></a>
+event is published when the invitation is rejected by the other party.</p>
 
             </div>
             
@@ -2932,9 +2931,8 @@ event to handle when the invitation is rejected</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-178">&#182;</a>
               </div>
-              <p>First register for <a href="../api-docs/Phone.html#event:conference:participant-removed"><strong>conference:participant-removed</strong></a> event, it
-is published when the participant is successfully removed from the current
-conference.</p>
+              <p>First register for <a href="../api-docs/Phone.html#event:conference:participant-removed"><strong>conference:participant-removed</strong></a> event, which
+is published when the participant is successfully removed from the current conference.</p>
 
             </div>
             
@@ -3054,7 +3052,7 @@ to remove a participant from the current conference, e.g.,</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-186">&#182;</a>
               </div>
-              <p>Use the <a href="../api-docs/Phone.html#rejectConference"><strong>phone.rejectConference</strong></a> method to rejects the incoming conference invite</p>
+              <p>Use the <a href="../api-docs/Phone.html#rejectConference"><strong>phone.rejectConference</strong></a> method to reject the incoming conference invite.</p>
 
             </div>
             
@@ -3096,7 +3094,7 @@ to remove a participant from the current conference, e.g.,</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-189">&#182;</a>
               </div>
-              <p>Register for <a href="../api-docs/Phone.html#event:conference:disconnecting"><strong>conference:disconnecting</strong></a> event, it is published
+              <p>Register for <a href="../api-docs/Phone.html#event:conference:disconnecting"><strong>conference:disconnecting</strong></a> event; it is published
 immediately after invoking <a href="../api-docs/Phone.html#endConference"><strong>phone.endConference</strong></a>.</p>
 
             </div>
@@ -3187,8 +3185,8 @@ parsing and formatting.</p>
               </div>
               <p>In order to get the phone number in a format that the library can use to
 dial, use the <a href="../api-docs/Phone.html#cleanPhoneNumber"><strong>phone.cleanPhoneNumber</strong></a> method, it will convert numbers like
-<code>+1 (123) 123 1234</code> to <code>11231231234</code>
-<code>1800CALFEDX</code> to <code>18002253339</code>.</p>
+<code>+1 (123) 123 1234</code> to <code>11231231234</code>,
+and <code>1800CALFEDX</code> to <code>18002253339</code>.</p>
 
             </div>
             
