@@ -328,17 +328,8 @@ The DHS RESTful API allows you to perform the following actions:</p>
     
     <div class="description">
         <p>This methods accepts a <code>app_scope</code> and creates the <code>access token</code> for that particular <code>app_scope</code>.
-Accepted values for <code>app_scope</code> are:</p>
-<ul>
-<li><p>MOBILE_NUMBER</p>
-</li>
-<li><p>VIRTUAL_NUMBER</p>
-</li>
-<li><p>ACCOUNT_ID</p>
-</li>
-<li><p>E911</p>
-</li>
-</ul>
+Accepted values for <code>app_scope</code> are: <code>MOBILE_NUMBER</code>, <code>VIRTUAL_NUMBER</code>,
+<code>ACCOUNT_ID</code> and <code>E911</code>.</p>
 <p>For mobile number user, the method requires an additional param <code>auth_code</code> for the authorization code
 obtained during the consent flow.</p>
     </div>
@@ -488,7 +479,7 @@ obtained during the consent flow.</p>
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type"><a href="ATT.rtc.dhs.html#createTokenSuccess">ATT.rtc.dhs.createTokenSuccess</a></span>
 
 
             
@@ -506,7 +497,8 @@ obtained during the consent flow.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The callback that handles the
+succesful response after creating an AT&amp;T OAuth Access Token.</p></td>
         </tr>
 
 	
@@ -519,7 +511,7 @@ obtained during the consent flow.</p>
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type"><a href="ATT.rtc.dhs.html#createTokenError">ATT.rtc.dhs.createTokenError</a></span>
 
 
             
@@ -537,7 +529,7 @@ obtained during the consent flow.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The callback that handles the generated error.</p></td>
         </tr>
 
 	
@@ -1222,6 +1214,366 @@ ATT.rtc.dhs.createAccessToken({
     
 
     
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        <dl>
+                
+<dt>
+    <h4 class="name" id="createTokenError"><span class="type-signature"></span>createTokenError<span class="signature">(error)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The details of the error.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+            
+                
+<dt>
+    <h4 class="name" id="createTokenSuccess"><span class="type-signature"></span>createTokenSuccess<span class="signature">(OAuthToken)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>OAuthToken</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An OAuth access token which must be
+presented by the authorized app to make subsequent RESTful API
+requests to the API Gateway.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>access_token</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Specifies a token that is used to request access to an API.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>token_type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Specifies the type for the new OAuth access token.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>expires_in</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Specifies the number of seconds before the current
+OAuth access token expires.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>refresh_token</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Specifies the token that is used to obtain a
+new OAuth access token after the initial OAuth access token that is returned
+in a previous response expires.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">         {
+           &quot;access_token&quot;:&quot;Access_Token&quot;,
+           &quot;token_type&quot;:&quot;bearer&quot;,
+           &quot;expires_in&quot;:157680000,
+           &quot;refresh_token&quot;:&quot;Refresh_Token&quot;
+         }</pre>
+
+
+    
+</dd>
+
+            </dl>
+    
 
     
 </article>
@@ -1244,7 +1596,7 @@ ATT.rtc.dhs.createAccessToken({
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a>
-		on 2014-11-26T15:29:05-08:00 using the <a
+		on 2014-12-08T00:55:33-08:00 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
