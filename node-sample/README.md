@@ -1,29 +1,28 @@
-# Node Sample Web Application for AT&T Enhanced WebRTC JS SDK
+# Sample Web App for AT&T Enhanced WebRTC JavaScript SDK
 
-A node application with the following functionality:
-  * Provide user management for the sample application
-  * Provide OAuth endpoint for Mobile Number authorize and callback
-  * Provide login and logout functionality for Virtual Number and Account ID users
+This sample app is a Node.js Web application for demonstrating the features of AT&T Enhanced WebRTC, and includes the following functionality:
+  * User management
+  * OAuth endpoint for Mobile Number authorization and callback
+  * Login and logout functionality for Virtual Number and Account ID users
 
 ## Contents of this Package
 
-This package contains the software necessary to run a sample application to be used together with
-a NodeJS DHS.
+This package contains the software necessary to run the sample app:
 
 - `/package.json` - Configuration options
-- `/app.js` - Main NodeJS program
+- `/app.js` - Main Node.js program
 
-## Pre-requisites
+## Prerequisites
 
-* The DHS server needs to be running before starting the sample application server.
+* Before starting the sample app, you must configure and run the DHS server.
 
-### Supported Broswers
-  * Chrome for OSX (v34.0.1847.131)
-
+### Supported Browsers
+* Google Chrome version 34.0 or later
+Support for Firefox is coming soon.
 
 ## Configuring the DHS
 
-The configuration is located in the file: `/package.json`
+Sample app configuration options are located in the file `/package.json`:
 
 ```javascript
 ...
@@ -37,7 +36,7 @@ The configuration is located in the file: `/package.json`
 
 ## Running the Server
 
-### Install NodeJS dependencies
+### Installing Node.js dependencies
 
 ```bash
 $ npm install
@@ -49,7 +48,7 @@ $ npm install
 $ npm start
 ```
 
-**NOTE**: The `start` script will use the Production environment by default.
+**Note**: The `start` script uses the Production environment by default.
 
 ### Using `node` command
 
@@ -57,19 +56,19 @@ $ npm start
 $ node ./bin/www
 ```
 
-## Load the Web Application
+## Loading the Sample App
 
-### 1. Open your Chrome Browser
+### 1. Open a Chrome browser window or new tab.
 
-### 2. Load the URL for the Web Application in your browser
+### 2. Enter the URL for the sample app in your browser.
 
-Go to `https://localhost:9001` to load the application.
+If you're running the sample app on the local computer, use the URL `https://localhost:9001` to load the application.
 
-## RESTful API
+## RESTful API Information
 
 ### Register User
 
-Registers a new user for the sample application.
+Registers a new user for the sample app:
 
 ```
 POST /users
@@ -99,7 +98,7 @@ POST /users
 
 ### Delete User
 
-Deletes an existing user from the sample application.
+Deletes an existing user from the sample app:
 
 ```
 DELETE /users/:id
@@ -155,7 +154,7 @@ None
 
 ### Authorize
 
-Endpoint for authorizing Mobile Number users using AT&T's OAuth.
+Endpoint for authorizing Mobile Number users using AT&T OAuth.
 
 
 ```
@@ -170,7 +169,7 @@ HTTP 302
 
 ### Authorize Callback
 
-Endpoint for oauth authorize callback.
+Endpoint for the OAuth Authorize callback.
 
 ```
 GET /oauth/callback
@@ -184,15 +183,3 @@ GET /oauth/callback
 #### Response
 HTTP 302
 
-
-## Glossary
-* API: Application Programming Interface
-* FVT: Function Verification Test
-* GA: General Availability
-* DHS: Developer Hosted Server
-* ICMN: In-App Calling for Mobile Number
-* JS: JavaScript
-* MVP: Minimum Viable Product
-* SDK: Software Development Kit
-* SVT: Service Verification Test
-* WebRTC: Web Real-Time Communications, a W3C standard
