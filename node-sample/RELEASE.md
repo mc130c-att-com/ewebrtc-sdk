@@ -21,4 +21,4 @@ September 20, 2014
   * **Workaround:** load the sample app URL in your browser (e.g., `https://127.0.0.1:9001`), and click _proceed to URL (unsafe)_.
 
 * Error Registering Users (HTTP 409) - `POST https://localhost:9001/users 409 (Conflict)`
-  * **Workaround:** Delete the file `/node-sample/users.json` and restart the sample app
+  * **Workaround:** Delete the file `/node-sample/users.json` and restart the sample app.
