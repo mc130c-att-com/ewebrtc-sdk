@@ -1,6 +1,21 @@
 # RELEASE NOTES - AT&T Enhanced WebRTC JavaScript SDK
 
-The SDK includes the following components:
+The following features and functionality are available in the current SDK release for all three supported calling types (AT&T Mobile Number, Virtual Number, and Account ID):
+*	Basic audio and video call management – make, receive, answer, end, mute, unmute, cancel, and reject calls
+*	Basic audio and video conferencing – create a conference, add and remove participants, end conference
+  *	Supports dialing out to add participants
+*	Advanced call management – hold, resume, move, transfer, add a second call, switch between two calls
+  *	Audio and video calls can be moved Web-to-Web
+  *	Audio calls can be moved from the Web to an AT&T mobile phone 
+*	Chrome browser support	
+
+The following features will be added soon:
+*	Move a Web video call to an audio call on an AT&T mobile phone
+*	DTMF (dialing) tones		
+*	Upgrade or downgrade between audio and video
+*	Firefox browser support
+
+This SDK includes the following components:
   * JavaScript library - a client library to consume the AT&T Enhanced WebRTC API.
   **Please refer to `node-sample/RELEASE.md` for sample app-specific notes.**
   * Node.js sample application - a Web app demonstrating the features
