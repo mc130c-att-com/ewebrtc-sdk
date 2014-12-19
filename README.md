@@ -9,26 +9,6 @@ One option is to use the [Markdown Viewer](https://chrome.google.com/webstore/de
 3. Find the _Markdown Viewer_ extension and check `Allow access to file URLs.`
 4. Open this file using Chrome (open a new tab and drag the file to that tab)
 
-# Features
-
-The following features and functionality are available in the current release for all three supported calling types (AT&T Mobile Number, Virtual Number and Account ID):
-
-* Audio and video calling
-* Hold and resume call
-* Mute and unmute call
-* Outbound conference calling
-* Make a second call and switch calls
-* Move audio call to another registered endpoint (PC, tablet, or mobile phone using an AT&T Mobile Number)
-
-The following features will be added soon:
-
-* Move video call to another registered endpoint (PC, tablet, or mobile phone using an AT&T Mobile Number)
-* Transfer call
-* DTMF (dialing) tones
-* Upgrade or downgrade between audio and video
-* Firefox browser support
-
-
 # SDK Contents
 
 * `/node-dhs`: Node.js Developer Hosted Server (DHS)
@@ -36,7 +16,6 @@ The following features will be added soon:
 * `/node-sample/public/js/ewebrtc-sdk.min.js`: JavaScript client library for the AT&T Enhanced WebRTC API
 * `/tutorial/index.html`: AT&T Enhanced WebRTC JavaScript SDK tutorial
 * `/api-docs/index.html`: JS SDK API reference documentation
-
 
 # Using the Sample Application
 
